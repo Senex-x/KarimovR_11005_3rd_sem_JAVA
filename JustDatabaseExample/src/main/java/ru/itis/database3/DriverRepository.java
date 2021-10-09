@@ -14,9 +14,9 @@ import java.util.Optional;
 public class DriverRepository implements CrudRepository<Driver, Long> {
 
     private final JdbcTemplate jdbcTemplate;
-    private final static String SQL_SELECT_ALL = "select * from driver;";
-    private final static String SQL_INSERT = "insert into driver (first_name, last_name, age) VALUES (?, ?, ?);";
-    private final static String SQL_SELECT_BY_ID = "select * from driver where id = ?;";
+    private final static String SQL_SELECT_ALL = "select * from drivers;";
+    private final static String SQL_INSERT = "insert into drivers (first_name, last_name, age) VALUES (?, ?, ?);";
+    private final static String SQL_SELECT_BY_ID = "select * from drivers where id = ?;";
 
     private final RowMapper<Driver> driverRowMapper = (row, rowNumber) -> Driver.builder()
             .id(row.getLong("id"))

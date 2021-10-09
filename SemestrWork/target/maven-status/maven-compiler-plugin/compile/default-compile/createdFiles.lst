@@ -1,0 +1,6 @@
+com\itis\servletsapp\servlets\TestCookieServlet.class
+com\itis\servletsapp\servlets\Profile.class
+com\itis\servletsapp\servlets\SignIn.class
+com\itis\servletsapp\servlets\SignUp.class
+com\itis\servletsapp\test\SessionExample.class
+com\itis\servletsapp\test\HelloServlet.class

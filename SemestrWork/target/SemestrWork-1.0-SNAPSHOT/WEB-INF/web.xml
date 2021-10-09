@@ -35,7 +35,7 @@
     </servlet-mapping>
 
     <session-config>
-        <session-timeout>3</session-timeout>
+        <session-timeout>2</session-timeout>
     </session-config>
 
 </web-app>
@@ -49,7 +49,7 @@
 <!--&lt;!&ndash;    <servlet>&ndash;&gt;-->
 <!--&lt;!&ndash;        <servlet-name>controller</servlet-name>&ndash;&gt;-->
 
-<!--&lt;!&ndash;        <servlet-class>com.itis.servletsapp.servlets.HelloServlet</servlet-class>&ndash;&gt;-->
+<!--&lt;!&ndash;        <servlet-class>com.itis.servletsapp.test.HelloServlet</servlet-class>&ndash;&gt;-->
 <!--&lt;!&ndash;    </servlet>&ndash;&gt;-->
 
 <!--&lt;!&ndash;    <servlet-mapping>&ndash;&gt;-->
