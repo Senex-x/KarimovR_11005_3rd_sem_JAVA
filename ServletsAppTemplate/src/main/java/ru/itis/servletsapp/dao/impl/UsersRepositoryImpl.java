@@ -102,9 +102,9 @@ public class UsersRepositoryImpl implements UsersRepository {
             PreparedStatement statement = connection.prepareStatement(SQL_UPDATE, new String[]{"id"});
             statement.setString(1, item.getFirstName());
             statement.setString(2, item.getLastName());
-            statement.setString(3, item.getEmail());
-            statement.setInt(4, item.getAge());
-            statement.setString(5, item.getHashPassword());
+            statement.setInt(3, item.getAge());
+            statement.setString(4, item.getHashPassword());
+            statement.setString(5, item.getEmail());
             if (item.getAvatarId() != null) {
                 statement.setLong(6, item.getAvatarId());
             } else {

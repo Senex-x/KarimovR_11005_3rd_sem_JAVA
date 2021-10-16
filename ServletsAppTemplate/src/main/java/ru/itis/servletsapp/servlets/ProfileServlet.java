@@ -18,7 +18,7 @@ public class ProfileServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         UserDto userDto = (UserDto) request.getSession().getAttribute("user");
-        System.out.println(userDto);
+        System.out.println("FINDER" + userDto);
         request.setAttribute("user", userDto);
         request.getRequestDispatcher("/profile.ftl").forward(request, response);
     }

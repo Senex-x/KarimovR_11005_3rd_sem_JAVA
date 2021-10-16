@@ -46,6 +46,7 @@ public class CustomContextListener implements ServletContextListener {
         servletContext.setAttribute("filesService", filesService);
         servletContext.setAttribute("signInService", signInService);
         servletContext.setAttribute("signUpService", signUpService);
+        servletContext.setAttribute("usersRepository", usersRepository);
     }
 
     @Override

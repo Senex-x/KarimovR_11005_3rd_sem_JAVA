@@ -41,8 +41,13 @@ public class FilesUploadServlet extends HttpServlet {
                 part.getContentType(),
                 part.getSize());
 
-        UserDto user = (UserDto) request.getAttribute("user");
+        UserDto user = (UserDto) request.getSession().getAttribute("user");
+//        System.out.println("DEBUG1 " + user);
+//        System.out.println("DEBUG2_2 USERGETID " + user.getId());
+        System.out.println("DEBUG2_1 " + usersRepository.findById(user.getId()));
         User currentUser = usersRepository.findById(user.getId()).get();
+        System.out.println("DEBUG2 CURRENTUSER: " + currentUser);
+        System.out.println("DEBUG3 FILEINFO: " + fileInfo.getId());
         usersRepository.update(
                 user.getId(),
                 new User(
