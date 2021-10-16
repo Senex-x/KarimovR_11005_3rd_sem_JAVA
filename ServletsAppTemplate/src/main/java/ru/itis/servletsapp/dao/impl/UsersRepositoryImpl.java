@@ -95,6 +95,27 @@ public class UsersRepositoryImpl implements UsersRepository {
         }
         return item;
     }
+//"update users set first_name = ?, last_name = ?, age = ?, password_hash = ?, email = ?, avatar_id = ? where id = ?";
+    @Override
+    public void update(Long id, User item){
+        jdbcTemplate.update(connection -> {
+            PreparedStatement statement = connection.prepareStatement(SQL_UPDATE, new String[]{"id"});
+            statement.setString(1, item.getFirstName());
+            statement.setString(2, item.getLastName());
+            statement.setString(3, item.getEmail());
+            statement.setInt(4, item.getAge());
+            statement.setString(5, item.getHashPassword());
+            if (item.getAvatarId() != null) {
+                statement.setLong(6, item.getAvatarId());
+            } else {
+                statement.setNull(6, Types.NULL);
+            }
+            statement.setLong(7, id);
+            return statement;
+        },
+        new GeneratedKeyHolder()
+        );
+    }
 
     // TODO: Implement
     @Override

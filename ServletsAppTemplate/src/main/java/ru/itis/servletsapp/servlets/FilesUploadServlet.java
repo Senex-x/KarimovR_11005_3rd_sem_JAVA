@@ -1,6 +1,9 @@
 package ru.itis.servletsapp.servlets;
 
+import ru.itis.servletsapp.dao.UsersRepository;
+import ru.itis.servletsapp.dto.UserDto;
 import ru.itis.servletsapp.model.FileInfo;
+import ru.itis.servletsapp.model.User;
 import ru.itis.servletsapp.services.FilesService;
 
 import javax.servlet.ServletConfig;
@@ -17,10 +20,12 @@ import java.io.IOException;
 @MultipartConfig
 public class FilesUploadServlet extends HttpServlet {
     private FilesService filesService;
+    private UsersRepository usersRepository;
 
     @Override
     public void init(ServletConfig config) {
         this.filesService = (FilesService) config.getServletContext().getAttribute("filesService");
+        usersRepository = (UsersRepository) config.getServletContext().getAttribute("usersRepository");
     }
 
     @Override
@@ -35,6 +40,25 @@ public class FilesUploadServlet extends HttpServlet {
                 part.getSubmittedFileName(),
                 part.getContentType(),
                 part.getSize());
+
+        UserDto user = (UserDto) request.getAttribute("user");
+        User currentUser = usersRepository.findById(user.getId()).get();
+        usersRepository.update(
+                user.getId(),
+                new User(
+                        currentUser.getId(),
+                        currentUser.getFirstName(),
+                        currentUser.getLastName(),
+                        currentUser.getHashPassword(),
+                        currentUser.getEmail(),
+                        currentUser.getAge(),
+                        fileInfo.getId()
+                )
+        );
+
+//        filesService.saveFileToStorage(fileInfo);
+
+
         response.sendRedirect("/files/" + fileInfo.getId());
     }
 }

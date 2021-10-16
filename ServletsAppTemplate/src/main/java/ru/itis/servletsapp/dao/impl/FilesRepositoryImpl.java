@@ -62,6 +62,11 @@ public class FilesRepositoryImpl implements FilesRepository {
     }
 
     @Override
+    public void update(Long id, FileInfo item) {
+
+    }
+
+    @Override
     public Optional<FileInfo> findById(Long id) {
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, fileRowMapper, id));
