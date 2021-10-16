@@ -6,20 +6,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        if (req.getSession(true).getAttribute("User") != null){
-            String username = (String) req.getSession().getAttribute("User");
-            System.out.println("User: " + username);
-            req.setAttribute("username", username);
-            req.getRequestDispatcher("profile.ftl").forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        if (request.getSession(true).getAttribute("User") != null) {
+            String username = String.valueOf(request.getSession().getAttribute("User"));
+            System.out.println("USER: " + username);
+            request.setAttribute("username", username);
+            request.getRequestDispatcher("profile.ftl").forward(request, response);
         } else {
-            resp.sendRedirect("/sign-in");
+            response.sendRedirect("/sign-in");
         }
     }
 }

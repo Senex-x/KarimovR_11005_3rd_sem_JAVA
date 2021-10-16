@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 //@WebServlet("/hello")
-@WebServlet("/add-cookie")
+@WebServlet("/addcookie")
 public class HelloServlet extends HttpServlet {
 ////    @Override
 ////    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
