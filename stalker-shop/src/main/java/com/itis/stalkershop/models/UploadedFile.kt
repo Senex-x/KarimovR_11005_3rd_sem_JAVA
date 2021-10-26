@@ -6,4 +6,12 @@ data class UploadedFile(
     val storageFileName: String,
     val size: Long,
     val type: String
-)
+) {
+    fun toDto() =
+        UploadedFileDto(
+            originalFileName,
+            storageFileName,
+            size,
+            type
+        )
+}

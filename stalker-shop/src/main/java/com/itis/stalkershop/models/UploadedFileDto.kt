@@ -5,12 +5,14 @@ data class UploadedFileDto(
     val storageFileName: String,
     val size: Long,
     val type: String
-)
-
-fun UploadedFile.toDto() =
-    UploadedFileDto(
+) {
+    fun toUploadedFile(primaryKey: Long) = UploadedFile(
+        primaryKey,
         originalFileName,
         storageFileName,
         size,
         type
     )
+}
+
+

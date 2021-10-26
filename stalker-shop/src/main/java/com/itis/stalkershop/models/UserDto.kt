@@ -5,13 +5,15 @@ data class UserDto(
     val name: String,
     val passwordHash: String,
     val avatarId: Long? = null
-)
-
-fun User.toDto() =
-    UserDto(
+) {
+    fun toUser() = User(
         email,
         name,
         passwordHash,
         avatarId
     )
+}
+
+
+
 
