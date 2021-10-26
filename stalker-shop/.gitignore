@@ -1,6 +1,8 @@
 *.iml
 .gradle
+/.idea/
 /local.properties
+<<<<<<< HEAD
 /.idea
 /.idea/caches
 /.idea/libraries
@@ -8,6 +10,8 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+=======
+>>>>>>> d8e4fcdb726012bf106889c645c3f060a93a3d73
 .DS_Store
 /build
 /captures
