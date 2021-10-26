@@ -1,6 +1,7 @@
 package com.itis.stalkershop.services.interfaces
 
 import com.itis.stalkershop.models.UploadedFile
+import com.itis.stalkershop.models.UploadedFileDto
 import java.io.InputStream
 import java.io.OutputStream
 

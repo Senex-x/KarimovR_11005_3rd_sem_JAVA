@@ -1,20 +1,19 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.itis.senex.exception.ErrorEntity;
-import com.itis.senex.exception.ValidationException;
-import com.itis.senex.model.User;
+
+import com.itis.stalkershop.models.User;
+import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.senex.repository.dto.UserDto;
-import com.itis.senex.repository.dto.UserForm;
-import com.itis.senex.services.PasswordEncoder;
-import com.itis.senex.services.SignInService;
+import com.itis.stalkershop.services.interfaces.SignInServiceBase;
+import com.itis.stalkershop.utils.exceptions.ErrorEntity;
+import com.itis.stalkershop.utils.exceptions.ValidationException;
 import org.jetbrains.annotations.NotNull;
 
-public class SignInServiceImpl implements SignInService {
+public class SignInService implements SignInServiceBase {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public SignInServiceImpl(
+    public SignInService(
             UsersRepository usersRepository,
             PasswordEncoder passwordEncoder
     ) {
@@ -24,14 +23,14 @@ public class SignInServiceImpl implements SignInService {
 
     @NotNull
     @Override
-    public UserDto signIn(UserForm userForm) {
+    public UserDto signIn(UserDto userForm) {
         User user = usersRepository.findByEmail(userForm.getEmail())
                 .orElseThrow(() ->
                         new ValidationException(ErrorEntity.NOT_FOUND)
                 );
-        if (!passwordEncoder.matches(userForm.getPassword(), user.getHashPassword())) {
+        if (!passwordEncoder.matches(userForm.getPasswordHash(), user.getPasswordHash())) {
             throw new ValidationException(ErrorEntity.INCORRECT_PASSWORD);
         }
-        return UserDto.Companion.from(user);
+        return user.toDto();
     }
 }

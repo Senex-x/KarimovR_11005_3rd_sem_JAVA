@@ -1,22 +1,23 @@
 package com.itis.stalkershop.services.implementations;
 
 
-import com.itis.senex.exception.ErrorEntity;
+import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.senex.repository.dto.UserForm;
-import com.itis.senex.services.validation.Validator;
+import com.itis.stalkershop.services.interfaces.ValidatorBase;
+import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 
 import java.util.Optional;
 
-public class ValidatorImpl implements Validator {
+public class Validator implements ValidatorBase {
     private final UsersRepository usersRepository;
 
-    public ValidatorImpl(UsersRepository usersRepository) {
+    public Validator(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 
+    // TODO: fix warning
     @Override
-    public Optional<ErrorEntity> validateRegistration(UserForm form) {
+    public Optional<ErrorEntity> validateRegistration(UserDto form) {
         if(form.getEmail() == null) {
             return Optional.of(ErrorEntity.INVALID_EMAIL);
         } else if(usersRepository.findByEmail(form.getEmail()).isPresent()) {
