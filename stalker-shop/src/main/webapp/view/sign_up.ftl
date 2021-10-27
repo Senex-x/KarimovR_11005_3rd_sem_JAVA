@@ -8,18 +8,26 @@
 <body>
 <h1>Sign Up</h1>
 
-    <form method="post">
-        <label>Username
+<div id="top_img">
+    <button class="sign-in">Войти</button>
+    <button class="sign-up">Зарегистрироваться</button>
+</div>
+
+<div class="wrapper">
+    <form method="post" id="forms">
+        <label id="form">Username
             <input name="name" type="text">
         </label>
-        <label>Email
+        <label id="form">Email
             <input name="email" type="email">
         </label>
-        <label>Password
+        <label id="form">Password
             <input name="password" type="password">
         </label>
-        <input type="submit">
+        <input type="submit" id="form">
     </form>
+
+</div>
 
 </body>
 </html>
