@@ -18,11 +18,13 @@ body {
     background: url(../images/bg_top.jpg) center 0% no-repeat;
 }
 #top1 {
-    display: inline-block;
+    /*display: inline-block;*/
+    /*display: flex;*/
+
     width: 372px;
     height: 99px;
     float: left;
-    padding-left: 400px;
+    /*padding-left: 400px;*/
     background: url(../images/upper_nav_left.png) top right no-repeat;
 }
 #top2 {
@@ -31,6 +33,33 @@ body {
     width: 372px;
     height: 99px;
     float: left;
-    padding-left: 700px;
+    /*padding-left: 700px;*/
     background: url(../images/upper_nav_right.png) top right no-repeat;
 }
+#top_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#top_l {
+    display: flex;
+    flex-direction: column;
+}
+#sign-button {
+    /*position: relative;*/
+    position: absolute;
+    top: 10%;
+    left: 36%;
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin-top: 20%;*/
+    /*margin: auto;*/
+}
+
+/*.upper-navigation .column-left {*/
+/*    width: 372px;*/
+/*    height: 99px;*/
+/*    float: left;*/
+/*    padding-left: 42px;*/
+/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
+/*}*/
