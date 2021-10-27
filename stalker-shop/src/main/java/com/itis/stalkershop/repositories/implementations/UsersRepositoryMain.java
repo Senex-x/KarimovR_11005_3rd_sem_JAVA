@@ -37,7 +37,9 @@ public class UsersRepositoryMain implements UsersRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UsersRepositoryMain(DataSource dataSource) {
+    public UsersRepositoryMain(
+            DataSource dataSource
+    ) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -46,8 +48,11 @@ public class UsersRepositoryMain implements UsersRepository {
     public Optional<User> findByEmail(@NotNull String email) {
         try {
             return Optional.ofNullable(
-                    jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, rowMapper, email)
-            );
+                    jdbcTemplate.queryForObject(
+                            SQL_SELECT_BY_EMAIL,
+                            rowMapper,
+                            email
+                    ));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
@@ -56,7 +61,12 @@ public class UsersRepositoryMain implements UsersRepository {
     @Override
     public Optional<User> findByPrimaryKey(String id) {
         try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, rowMapper, id));
+            return Optional.ofNullable(
+                    jdbcTemplate.queryForObject(
+                            SQL_SELECT_BY_EMAIL,
+                            rowMapper,
+                            id
+                    ));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
@@ -74,7 +84,8 @@ public class UsersRepositoryMain implements UsersRepository {
         if (true) {
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(connection -> {
-                PreparedStatement statement = connection.prepareStatement(SQL_INSERT, new String[]{"id"});
+                PreparedStatement statement = connection
+                        .prepareStatement(SQL_INSERT, new String[]{"email"});
                 statement.setString(1, item.getEmail());
                 statement.setString(2, item.getName());
                 statement.setString(3, item.getPasswordHash());
@@ -103,7 +114,8 @@ public class UsersRepositoryMain implements UsersRepository {
     @Override
     public void update(String primaryKey, UserDto item) {
         jdbcTemplate.update(connection -> {
-                    PreparedStatement statement = connection.prepareStatement(SQL_UPDATE, new String[]{"id"});
+                    PreparedStatement statement = connection
+                            .prepareStatement(SQL_UPDATE, new String[]{"email"});
                     statement.setString(1, item.getEmail());
                     statement.setString(2, item.getName());
                     if (item.getAvatarId() != null) {

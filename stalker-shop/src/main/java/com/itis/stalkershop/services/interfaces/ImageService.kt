@@ -1,17 +1,16 @@
 package com.itis.stalkershop.services.interfaces
 
-import com.itis.stalkershop.models.UploadedFile
-import com.itis.stalkershop.models.UploadedFileDto
+import com.itis.stalkershop.models.Image
 import java.io.InputStream
 import java.io.OutputStream
 
-interface FilesService {
+interface ImageService {
     fun saveFileToStorage(
         file: InputStream,
         originalFileName: String,
         contentType: String,
         size: Long
-    ): UploadedFile
+    ): Image
 
     fun writeFileFromStorage(
         fileId: Long,
@@ -20,5 +19,5 @@ interface FilesService {
 
     fun getFileInfo(
         fileId: Long
-    ): UploadedFile
+    ): Image
 }

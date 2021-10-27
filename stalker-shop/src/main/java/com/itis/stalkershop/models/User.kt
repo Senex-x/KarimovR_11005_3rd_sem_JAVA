@@ -6,7 +6,7 @@ data class User(
     val passwordHash: String,
     val avatarId: Long? = null
 ) {
-    fun toDto() =
+    fun toUserDto() =
         UserDto(
             email,
             name,

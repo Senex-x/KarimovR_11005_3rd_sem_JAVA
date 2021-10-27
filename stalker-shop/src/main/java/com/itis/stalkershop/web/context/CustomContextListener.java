@@ -1,8 +1,6 @@
 package com.itis.stalkershop.web.context;
 
-
 import com.itis.stalkershop.repositories.implementations.FilesRepositoryMain;
-import com.itis.stalkershop.repositories.implementations.FilesRepositoryMainKt;
 import com.itis.stalkershop.repositories.implementations.UsersRepositoryMain;
 import com.itis.stalkershop.repositories.interfaces.FilesRepository;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
@@ -19,7 +17,7 @@ import javax.servlet.annotation.WebListener;
 public class CustomContextListener implements ServletContextListener {
     private static final String DB_USERNAME = "postgres";
     private static final String DB_PASSWORD = "postgres";
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/drivers";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String DB_DRIVER = "org.postgresql.Driver";
 
     @Override
@@ -33,15 +31,15 @@ public class CustomContextListener implements ServletContextListener {
         dataSource.setUrl(DB_URL);
 
         FilesRepository filesRepository = new FilesRepositoryMain(dataSource);
-        FilesService filesService = new FilesServiceMain(filesRepository);
+        ImageService imageService = new ImageServiceMain(filesRepository);
         UsersRepository usersRepository = new UsersRepositoryMain(dataSource);
-        PasswordEncoder passwordEncoder = new PasswordEncoderMain();
-        SignInService signInService = new SignInServiceMain(usersRepository, passwordEncoder);
-        Validator validator = new ValidatorMain(usersRepository);
-        SignUpService signUpService = new SignUpServiceMain(usersRepository, passwordEncoder, validator);
+        PasswordService passwordService = new PasswordServiceMain();
+        SignInService signInService = new SignInServiceMain(usersRepository, passwordService);
+        ValidationService validationService = new ValidationServiceMain(usersRepository);
+        SignUpService signUpService = new SignUpServiceMain(usersRepository, passwordService, validationService);
 
         servletContext.setAttribute("filesRepository", filesRepository);
-        servletContext.setAttribute("filesService", filesService);
+        servletContext.setAttribute("filesService", imageService);
         servletContext.setAttribute("signInService", signInService);
         servletContext.setAttribute("signUpService", signUpService);
         servletContext.setAttribute("usersRepository", usersRepository);

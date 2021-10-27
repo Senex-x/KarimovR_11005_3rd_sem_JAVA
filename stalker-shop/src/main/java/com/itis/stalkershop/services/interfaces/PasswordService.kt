@@ -1,9 +1,9 @@
 package com.itis.stalkershop.services.interfaces
 
-interface PasswordEncoder {
+interface PasswordService {
     fun matches(
         password: String,
-        hashPassword: String
+        passwordHash: String
     ): Boolean
 
     fun encode(

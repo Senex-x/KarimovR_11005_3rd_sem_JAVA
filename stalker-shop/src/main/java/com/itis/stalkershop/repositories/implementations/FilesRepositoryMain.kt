@@ -1,7 +1,7 @@
 package com.itis.stalkershop.repositories.implementations
 
-import com.itis.stalkershop.models.UploadedFile
-import com.itis.stalkershop.models.UploadedFileDto
+import com.itis.stalkershop.models.Image
+import com.itis.stalkershop.models.ImageDto
 import com.itis.stalkershop.repositories.interfaces.FilesRepository
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
@@ -13,47 +13,43 @@ import java.util.*
 import javax.sql.DataSource
 
 private const val SQL_INSERT =
-    "insert into file_info(storage_file_name, original_file_name, type, size) values (?, ?, ?, ?)"
+    "insert into files(storage_name, original_name, type, size) values (?, ?, ?, ?)"
 private const val SQL_UPDATE =
-    "update file_info set storage_file_name = ?, original_file_name = ?, type = ?, size = ? where id = ?"
+    "update files set storage_name = ?, original_name = ?, type = ?, size = ? where id = ?"
 private const val SQL_SELECT_BY_ID =
-    "select * from file_info where id = ?"
+    "select * from files where id = ?"
 
 class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
-    private val jdbcTemplate: JdbcTemplate
-
-    init {
-        jdbcTemplate = JdbcTemplate(dataSource)
-    }
+    private val jdbcTemplate: JdbcTemplate = JdbcTemplate(dataSource)
 
     private val fileRowMapper =
         RowMapper { row: ResultSet, _ ->
             row.run {
-                UploadedFile(
+                Image(
                     getLong("id"),
-                    getString("original_file_name"),
-                    getString("storage_file_name"),
-                    getLong("size"),
-                    getString("type")
+                    getString("storage_name"),
+                    getString("original_name"),
+                    getString("type"),
+                    getLong("size")
                 )
             }
         }
 
 
     // TODO: handle save or update cases
-    override fun save(item: UploadedFileDto): UploadedFile {
+    override fun save(item: ImageDto): Image {
         return if (true) { // if not present
             val keyHolder = GeneratedKeyHolder()
             jdbcTemplate.update({ connection: Connection ->
                 connection.prepareStatement(SQL_INSERT, arrayOf("id")).apply {
-                    setString(1, item.storageFileName)
-                    setString(2, item.originalFileName)
+                    setString(1, item.storageName)
+                    setString(2, item.originalName)
                     setString(3, item.type)
                     setLong(4, item.size)
                 }
             }, keyHolder)
 
-            item.toUploadedFile(keyHolder.key!!.toLong())
+            item.toImage(keyHolder.key!!.toLong())
         } else { // if present (add get id from database logic)
             /*
             item.apply {
@@ -70,12 +66,12 @@ class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
         }
     }
 
-    override fun update(primaryKey: Long, item: UploadedFileDto) {
+    override fun update(primaryKey: Long, item: ImageDto) {
         TODO("Not yet implemented")
     }
 
 
-    override fun findByPrimaryKey(id: Long): Optional<UploadedFile> {
+    override fun findByPrimaryKey(id: Long): Optional<Image> {
         return try {
             Optional.ofNullable(
                 jdbcTemplate.queryForObject(
@@ -90,7 +86,7 @@ class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     }
 
     // TODO: Реализовать
-    override fun findAll(): List<UploadedFile> {
+    override fun findAll(): List<Image> {
         return emptyList()
     }
 

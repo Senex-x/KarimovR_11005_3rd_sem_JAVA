@@ -1,7 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.models.UploadedFile;
-import com.itis.stalkershop.services.interfaces.FilesService;
+import com.itis.stalkershop.models.Image;
+import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 
 import javax.servlet.ServletConfig;
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/files/*")
-public class FilesDownloadServlet extends HttpServlet {
-    private FilesService filesService;
+public class ImagesServlet extends HttpServlet {
+    private ImageService imageService;
 
     @Override
     public void init(
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        this.filesService = (FilesService) config
+        this.imageService = (ImageService) config
                 .getServletContext()
                 .getAttribute("filesService");
     }
@@ -42,14 +42,14 @@ public class FilesDownloadServlet extends HttpServlet {
         }
 
         try {
-            UploadedFile fileInfo = filesService.getFileInfo(fileId);
+            Image fileInfo = imageService.getFileInfo(fileId);
             response.setContentType(fileInfo.getType());
             response.setContentLength((int) fileInfo.getSize());
             response.setHeader(
                     "Content-Disposition",
-                    "filename=\"" + fileInfo.getOriginalFileName() + "\""
+                    "filename=\"" + fileInfo.getOriginalName() + "\""
             );
-            filesService.writeFileFromStorage(
+            imageService.writeFileFromStorage(
                     fileId,
                     response.getOutputStream()
             );

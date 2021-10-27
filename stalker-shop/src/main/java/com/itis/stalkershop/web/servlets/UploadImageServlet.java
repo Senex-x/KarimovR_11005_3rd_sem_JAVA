@@ -1,9 +1,9 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.models.UploadedFile;
+import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.stalkershop.services.interfaces.FilesService;
+import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.logger.LogKt;
 
 import javax.servlet.ServletConfig;
@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 
-@WebServlet("/file-upload")
+@WebServlet("/upload-image")
 @MultipartConfig
-public class FileUploadServlet extends HttpServlet {
-    private FilesService filesService;
+public class UploadImageServlet extends HttpServlet {
+    private ImageService imageService;
     private UsersRepository usersRepository;
 
     @Override
@@ -27,7 +27,7 @@ public class FileUploadServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        filesService = (FilesService) config
+        imageService = (ImageService) config
                 .getServletContext()
                 .getAttribute("filesService");
         usersRepository = (UsersRepository) config
@@ -40,7 +40,7 @@ public class FileUploadServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.getRequestDispatcher("file_upload.ftl")
+        request.getRequestDispatcher("image_upload.ftl")
                 .forward(request, response);
     }
 
@@ -50,7 +50,7 @@ public class FileUploadServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         Part part = request.getPart("file");
-        UploadedFile newFile = filesService.saveFileToStorage(
+        Image newFile = imageService.saveFileToStorage(
                 part.getInputStream(),
                 part.getSubmittedFileName(),
                 part.getContentType(),
@@ -61,8 +61,8 @@ public class FileUploadServlet extends HttpServlet {
         LogKt.log(this, "Trying get user from session");
         UserDto user = (UserDto) request.getSession().getAttribute("user");
         LogKt.log(this, "Got user from session: " + user);
-//        System.out.println("DEBUG1 " + user);
-//        System.out.println("DEBUG2_2 USERGETID " + user.getId());
+
+
         //System.out.println("DEBUG2_1 " + usersRepository.findByEmail(user.getEmail()));
 
         // Why the fuck do we use Optional then?

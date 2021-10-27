@@ -1,9 +1,9 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.itis.stalkershop.models.UploadedFile;
-import com.itis.stalkershop.models.UploadedFileDto;
+import com.itis.stalkershop.models.Image;
+import com.itis.stalkershop.models.ImageDto;
 import com.itis.stalkershop.repositories.interfaces.FilesRepository;
-import com.itis.stalkershop.services.interfaces.FilesService;
+import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,13 +16,13 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 
-public class FilesServiceMain implements FilesService {
+public class ImageServiceMain implements ImageService {
     private static final String PATH_DEFAULT =
-            "C:\\Users\\Senex\\Pictures\\Saved Pictures\\";
+            "D:\\Projects\\Java\\KarimovR_11005_3rd_sem_JAVA\\stalker-shop\\data\\images\\";
 
     private final FilesRepository filesRepository;
 
-    public FilesServiceMain(
+    public ImageServiceMain(
             FilesRepository filesRepository
     ) {
         this.filesRepository = filesRepository;
@@ -30,25 +30,25 @@ public class FilesServiceMain implements FilesService {
 
     @NotNull
     @Override
-    public UploadedFile saveFileToStorage(
+    public Image saveFileToStorage(
             @NotNull InputStream inputStream,
             @NotNull String originalFileName,
             @NotNull String contentType,
             long size
     ) {
-        UploadedFileDto fileInfo = new UploadedFileDto(
-                originalFileName,
+        ImageDto fileInfo = new ImageDto(
                 UUID.randomUUID().toString(),
-                size,
-                contentType
+                originalFileName,
+                contentType,
+                size
         );
 
-        UploadedFile f;
+        Image f;
         try {
             Files.copy(
                     inputStream,
                     Paths.get(PATH_DEFAULT +
-                            fileInfo.getStorageFileName() + "." +
+                            fileInfo.getStorageName() + "." +
                             fileInfo.getType().split("/")[1]
                     )
             );
@@ -66,13 +66,13 @@ public class FilesServiceMain implements FilesService {
             long fileId,
             @NotNull OutputStream outputStream
     ) {
-        Optional<UploadedFile> optionalFileInfo = filesRepository.findByPrimaryKey(fileId);
-        UploadedFile fileInfo = optionalFileInfo.orElseThrow(
+        Optional<Image> optionalFileInfo = filesRepository.findByPrimaryKey(fileId);
+        Image fileInfo = optionalFileInfo.orElseThrow(
                 () -> new NotFoundException("File not found")
         );
 
         File file = new File(PATH_DEFAULT +
-                fileInfo.getStorageFileName() + "." +
+                fileInfo.getStorageName() + "." +
                 fileInfo.getType().split("/")[1]
         );
 
@@ -86,7 +86,7 @@ public class FilesServiceMain implements FilesService {
     // TODO: inspect warning
     @NotNull
     @Override
-    public UploadedFile getFileInfo(long fileId) {
+    public Image getFileInfo(long fileId) {
         return filesRepository.findByPrimaryKey(fileId).orElseThrow(
                 () -> new NotFoundException("File not found")
         );

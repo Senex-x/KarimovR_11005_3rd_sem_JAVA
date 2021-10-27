@@ -15,7 +15,8 @@ fun log(context: String, message: String) =
     println("$LOG_PREFIX$context: $message")
 
 fun log(context: HttpServlet, message: String?) =
-    println("$LOG_PREFIX${context.servletName}: $message")
+    println("$LOG_PREFIX${context::class.java.simpleName}: $message")
 
 fun HttpServlet.logExt(message: String?) =
     log(this, message)
+
