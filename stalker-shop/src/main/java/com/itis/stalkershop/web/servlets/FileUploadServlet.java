@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @WebServlet("/file-upload")
 @MultipartConfig
-public class FilesUploadServlet extends HttpServlet {
+public class FileUploadServlet extends HttpServlet {
     private FilesService filesService;
     private UsersRepository usersRepository;
 
@@ -37,7 +37,8 @@ public class FilesUploadServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.getRequestDispatcher("fileUpload.ftl").forward(request, response);
+        request.getRequestDispatcher("file_upload.ftl")
+                .forward(request, response);
     }
 
     @Override
@@ -46,26 +47,29 @@ public class FilesUploadServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         Part part = request.getPart("file");
-        UploadedFile fileInfo = filesService.saveFileToStorage(part.getInputStream(),
+        UploadedFile fileInfo = filesService.saveFileToStorage(
+                part.getInputStream(),
                 part.getSubmittedFileName(),
                 part.getContentType(),
-                part.getSize());
+                part.getSize()
+        );
 
         UserDto user = (UserDto) request.getSession().getAttribute("user");
 //        System.out.println("DEBUG1 " + user);
 //        System.out.println("DEBUG2_2 USERGETID " + user.getId());
-        System.out.println("DEBUG2_1 " + usersRepository.findByEmail(user.getEmail()));
+        //System.out.println("DEBUG2_1 " + usersRepository.findByEmail(user.getEmail()));
 
         // Why the fuck do we use Optional then?
-        User currentUser = usersRepository.findByEmail(user.getEmail()).get();
-        System.out.println("DEBUG2 CURRENTUSER: " + currentUser);
-        System.out.println("DEBUG3 FILEINFO: " + fileInfo.getId());
+        //User currentUser = usersRepository.findByEmail(user.getEmail()).get();
+
+        //System.out.println("DEBUG2 CURRENTUSER: " + currentUser);
+        //System.out.println("DEBUG3 FILEINFO: " + fileInfo.getId());
         usersRepository.update(
                 user.getEmail(),
                 new UserDto(
-                        currentUser.getEmail(),
-                        currentUser.getName(),
-                        currentUser.getPasswordHash(),
+                        user.getEmail(),
+                        user.getName(),
+                        user.getPasswordHash(),
                         fileInfo.getId()
                 )
         );
