@@ -3,15 +3,15 @@ package com.itis.stalkershop.services.implementations;
 
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.stalkershop.services.interfaces.ValidatorBase;
+import com.itis.stalkershop.services.interfaces.Validator;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 
 import java.util.Optional;
 
-public class Validator implements ValidatorBase {
+public class ValidatorMain implements Validator {
     private final UsersRepository usersRepository;
 
-    public Validator(UsersRepository usersRepository) {
+    public ValidatorMain(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 

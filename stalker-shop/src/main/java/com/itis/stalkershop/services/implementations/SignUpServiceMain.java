@@ -1,34 +1,33 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.itis.stalkershop.models.User;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.stalkershop.services.interfaces.SignUpServiceBase;
+import com.itis.stalkershop.services.interfaces.SignUpService;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class SignUpService implements SignUpServiceBase {
+public class SignUpServiceMain implements SignUpService {
     private final UsersRepository usersRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final Validator validator;
+    private final PasswordEncoderMain passwordEncoderMain;
+    private final ValidatorMain validatorMain;
 
-    public SignUpService(
+    public SignUpServiceMain(
             UsersRepository usersRepository,
-            PasswordEncoder passwordEncoder,
-            Validator validator
+            PasswordEncoderMain passwordEncoderMain,
+            ValidatorMain validatorMain
     ) {
         this.usersRepository = usersRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.validator = validator;
+        this.passwordEncoderMain = passwordEncoderMain;
+        this.validatorMain = validatorMain;
     }
 
     @Override
     public void signUp(@NotNull UserDto user) {
         // passwordEncoder.matches("123123", "HASH");
-        Optional<ErrorEntity> optionalError = validator.validateRegistration(user);
+        Optional<ErrorEntity> optionalError = validatorMain.validateRegistration(user);
         if(optionalError.isPresent()) {
             throw new ValidationException(optionalError.get());
         }

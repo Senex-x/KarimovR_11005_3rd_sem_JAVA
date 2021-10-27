@@ -1,9 +1,9 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.itis.stalkershop.services.interfaces.PasswordEncoderBase;
+import com.itis.stalkershop.services.interfaces.PasswordEncoder;
 import org.jetbrains.annotations.NotNull;
 
-public class PasswordEncoder implements PasswordEncoderBase {
+public class PasswordEncoderMain implements PasswordEncoder {
     @Override
     public boolean matches(String password, @NotNull String hashPassword) {
         return password.equals(hashPassword);

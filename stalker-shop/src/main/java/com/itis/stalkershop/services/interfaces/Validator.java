@@ -5,6 +5,6 @@ import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 
 import java.util.Optional;
 
-public interface ValidatorBase {
+public interface Validator {
     Optional<ErrorEntity> validateRegistration(UserDto newUser);
 }

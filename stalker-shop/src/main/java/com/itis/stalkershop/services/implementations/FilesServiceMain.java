@@ -3,7 +3,7 @@ package com.itis.stalkershop.services.implementations;
 import com.itis.stalkershop.models.UploadedFile;
 import com.itis.stalkershop.models.UploadedFileDto;
 import com.itis.stalkershop.repositories.interfaces.FilesRepository;
-import com.itis.stalkershop.services.interfaces.FilesServiceBase;
+import com.itis.stalkershop.services.interfaces.FilesService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,13 +16,13 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 
-public class FilesService implements FilesServiceBase {
+public class FilesServiceMain implements FilesService {
 
     private static String path = "C:\\Users\\Senex\\Pictures\\Saved Pictures\\";
 
     private final FilesRepository filesRepository;
 
-    public FilesService(FilesRepository filesRepository) {
+    public FilesServiceMain(FilesRepository filesRepository) {
         this.filesRepository = filesRepository;
     }
 

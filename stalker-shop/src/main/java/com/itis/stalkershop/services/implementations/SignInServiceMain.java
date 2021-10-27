@@ -4,21 +4,21 @@ package com.itis.stalkershop.services.implementations;
 import com.itis.stalkershop.models.User;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.stalkershop.services.interfaces.SignInServiceBase;
+import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 import org.jetbrains.annotations.NotNull;
 
-public class SignInService implements SignInServiceBase {
+public class SignInServiceMain implements SignInService {
     private final UsersRepository usersRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoderMain passwordEncoderMain;
 
-    public SignInService(
+    public SignInServiceMain(
             UsersRepository usersRepository,
-            PasswordEncoder passwordEncoder
+            PasswordEncoderMain passwordEncoderMain
     ) {
         this.usersRepository = usersRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoderMain = passwordEncoderMain;
     }
 
     @NotNull
@@ -28,7 +28,7 @@ public class SignInService implements SignInServiceBase {
                 .orElseThrow(() ->
                         new ValidationException(ErrorEntity.NOT_FOUND)
                 );
-        if (!passwordEncoder.matches(userForm.getPasswordHash(), user.getPasswordHash())) {
+        if (!passwordEncoderMain.matches(userForm.getPasswordHash(), user.getPasswordHash())) {
             throw new ValidationException(ErrorEntity.INCORRECT_PASSWORD);
         }
         return user.toDto();
