@@ -17,49 +17,70 @@ body {
     font-size: 12px;
     background: url(../images/bg_top.jpg) center 0% no-repeat;
 }
-#top1 {
-    /*display: inline-block;*/
-    /*display: flex;*/
-
-    width: 372px;
-    height: 99px;
-    float: left;
-    /*padding-left: 400px;*/
-    background: url(../images/upper_nav_left.png) top right no-repeat;
+.wrapper {
+    width: 80%;
+    max-width: 720px;
 }
-#top2 {
+/*#top1 {*/
+/*    !*display: inline-block;*!*/
+/*    !*display: flex;*!*/
 
-    display: inline-block;
-    width: 372px;
-    height: 99px;
-    float: left;
-    /*padding-left: 700px;*/
-    background: url(../images/upper_nav_right.png) top right no-repeat;
-}
+/*    width: 372px;*/
+/*    height: 99px;*/
+/*    float: left;*/
+/*    !*padding-left: 400px;*!*/
+/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
+/*}*/
+/*#top2 {*/
+
+/*    display: inline-block;*/
+/*    width: 372px;*/
+/*    height: 99px;*/
+/*    float: left;*/
+/*    !*padding-left: 700px;*!*/
+/*    background: url(../images/upper_nav_right.png) top right no-repeat;*/
+/*}*/
 #top_img {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    /*align-items: center;*/
+    /*left: 200px;*/
+    /*right: 200px;*/
 }
-#top_l {
-    display: flex;
-    flex-direction: column;
-}
-#sign-button {
-    /*position: relative;*/
-    position: absolute;
-    top: 10%;
-    left: 36%;
-    /*left: 0;*/
-    /*right: 0;*/
-    /*margin-top: 20%;*/
-    /*margin: auto;*/
-}
-
-/*.upper-navigation .column-left {*/
-/*    width: 372px;*/
-/*    height: 99px;*/
-/*    float: left;*/
-/*    padding-left: 42px;*/
-/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
+/*Хотел сделать картинку, а потом на неё снизу подтащить кнопку. Мб когда-нибудь*/
+/*попробуем*/
+/*#top_l {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
 /*}*/
+/*#sign-button {*/
+/*    !*position: relative;*!*/
+/*    position: absolute;*/
+/*    top: 10%;*/
+/*    left: 36%;*/
+/*    !*left: 0;*!*/
+/*    !*right: 0;*!*/
+/*    !*margin-top: 20%;*!*/
+/*    !*margin: auto;*!*/
+/*}*/
+
+.sign-in {
+    background: url(../images/upper_nav_left.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 99px;
+    width: 372px;
+
+}
+.sign-up {
+    background: url(../images/upper_nav_right.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 99px;
+    width: 372px;
+}
+#form {
+    display: block;
+}
+#forms {
+    display: block;
+}

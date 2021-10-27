@@ -6,19 +6,28 @@
         <link rel="stylesheet" href="../resources/css/style.css">
     </head>
 <body>
+
+
 <div id="top_img">
 
-    <button>
-        <img src="../resources/images/upper_nav_left.png" alt="">
-    </button>
+<!--    Различные решения для кнопки sign-in, up. Не ругайте за комменты,-->
+<!--    я всё еще не знаю сделать как лучше, в поиске хорошего решения-->
+<!--    <button >-->
+<!--        <img src="../resources/images/upper_nav_left.png" alt="">-->
+<!--    </button>-->
 
-    <div id="top_l">
-        <div id="top1"></div>
-        <button id="sign-button">Зарегистрироваться</button>
-    </div>
+<!--    <input type="image" src="../resources/images/upper_nav_left.png">-->
+
+    <button class="sign-in">Войти</button>
+    <button class="sign-up">Зарегистрироваться</button>
+
+<!--    <div id="top_l">-->
+<!--        <div id="top1"></div>-->
+<!--        <button id="sign-button">Зарегистрироваться</button>-->
+<!--    </div>-->
 
 
-    <div id="top2"></div>
+<!--    <div id="top2"></div>-->
 </div>
 <!--<h1>Sign Up</h1>-->
 
@@ -34,6 +43,20 @@
 <!--    </label>-->
 <!--    <input type="submit">-->
 <!--</form>-->
+<div class="wrapper">
+    <form method="post" id="forms">
+        <label id="form">Username
+            <input name="name" type="text">
+        </label>
+        <label id="form">Email
+            <input name="email" type="email">
+        </label>
+        <label id="form">Password
+            <input name="password" type="password">
+        </label>
+        <input type="submit" id="form">
+    </form>
 
+</div>
 </body>
 </html>
