@@ -17,12 +17,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class FilesServiceMain implements FilesService {
-
-    private static String path = "C:\\Users\\Senex\\Pictures\\Saved Pictures\\";
+    private static final String PATH_DEFAULT =
+            "C:\\Users\\Senex\\Pictures\\Saved Pictures\\";
 
     private final FilesRepository filesRepository;
 
-    public FilesServiceMain(FilesRepository filesRepository) {
+    public FilesServiceMain(
+            FilesRepository filesRepository
+    ) {
         this.filesRepository = filesRepository;
     }
 
@@ -43,8 +45,13 @@ public class FilesServiceMain implements FilesService {
 
         UploadedFile f;
         try {
-            Files.copy(inputStream,
-                    Paths.get(path + fileInfo.getStorageFileName() + "." + fileInfo.getType().split("/")[1]));
+            Files.copy(
+                    inputStream,
+                    Paths.get(PATH_DEFAULT +
+                            fileInfo.getStorageFileName() + "." +
+                            fileInfo.getType().split("/")[1]
+                    )
+            );
             f = filesRepository.save(fileInfo);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
@@ -53,15 +60,22 @@ public class FilesServiceMain implements FilesService {
         return f;
     }
 
+    // TODO: inspect warning
     @Override
     public void writeFileFromStorage(
             long fileId,
             @NotNull OutputStream outputStream
     ) {
         Optional<UploadedFile> optionalFileInfo = filesRepository.findByPrimaryKey(fileId);
-        UploadedFile fileInfo = optionalFileInfo.orElseThrow(() -> new NotFoundException("File not found"));
+        UploadedFile fileInfo = optionalFileInfo.orElseThrow(
+                () -> new NotFoundException("File not found")
+        );
 
-        File file = new File(path + fileInfo.getStorageFileName() + "." + fileInfo.getType().split("/")[1]);
+        File file = new File(PATH_DEFAULT +
+                fileInfo.getStorageFileName() + "." +
+                fileInfo.getType().split("/")[1]
+        );
+
         try {
             Files.copy(file.toPath(), outputStream);
         } catch (IOException e) {
@@ -69,10 +83,13 @@ public class FilesServiceMain implements FilesService {
         }
     }
 
+    // TODO: inspect warning
     @NotNull
     @Override
     public UploadedFile getFileInfo(long fileId) {
-        return filesRepository.findByPrimaryKey(fileId).orElseThrow(() -> new NotFoundException("File not found"));
+        return filesRepository.findByPrimaryKey(fileId).orElseThrow(
+                () -> new NotFoundException("File not found")
+        );
     }
 
 

@@ -4,9 +4,9 @@ import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
+import com.itis.stalkershop.utils.logger.LogKt;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +20,9 @@ public class SignInServlet extends HttpServlet {
     private SignInService signInService;
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(
+            ServletConfig config
+    ) throws ServletException {
         signInService = (SignInService) config
                 .getServletContext()
                 .getAttribute("signInService");
@@ -46,21 +48,27 @@ public class SignInServlet extends HttpServlet {
 //                request.getParameter("password"),
 //                null
 //        );
-        UserAuth form = new UserAuth(
+
+        UserAuth userAuth = new UserAuth(
                 request.getParameter("email"),
                 request.getParameter("password")
         );
+
+        LogKt.log(this, "Trying to authenticate user: " + userAuth);
 
         UserDto userDto;
 
         // TODO: refactor try/catch
         try {
-            userDto = signInService.signIn(form);
+            userDto = signInService.signIn(userAuth);
+            LogKt.log(this, "Authentication succeed");
         } catch (ValidationException e) {
             response.sendRedirect("/sign-in");
+            LogKt.log(this, "Authentication failed");
             return;
         }
-        HttpSession session = request.getSession(true);
+
+        HttpSession session = request.getSession();
         session.setAttribute("user", userDto);
         response.sendRedirect("/profile");
     }
