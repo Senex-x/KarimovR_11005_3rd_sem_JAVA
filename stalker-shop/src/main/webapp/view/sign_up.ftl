@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-<h1>Sign Up</h1>
 
 <div id="top_img">
     <button class="sign-in">Войти</button>
