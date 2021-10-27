@@ -21,23 +21,40 @@ public class CustomContextListener implements ServletContextListener {
     private static final String DB_DRIVER = "org.postgresql.Driver";
 
     @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ServletContext servletContext = servletContextEvent.getServletContext();
-
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    public void contextInitialized(
+            ServletContextEvent servletContextEvent
+    ) {
+        ServletContext servletContext =
+                servletContextEvent.getServletContext();
+        DriverManagerDataSource dataSource =
+                new DriverManagerDataSource();
         dataSource.setDriverClassName(DB_DRIVER);
         dataSource.setUsername(DB_USERNAME);
         dataSource.setPassword(DB_PASSWORD);
         dataSource.setUrl(DB_URL);
 
-        FilesRepository filesRepository = new FilesRepositoryMain(dataSource);
-        ImageService imageService = new ImageServiceMain(filesRepository);
-        UsersRepository usersRepository = new UsersRepositoryMain(dataSource);
+        FilesRepository filesRepository = new FilesRepositoryMain(
+                dataSource
+        );
+        ImageService imageService = new ImageServiceMain(
+                filesRepository
+        );
+        UsersRepository usersRepository = new UsersRepositoryMain(
+                dataSource
+        );
         PasswordService passwordService = new PasswordServiceMain();
-        SignInService signInService = new SignInServiceMain(usersRepository, passwordService);
-        ValidationService validationService = new ValidationServiceMain(usersRepository);
-        SignUpService signUpService = new SignUpServiceMain(usersRepository, passwordService, validationService);
-
+        SignInService signInService = new SignInServiceMain(
+                usersRepository,
+                passwordService
+        );
+        ValidationService validationService = new ValidationServiceMain(
+                usersRepository
+        );
+        SignUpService signUpService = new SignUpServiceMain(
+                usersRepository,
+                passwordService,
+                validationService
+        );
         servletContext.setAttribute("filesRepository", filesRepository);
         servletContext.setAttribute("filesService", imageService);
         servletContext.setAttribute("signInService", signInService);

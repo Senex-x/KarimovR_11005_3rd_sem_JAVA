@@ -43,16 +43,15 @@ public class SignInServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-//        UserForm form = new UserForm(
-//                request.getParameter("email"),
-//                null, null,
-//                request.getParameter("password"),
-//                null
-//        );
-
         UserAuth userAuth = new UserAuth(
                 request.getParameter("email"),
                 request.getParameter("password")
+        );
+
+        // Debug-only
+        userAuth = new UserAuth(
+                "vdm.snx@gmail.com",
+                "password"
         );
 
         LogKt.log(this, "Trying to authenticate user: " + userAuth);

@@ -5,6 +5,6 @@ import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 
 import java.util.Optional;
 
-public interface ValidationService {
-    Optional<ErrorEntity> validateRegistration(UserRegister newUser);
+interface ValidationService {
+    fun validateRegistration(newUser: UserRegister): Optional<ErrorEntity>
 }

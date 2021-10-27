@@ -38,7 +38,6 @@ public class SignUpServlet extends HttpServlet {
 
     // TODO:
     //  refactor try/catch blocks
-
     @Override
     protected void doPost(
             HttpServletRequest request,
