@@ -40,7 +40,7 @@ public class UploadImageServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.getRequestDispatcher("image_upload.ftl")
+        request.getRequestDispatcher("upload_image.ftl")
                 .forward(request, response);
     }
 
