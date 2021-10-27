@@ -17,6 +17,10 @@ body {
     font-size: 12px;
     background: url(../images/bg_top.jpg) center 0% no-repeat;
 }
+.wrapper {
+    width: 80%;
+    max-width: 720px;
+}
 #top1 {
     /*display: inline-block;*/
     /*display: flex;*/
@@ -55,11 +59,7 @@ body {
     /*margin-top: 20%;*/
     /*margin: auto;*/
 }
-
-/*.upper-navigation .column-left {*/
-/*    width: 372px;*/
-/*    height: 99px;*/
-/*    float: left;*/
-/*    padding-left: 42px;*/
-/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
-/*}*/
+.sign-in {
+    background: url(../images/upper_nav_left.png) 50% 50% no-repeat;
+    background-size: contain;
+}
