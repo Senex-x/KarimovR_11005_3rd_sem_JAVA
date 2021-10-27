@@ -2,6 +2,7 @@ package com.itis.stalkershop.services.implementations;
 
 
 import com.itis.stalkershop.models.UserDto;
+import com.itis.stalkershop.models.UserRegister;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
 import com.itis.stalkershop.services.interfaces.Validator;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
@@ -15,9 +16,11 @@ public class ValidatorMain implements Validator {
         this.usersRepository = usersRepository;
     }
 
-    // TODO: fix warning
+    // TODO: inspect conditions correctness
     @Override
-    public Optional<ErrorEntity> validateRegistration(UserDto form) {
+    public Optional<ErrorEntity> validateRegistration(
+            UserRegister form
+    ) {
         if(form.getEmail() == null) {
             return Optional.of(ErrorEntity.INVALID_EMAIL);
         } else if(usersRepository.findByEmail(form.getEmail()).isPresent()) {

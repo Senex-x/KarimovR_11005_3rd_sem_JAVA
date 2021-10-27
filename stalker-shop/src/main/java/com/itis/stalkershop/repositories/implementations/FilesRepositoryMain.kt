@@ -19,7 +19,7 @@ private const val SQL_UPDATE =
 private const val SQL_SELECT_BY_ID =
     "select * from file_info where id = ?"
 
-class FilesRepositoryImpl(dataSource: DataSource) : FilesRepository {
+class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     private val jdbcTemplate: JdbcTemplate
 
     init {

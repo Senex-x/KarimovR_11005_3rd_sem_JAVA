@@ -1,7 +1,7 @@
 package com.itis.stalkershop.services.interfaces
 
-import com.itis.stalkershop.models.UserDto
+import com.itis.stalkershop.models.UserRegister
 
 interface SignUpService {
-    fun signUp(user: UserDto)
+    fun signUp(user: UserRegister)
 }
