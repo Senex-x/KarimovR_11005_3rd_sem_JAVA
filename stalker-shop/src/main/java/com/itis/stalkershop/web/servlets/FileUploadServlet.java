@@ -1,10 +1,10 @@
 package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.UploadedFile;
-import com.itis.stalkershop.models.User;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
 import com.itis.stalkershop.services.interfaces.FilesService;
+import com.itis.stalkershop.utils.logger.LogKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -47,14 +47,17 @@ public class FileUploadServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         Part part = request.getPart("file");
-        UploadedFile fileInfo = filesService.saveFileToStorage(
+        UploadedFile newFile = filesService.saveFileToStorage(
                 part.getInputStream(),
                 part.getSubmittedFileName(),
                 part.getContentType(),
                 part.getSize()
         );
+        LogKt.log(this, "Uploaded file: " + newFile);
 
+        LogKt.log(this, "Trying get user from session");
         UserDto user = (UserDto) request.getSession().getAttribute("user");
+        LogKt.log(this, "Got user from session: " + user);
 //        System.out.println("DEBUG1 " + user);
 //        System.out.println("DEBUG2_2 USERGETID " + user.getId());
         //System.out.println("DEBUG2_1 " + usersRepository.findByEmail(user.getEmail()));
@@ -70,12 +73,12 @@ public class FileUploadServlet extends HttpServlet {
                         user.getEmail(),
                         user.getName(),
                         user.getPasswordHash(),
-                        fileInfo.getId()
+                        newFile.getId()
                 )
         );
 
 //  ??      filesService.saveFileToStorage(fileInfo);
 
-        response.sendRedirect("/files/" + fileInfo.getId());
+        response.sendRedirect("/files/" + newFile.getId());
     }
 }

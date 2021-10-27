@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class CustomContextListener implements ServletContextListener {
     private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "d1f1l1b1vg13135191861";
+    private static final String DB_PASSWORD = "postgres";
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/drivers";
     private static final String DB_DRIVER = "org.postgresql.Driver";
 
@@ -29,7 +29,7 @@ public class CustomContextListener implements ServletContextListener {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(DB_DRIVER);
         dataSource.setUsername(DB_USERNAME);
-        dataSource.setPassword(DB_PASSWORD.replaceAll("1", ""));
+        dataSource.setPassword(DB_PASSWORD);
         dataSource.setUrl(DB_URL);
 
         FilesRepository filesRepository = new FilesRepositoryMain(dataSource);
