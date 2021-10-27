@@ -23,7 +23,10 @@ public class FileUploadServlet extends HttpServlet {
     private UsersRepository usersRepository;
 
     @Override
-    public void init(ServletConfig config) {
+    public void init(
+            ServletConfig config
+    ) throws ServletException {
+        super.init(config);
         filesService = (FilesService) config
                 .getServletContext()
                 .getAttribute("filesService");

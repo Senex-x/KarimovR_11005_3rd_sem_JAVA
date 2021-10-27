@@ -23,6 +23,7 @@ public class SignInServlet extends HttpServlet {
     public void init(
             ServletConfig config
     ) throws ServletException {
+        super.init(config);
         signInService = (SignInService) config
                 .getServletContext()
                 .getAttribute("signInService");

@@ -17,7 +17,10 @@ public class FilesDownloadServlet extends HttpServlet {
     private FilesService filesService;
 
     @Override
-    public void init(ServletConfig config) {
+    public void init(
+            ServletConfig config
+    ) throws ServletException {
+        super.init(config);
         this.filesService = (FilesService) config
                 .getServletContext()
                 .getAttribute("filesService");
