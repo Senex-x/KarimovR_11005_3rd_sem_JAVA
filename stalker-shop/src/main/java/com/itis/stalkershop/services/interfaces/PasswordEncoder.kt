@@ -1,6 +1,6 @@
 package com.itis.stalkershop.services.interfaces
 
-interface PasswordEncoderBase {
+interface PasswordEncoder {
     fun matches(
         password: String,
         hashPassword: String

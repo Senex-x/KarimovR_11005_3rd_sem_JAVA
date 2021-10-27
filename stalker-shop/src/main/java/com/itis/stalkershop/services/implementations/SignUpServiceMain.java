@@ -1,21 +1,23 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.itis.stalkershop.models.User;
 import com.itis.stalkershop.models.UserDto;
+import com.itis.stalkershop.models.UserRegister;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
-import com.itis.stalkershop.services.interfaces.SignUpServiceBase;
+import com.itis.stalkershop.services.interfaces.PasswordEncoder;
+import com.itis.stalkershop.services.interfaces.SignUpService;
+import com.itis.stalkershop.services.interfaces.Validator;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class SignUpService implements SignUpServiceBase {
+public class SignUpServiceMain implements SignUpService {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
     private final Validator validator;
 
-    public SignUpService(
+    public SignUpServiceMain(
             UsersRepository usersRepository,
             PasswordEncoder passwordEncoder,
             Validator validator
@@ -26,12 +28,23 @@ public class SignUpService implements SignUpServiceBase {
     }
 
     @Override
-    public void signUp(@NotNull UserDto user) {
+    public void signUp(@NotNull UserRegister user) {
         // passwordEncoder.matches("123123", "HASH");
-        Optional<ErrorEntity> optionalError = validator.validateRegistration(user);
+        Optional<ErrorEntity> optionalError =
+                validator.validateRegistration(user);
         if(optionalError.isPresent()) {
             throw new ValidationException(optionalError.get());
         }
-        usersRepository.save(user);
+
+        UserDto newUser = new UserDto(
+                user.getEmail(),
+                user.getName(),
+                passwordEncoder.encode(user.getPassword()),
+                null
+        );
+
+        usersRepository.save(newUser);
+
+        //TODO: save a mew user in repository
     }
 }
