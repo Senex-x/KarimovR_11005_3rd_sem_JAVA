@@ -43,7 +43,7 @@ body {
     height: 50px;
 }
 .costil{
-    width: 200px;
+    width: 50px;
 }
 
 /*#top1 {*/
@@ -102,6 +102,12 @@ body {
     background-size: contain;
     height: 99px;
     width: 372px;
+}
+.shopping-cart {
+    background: url(../images/content_title1_frame.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 99px;
+    width: 99px;
 }
 #form {
     display: block;
