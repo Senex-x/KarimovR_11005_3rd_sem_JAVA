@@ -95,6 +95,7 @@ body {
     background-size: contain;
     height: 99px;
     width: 372px;
+    onclick="window.location.href='sign-in'"
 
 }
 .sign-up {
@@ -102,6 +103,7 @@ body {
     background-size: contain;
     height: 99px;
     width: 372px;
+    onclick="window.location.href='sign-up'"
 }
 .shopping-cart {
     background: url(../images/content_title1_frame.png) 50% 50% no-repeat;

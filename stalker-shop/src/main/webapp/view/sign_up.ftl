@@ -10,6 +10,7 @@
 <div id="top_img">
     <button class="sign-in">Войти</button>
     <button class="sign-up">Зарегистрироваться</button>
+    <button class="shopping-cart">Корзина</button>
 </div>
 
 <div class="wrapper">
