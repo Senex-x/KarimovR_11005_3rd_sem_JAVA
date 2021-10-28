@@ -21,6 +21,31 @@ body {
     width: 80%;
     max-width: 720px;
 }
+.container {
+    margin-top: 30%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    /*float: left;*/
+    background: url(../images/content_left_foot_cut.png) bottom left no-repeat;
+}
+.item {
+    background-image: url("../images/content_title1_frame.png");
+    position: relative;
+    background-size: cover;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+}
+.button-add-to-cart {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.costil{
+    width: 50px;
+}
+
 /*#top1 {*/
 /*    !*display: inline-block;*!*/
 /*    !*display: flex;*!*/
@@ -77,6 +102,12 @@ body {
     background-size: contain;
     height: 99px;
     width: 372px;
+}
+.shopping-cart {
+    background: url(../images/content_title1_frame.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 99px;
+    width: 99px;
 }
 #form {
     display: block;
