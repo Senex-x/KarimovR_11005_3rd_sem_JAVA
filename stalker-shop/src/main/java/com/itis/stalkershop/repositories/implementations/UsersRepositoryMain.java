@@ -59,19 +59,20 @@ public class UsersRepositoryMain implements UsersRepository {
     }
 
     @Override
-    public Optional<User> findByPrimaryKey(String id) {
+    public Optional<User> findByPrimaryKey(String primaryKey) {
         try {
             return Optional.ofNullable(
                     jdbcTemplate.queryForObject(
                             SQL_SELECT_BY_EMAIL,
                             rowMapper,
-                            id
+                            primaryKey
                     ));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
     }
 
+    @NotNull
     @Override
     public List<User> findAll() {
         return jdbcTemplate.query(SQL_SELECT_ALL, rowMapper);

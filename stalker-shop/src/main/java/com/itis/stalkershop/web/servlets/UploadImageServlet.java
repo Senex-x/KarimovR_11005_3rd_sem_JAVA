@@ -80,6 +80,7 @@ public class UploadImageServlet extends HttpServlet {
                 )
         );
 
+
 //  ??      filesService.saveFileToStorage(fileInfo);
 
         response.sendRedirect("/files/" + newFile.getId());

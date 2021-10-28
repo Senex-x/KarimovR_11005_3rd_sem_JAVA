@@ -19,22 +19,21 @@ private const val SQL_UPDATE =
 private const val SQL_SELECT_BY_ID =
     "select * from files where id = ?"
 
+private val fileRowMapper =
+    RowMapper { row: ResultSet, _ ->
+        row.run {
+            Image(
+                getLong("id"),
+                getString("storage_name"),
+                getString("original_name"),
+                getString("type"),
+                getLong("size")
+            )
+        }
+    }
+
 class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     private val jdbcTemplate: JdbcTemplate = JdbcTemplate(dataSource)
-
-    private val fileRowMapper =
-        RowMapper { row: ResultSet, _ ->
-            row.run {
-                Image(
-                    getLong("id"),
-                    getString("storage_name"),
-                    getString("original_name"),
-                    getString("type"),
-                    getLong("size")
-                )
-            }
-        }
-
 
     // TODO: handle save or update cases
     override fun save(item: ImageDto): Image {
