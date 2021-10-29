@@ -27,7 +27,7 @@ body {
     display: block;
     justify-content: center;
     /*float: left;*/
-    background: url(../images/content_left_foot_cut.png) bottom left no-repeat;
+    /*background: url(../images/content_left_foot_cut.png) bottom left no-repeat;*/
 }
 .item {
     background-image: url("../images/content_title1_frame.png");
@@ -46,25 +46,6 @@ body {
     width: 50px;
 }
 
-/*#top1 {*/
-/*    !*display: inline-block;*!*/
-/*    !*display: flex;*!*/
-
-/*    width: 372px;*/
-/*    height: 99px;*/
-/*    float: left;*/
-/*    !*padding-left: 400px;*!*/
-/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
-/*}*/
-/*#top2 {*/
-
-/*    display: inline-block;*/
-/*    width: 372px;*/
-/*    height: 99px;*/
-/*    float: left;*/
-/*    !*padding-left: 700px;*!*/
-/*    background: url(../images/upper_nav_right.png) top right no-repeat;*/
-/*}*/
 #top_img {
     display: flex;
     flex-direction: row;
@@ -73,22 +54,6 @@ body {
     /*left: 200px;*/
     /*right: 200px;*/
 }
-/*Хотел сделать картинку, а потом на неё снизу подтащить кнопку. Мб когда-нибудь*/
-/*попробуем*/
-/*#top_l {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*}*/
-/*#sign-button {*/
-/*    !*position: relative;*!*/
-/*    position: absolute;*/
-/*    top: 10%;*/
-/*    left: 36%;*/
-/*    !*left: 0;*!*/
-/*    !*right: 0;*!*/
-/*    !*margin-top: 20%;*!*/
-/*    !*margin: auto;*!*/
-/*}*/
 
 .sign-in {
     background: url(../images/upper_nav_left.png) 50% 50% no-repeat;
@@ -117,3 +82,52 @@ body {
 #forms {
     display: block;
 }
+.add-photo-button {
+    color: #ffbb2f;
+    background: url(../images/sidebar_menu_bg.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 20px;
+    width: 150px;
+}
+.catalog-button {
+    color: #ffbb2f;
+    background: url(../images/sidebar_menu_bg.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 20px;
+    width: 99px;
+}
+/*#top1 {*/
+/*    !*display: inline-block;*!*/
+/*    !*display: flex;*!*/
+
+/*    width: 372px;*/
+/*    height: 99px;*/
+/*    float: left;*/
+/*    !*padding-left: 400px;*!*/
+/*    background: url(../images/upper_nav_left.png) top right no-repeat;*/
+/*}*/
+/*#top2 {*/
+
+/*    display: inline-block;*/
+/*    width: 372px;*/
+/*    height: 99px;*/
+/*    float: left;*/
+/*    !*padding-left: 700px;*!*/
+/*    background: url(../images/upper_nav_right.png) top right no-repeat;*/
+/*}*/
+/*Хотел сделать картинку, а потом на неё снизу подтащить кнопку. Мб когда-нибудь*/
+/*попробуем*/
+/*#top_l {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+/*#sign-button {*/
+/*    !*position: relative;*!*/
+/*    position: absolute;*/
+/*    top: 10%;*/
+/*    left: 36%;*/
+/*    !*left: 0;*!*/
+/*    !*right: 0;*!*/
+/*    !*margin-top: 20%;*!*/
+/*    !*margin: auto;*!*/
+/*}*/
