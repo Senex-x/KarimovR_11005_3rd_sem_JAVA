@@ -18,7 +18,7 @@
 <div class="wrapper">
 
     <div class="container">
-        <button class=add-photo-button" onclick="window.location.href='upload-image'">Добавить фото</button>
+        <button class="add-photo-button" onclick="window.location.href='upload-image'">Добавить фото</button>
         <button class="catalog-button" onclick="window.location.href='catalog'">Каталог</button>
     </div>
 
