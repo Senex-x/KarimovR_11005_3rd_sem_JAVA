@@ -27,7 +27,8 @@
             <div class="costil"></div>
         </div>
         <div class="item">
-            <img src="../resources/images/${cossacks-vodka}.png" class="item">
+            <img src="../resources/images/${cossacks-vodka.imageName}" class="item">
+            <div>${cossacks-vodka.name}</div>
             <button class="button-add-to-cart">➕</button>
             <img src="" height="200">
             <div class="costil"></div>

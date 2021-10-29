@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.itis.servletsapp.dao.base.CrudRepository;
+import com.itis.servletsapp.dto.UserForm;
 import com.itis.servletsapp.model.User;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -35,13 +36,15 @@ public class SignIn extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(DB_DRIVER);
-        dataSource.setUsername(DB_USERNAME);
-        dataSource.setPassword(DB_PASSWORD);
-        dataSource.setUrl(DB_URL);
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(DB_DRIVER);
+//        dataSource.setUsername(DB_USERNAME);
+//        dataSource.setPassword(DB_PASSWORD);
+//        dataSource.setUrl(DB_URL);
 
-        CrudRepository<User, Long> userDao = new UserRepository(dataSource);
+//        CrudRepository<User, Long> userDao = new UserRepository(dataSource);
+
+//        UserForm userForm = new UserForm();
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
