@@ -8,6 +8,7 @@ import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
 import com.itis.stalkershop.services.implementations.*
 import com.itis.stalkershop.services.interfaces.*
+import com.itis.stalkershop.utils.getSimpleNameOf
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
@@ -89,6 +90,3 @@ class CustomContextListener : ServletContextListener {
 
     override fun contextDestroyed(servletContextEvent: ServletContextEvent) {}
 }
-
-private inline fun <reified T> getSimpleNameOf() =
-    T::class.java.simpleName

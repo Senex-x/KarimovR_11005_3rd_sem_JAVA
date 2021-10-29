@@ -1,7 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.UserDto;
-import com.itis.stalkershop.utils.logger.LogKt;
+import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

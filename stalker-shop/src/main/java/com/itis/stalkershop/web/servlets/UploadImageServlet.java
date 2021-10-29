@@ -4,7 +4,7 @@ import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
 import com.itis.stalkershop.services.interfaces.ImageService;
-import com.itis.stalkershop.utils.logger.LogKt;
+import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/upload-image")
 @MultipartConfig
@@ -27,12 +29,15 @@ public class UploadImageServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        imageService = (ImageService) config
-                .getServletContext()
-                .getAttribute("filesService");
-        usersRepository = (UsersRepository) config
-                .getServletContext()
-                .getAttribute("usersRepository");
+
+        imageService = getAttribute(
+                ImageService.class,
+                config.getServletContext()
+        );
+        usersRepository = getAttribute(
+                UsersRepository.class,
+                config.getServletContext()
+        );
     }
 
     @Override

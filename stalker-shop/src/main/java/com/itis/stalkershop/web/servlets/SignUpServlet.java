@@ -2,8 +2,8 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.UserRegister;
 import com.itis.stalkershop.services.interfaces.SignUpService;
+import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
-import com.itis.stalkershop.utils.logger.LogKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/sign-up")
 public class SignUpServlet extends HttpServlet {
@@ -22,9 +24,10 @@ public class SignUpServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        signUpService = (SignUpService) config
-                .getServletContext()
-                .getAttribute("signUpService");
+        signUpService = getAttribute(
+                SignUpService.class,
+                config.getServletContext()
+        );
     }
 
     @Override

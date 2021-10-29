@@ -3,8 +3,10 @@ package com.itis.stalkershop.web.servlets;
 import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
+import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
-import com.itis.stalkershop.utils.logger.LogKt;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -24,9 +26,11 @@ public class SignInServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        signInService = (SignInService) config
-                .getServletContext()
-                .getAttribute("signInService");
+
+        signInService = getAttribute(
+                SignInService.class,
+                config.getServletContext()
+        );
     }
 
     @Override
