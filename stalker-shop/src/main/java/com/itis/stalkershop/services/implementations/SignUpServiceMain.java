@@ -29,7 +29,6 @@ public class SignUpServiceMain implements SignUpService {
 
     @Override
     public void signUp(@NotNull UserRegister user) {
-        // passwordEncoder.matches("123123", "HASH");
         Optional<ErrorEntity> optionalError =
                 validationService.validateRegistration(user);
         if(optionalError.isPresent()) {
@@ -45,6 +44,6 @@ public class SignUpServiceMain implements SignUpService {
 
         usersRepository.save(newUser);
 
-        //TODO: save a mew user in repository
+        //TODO: save a new user in repository
     }
 }

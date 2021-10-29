@@ -15,19 +15,21 @@
 
 </div>
 
+
 <div class="wrapper">
 
     <div class="container">
         <div class="item">
             <!--            <img src="../resources/images/content_title1_frame.png">-->
             <img src="../resources/images/seva.png" class="item">
-            <button class="button-add-to-cart">➕</button>
+            <button id="add_to_cart" class="button-add-to-cart">➕</button>
             <img src="../resources/images/seva-info.jpg" height="200">
             <div class="costil"></div>
+            <div id="somediv">Somediv</div>
         </div>
         <div class="item">
-            <img src="../resources/images/${cossacks-vodka.imageName}" class="item">
-            <div>${cossacks-vodka.name}</div>
+            <img src="../resources/images/${cossacksvodka.imageName}" class="item">
+            <div>${cossacksvodka.name}</div>
             <button class="button-add-to-cart">➕</button>
             <img src="" height="200">
             <div class="costil"></div>
