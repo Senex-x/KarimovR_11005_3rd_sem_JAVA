@@ -48,9 +48,11 @@ class ItemsRepositoryMain(
         Optional.empty()
     }
 
-    override fun findAll(): List<Item> {
-        TODO("Not yet implemented")
-    }
+    override fun findAll(): List<Item> =
+        jdbcTemplate.query(
+            SQL_SELECT_ALL,
+            rowMapper
+        )
 
     override fun save(item: Item): Item {
         TODO("Not yet implemented")
