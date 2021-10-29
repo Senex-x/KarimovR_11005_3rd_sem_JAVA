@@ -23,7 +23,6 @@ public class CartServlet extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
-        super.doGet(req, resp);
 
     }
 
@@ -32,7 +31,6 @@ public class CartServlet extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
-        super.doPost(req, resp);
 
     }
 }

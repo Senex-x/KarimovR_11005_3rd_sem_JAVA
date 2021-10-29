@@ -1,8 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.services.implementations.ItemServiceMain;
+import com.itis.stalkershop.models.ItemDto;
 import com.itis.stalkershop.services.interfaces.ItemService;
-import com.itis.stalkershop.utils.UtilsKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,18 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/catalog")
-public class ShopServlet extends HttpServlet {
-    private static final String[] itemNames = {
-            "Cossacks vodka",
-            "Tourist's Delight",
-            "Bread"
-    };
-    private ItemService itemService;
+public class CatalogServlet extends HttpServlet {
+    private List<ItemDto> items;
 
     @Override
     public void init(
@@ -30,10 +25,12 @@ public class ShopServlet extends HttpServlet {
     ) throws ServletException {
         super.init(config);
 
-        itemService = getAttribute(
+        ItemService itemService = getAttribute(
                 ItemService.class,
                 config.getServletContext()
         );
+
+        items = itemService.getAll();
     }
 
     @Override
@@ -41,15 +38,12 @@ public class ShopServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        super.doGet(request, response);
-
-        for (String itemName : itemNames) {
+        for (ItemDto item : items) {
             request.setAttribute(
-                    itemName,
-                    itemService.getItemDto(itemName
+                    item.getName()
                             .toLowerCase(Locale.ROOT)
-                            .replaceAll(" ", "-")
-                    )
+                            .replaceAll("[-' ]", ""),
+                    item
             );
         }
 
@@ -63,7 +57,6 @@ public class ShopServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        super.doPost(request, response);
 
         //request.setAttribute("varName", variable);
         //getServletContext().getRequestDispatcher("servlet2").forward(request,response);

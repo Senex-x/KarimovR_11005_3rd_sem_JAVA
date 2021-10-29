@@ -7,7 +7,9 @@ import com.itis.stalkershop.services.interfaces.ItemService;
 import com.itis.stalkershop.utils.exceptions.ItemNotFoundException;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class ItemServiceMain implements ItemService {
     private final ItemsRepository itemsRepository;
@@ -20,7 +22,7 @@ public class ItemServiceMain implements ItemService {
 
     @NotNull
     @Override
-    public ItemDto getItemDto(
+    public ItemDto get(
             @NotNull String name
     ) {
         Optional<Item> itemOptional = itemsRepository.findByPrimaryKey(name);
@@ -32,5 +34,12 @@ public class ItemServiceMain implements ItemService {
         throw new ItemNotFoundException(
                 "Item with name '" + name + "' not exists"
         );
+    }
+
+    @NotNull
+    @Override
+    public List<ItemDto> getAll() {
+        return itemsRepository.findAll().stream()
+                .map(Item::toItemDto).toList();
     }
 }
