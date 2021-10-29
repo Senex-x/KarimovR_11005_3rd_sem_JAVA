@@ -5,7 +5,6 @@ import com.itis.stalkershop.models.ItemDto;
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository;
 import com.itis.stalkershop.services.interfaces.ItemService;
 import com.itis.stalkershop.utils.exceptions.ItemNotFoundException;
-import com.itis.stalkershop.utils.exceptions.NotFoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -30,6 +29,8 @@ public class ItemServiceMain implements ItemService {
             return itemOptional.get().toItemDto();
         }
 
-        throw new ItemNotFoundException("Item with name '" + name + "' not exists");
+        throw new ItemNotFoundException(
+                "Item with name '" + name + "' not exists"
+        );
     }
 }
