@@ -5,6 +5,12 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="/resources/css/style.css">
 </head>
+<script>
+    let element = document.querySelector(".main")
+    element.addEventListener('click', (event) => {
+        element.removeAttribute('hidden')
+    })
+</script>
 <body>
 <h1>Sign in</h1>
 

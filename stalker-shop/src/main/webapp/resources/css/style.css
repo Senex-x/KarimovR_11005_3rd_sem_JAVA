@@ -24,7 +24,7 @@ body {
 .container {
     margin-top: 30%;
     width: 80%;
-    display: flex;
+    display: block;
     justify-content: center;
     /*float: left;*/
     background: url(../images/content_left_foot_cut.png) bottom left no-repeat;
