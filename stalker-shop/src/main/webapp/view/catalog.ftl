@@ -12,7 +12,9 @@
     <button class="sign-in" onclick="window.location.href='sign-in'">Войти</button>
     <button class="sign-up" onclick="window.location.href='sign-up'">Зарегистрироваться</button>
     <button class="shopping-cart">Корзина</button>
+
 </div>
+
 
 <div class="wrapper">
 
@@ -22,6 +24,13 @@
             <img src="../resources/images/seva.png" class="item">
             <button class="button-add-to-cart">➕</button>
             <img src="../resources/images/seva-info.jpg" height="200">
+            <div class="costil"></div>
+        </div>
+        <div class="item">
+            <!--            <img src="../resources/images/content_title1_frame.png">-->
+            <img src="" class="item">
+            <button class="button-add-to-cart">➕</button>
+            <img src="" height="200">
             <div class="costil"></div>
         </div>
 
