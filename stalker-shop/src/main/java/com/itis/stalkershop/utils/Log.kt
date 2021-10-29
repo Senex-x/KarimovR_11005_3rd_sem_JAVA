@@ -1,4 +1,4 @@
-package com.itis.stalkershop.utils.logger
+package com.itis.stalkershop.utils
 
 import javax.servlet.http.HttpServlet
 

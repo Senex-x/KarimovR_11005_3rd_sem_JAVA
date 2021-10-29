@@ -2,6 +2,9 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.services.interfaces.ImageService;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
+
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 
 import javax.servlet.ServletConfig;
@@ -21,9 +24,11 @@ public class ImagesServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
-        this.imageService = (ImageService) config
-                .getServletContext()
-                .getAttribute("filesService");
+
+        imageService = getAttribute(
+                ImageService.class,
+                config.getServletContext()
+        );
     }
 
     @Override

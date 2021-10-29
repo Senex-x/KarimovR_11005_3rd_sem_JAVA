@@ -1,6 +1,6 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.utils.logger.LogKt;
+import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
