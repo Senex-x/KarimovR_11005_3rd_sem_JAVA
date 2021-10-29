@@ -1,4 +1,4 @@
-create table users
+create table if not exists users
 (
     email         varchar(64)  not null
         constraint users_pk
@@ -25,6 +25,19 @@ create table if not exists files
 );
 
 alter table files
+    owner to postgres;
+
+create table if not exists items
+(
+    name        varchar(128) not null
+        constraint items_pk
+            primary key,
+    cost        integer      not null,
+    description varchar(2048),
+    iamge_name  varchar(128)
+);
+
+alter table items
     owner to postgres;
 
 INSERT INTO public.files (id, storage_name, original_name, type, size)
