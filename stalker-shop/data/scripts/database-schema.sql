@@ -27,14 +27,14 @@ create table if not exists files
 alter table files
     owner to postgres;
 
-create table if not exists items
+create table items
 (
     name        varchar(128) not null
         constraint items_pk
             primary key,
     cost        integer      not null,
     description varchar(2048),
-    iamge_name  varchar(128)
+    image_name  varchar(128)
 );
 
 alter table items
