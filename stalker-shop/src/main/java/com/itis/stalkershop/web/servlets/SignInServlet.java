@@ -6,8 +6,6 @@ import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/sign-in")
 public class SignInServlet extends HttpServlet {
