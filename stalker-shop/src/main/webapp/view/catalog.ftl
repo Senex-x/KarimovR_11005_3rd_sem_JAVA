@@ -9,7 +9,6 @@
 
 <#include "top.ftl">
 
-
 <div class="wrapper">
 
     <div class="container">
