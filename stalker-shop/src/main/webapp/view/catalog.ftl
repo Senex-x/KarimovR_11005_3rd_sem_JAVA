@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Catalog</title>
     <link rel="stylesheet" href="../resources/css/style.css">
+
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/catalog.js"></script>
 </head>
 <body>
 
@@ -15,6 +18,7 @@
 
 </div>
 
+<button id="button-add-to-cart">Add item to cart</button>
 
 <div class="wrapper">
 
