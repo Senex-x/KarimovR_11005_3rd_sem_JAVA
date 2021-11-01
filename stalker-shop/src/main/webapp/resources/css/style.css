@@ -1,5 +1,5 @@
 html {
-    height: 100%; min-width: 1115px; background: #071218 url(../images/bg.png) top left repeat;
+    height: 100%; min-width: 1115px; background: #071218 url(../images/design/bg.png) top left repeat;
 }
 body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd, img, form, fieldset, blockquote {
     margin:0px;
@@ -15,7 +15,7 @@ body {
     position: relative;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 12px;
-    background: url(../images/bg_top.jpg) center 0% no-repeat;
+    background: url(../images/design/bg_top.jpg) center 0% no-repeat;
 }
 .wrapper {
     width: 80%;
@@ -30,7 +30,7 @@ body {
     /*background: url(../images/content_left_foot_cut.png) bottom left no-repeat;*/
 }
 .item {
-    background-image: url("../images/content_title1_frame.png");
+    background-image: url("../images/design/content_title1_frame.png");
     position: relative;
     background-size: cover;
     padding: 30px;
@@ -42,7 +42,7 @@ body {
     width: 50px;
     height: 50px;
 }
-.costil{
+.width-item{
     width: 50px;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 .sign-in {
-    background: url(../images/upper_nav_left.png) 50% 50% no-repeat;
+    background: url(../images/design/upper_nav_left.png) 50% 50% no-repeat;
     background-size: contain;
     height: 99px;
     width: 372px;
@@ -64,14 +64,14 @@ body {
 
 }
 .sign-up {
-    background: url(../images/upper_nav_right.png) 50% 50% no-repeat;
+    background: url(../images/design/upper_nav_right.png) 50% 50% no-repeat;
     background-size: contain;
     height: 99px;
     width: 372px;
     /*onclick="window.location.href='sign-up'"*/
 }
 .shopping-cart {
-    background: url(../images/content_title1_frame.png) 50% 50% no-repeat;
+    background: url(../images/design/content_title1_frame.png) 50% 50% no-repeat;
     background-size: contain;
     height: 99px;
     width: 99px;
@@ -84,14 +84,14 @@ body {
 }
 .add-photo-button {
     color: #ffbb2f;
-    background: url(../images/sidebar_menu_bg.png) 50% 50% no-repeat;
+    background: url(../images/design/sidebar_menu_bg.png) 50% 50% no-repeat;
     background-size: contain;
     height: 20px;
     width: 150px;
 }
 .catalog-button {
     color: #ffbb2f;
-    background: url(../images/sidebar_menu_bg.png) 50% 50% no-repeat;
+    background: url(../images/design/sidebar_menu_bg.png) 50% 50% no-repeat;
     background-size: contain;
     height: 20px;
     width: 99px;
