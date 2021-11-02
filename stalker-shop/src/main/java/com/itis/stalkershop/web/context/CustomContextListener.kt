@@ -60,7 +60,7 @@ class CustomContextListener : ServletContextListener {
             itemsRepository
         )
 
-        servletContextEvent.servletContext.run {
+        servletContextEvent.servletContext.apply {
             setAttribute(
                 getSimpleNameOf<FilesRepository>(),
                 filesRepository

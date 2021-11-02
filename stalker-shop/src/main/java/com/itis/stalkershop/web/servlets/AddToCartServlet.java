@@ -1,6 +1,8 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.models.ItemDto;
+import com.itis.stalkershop.services.interfaces.ItemService;
+import com.itis.stalkershop.services.interfaces.SignInService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,17 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Iterator;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/add-to-cart")
 public class AddToCartServlet extends HttpServlet {
+    private ItemService itemService;
+
     @Override
     public void init(
             ServletConfig config
     ) throws ServletException {
         super.init(config);
 
+        itemService = getAttribute(
+                ItemService.class,
+                config.getServletContext()
+        );
     }
 
     @Override
@@ -27,24 +35,10 @@ public class AddToCartServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        // No arguments received
+        String itemName = request.getParameter("itemName");
 
+        ItemDto itemDto = itemService.get(itemName);
 
-        LogKt.log(this, request.getParameter("content"));
-        LogKt.log(this, Integer.toString(request.getParameterMap().size()));
-        request.getParameterMap().forEach((s, strings) -> {
-            LogKt.log(s);
-            Arrays.stream(strings).forEach(LogKt::log);
-        });
-
-        LogKt.log(this, request.getContentType());
-        LogKt.log(this, Boolean.toString(request.getParameterNames().hasMoreElements()));
-
-        Iterator<String> stringIterator = request.getParameterNames().asIterator();
-        while (stringIterator.hasNext()) {
-            LogKt.log(this, stringIterator.next());
-        }
-
-        response.getWriter().write("Response");
+        // Save cart somewhere
     }
 }
