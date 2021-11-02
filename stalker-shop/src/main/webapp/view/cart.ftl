@@ -9,7 +9,7 @@
 <div id="cart-list">
     <#list items as item>
         <div>
-            <!-- Do item handling here -->
+            <!-- TODO: Do item handling here -->
             ${item.name}
         </div>
     </#list>

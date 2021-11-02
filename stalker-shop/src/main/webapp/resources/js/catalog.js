@@ -1,5 +1,7 @@
 const itemName = "Cossacks vodka"
 
+// TODO: Call click method with
+//  corresponding itemName argument for each button
 $(document).ready(function () {
     $("#button-add-to-cart")
         .click(function () {

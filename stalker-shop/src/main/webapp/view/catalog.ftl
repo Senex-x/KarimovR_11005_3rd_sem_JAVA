@@ -12,8 +12,8 @@
 
 <!-- Debug-only div block -->
 <div>
-    <button id="button-add-to-cart">Add item to cart</button>
-    <button onclick="window.location.href='cart'">Go to cart</button>
+    <button class="button-option" id="button-add-to-cart">Add item to cart</button>
+    <button class="button-option" onclick="window.location.href='cart'">Go to cart</button>
 </div>
 
 <div class="wrapper">
