@@ -1,10 +1,12 @@
 package com.itis.stalkershop.web.servlets;
 
+import com.google.gson.Gson;
 import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
+import lombok.extern.java.Log;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
@@ -38,6 +41,12 @@ public class SignInServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
+
+        LogKt.log(
+                this,
+                new Gson().toJson(List.of("asfasf", "yfhkasf"))
+        );
+
         request.getRequestDispatcher("sign_in.ftl")
                 .forward(request, response);
     }

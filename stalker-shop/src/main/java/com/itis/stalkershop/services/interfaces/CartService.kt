@@ -5,11 +5,13 @@ import com.itis.stalkershop.models.CartDto
 import com.itis.stalkershop.models.UserDto
 
 interface CartService {
-    fun get(user: UserDto): CartDto?
+    fun get(userEmail: String): CartDto?
 
-    fun get(userName: String): CartDto?
+    fun get(user: UserDto): CartDto? =
+        get(user.email)
 
-    fun add(user: UserDto, cart: Cart)
+    fun addItem(userEmail: String, itemName: String)
 
-    fun add(userName: String, cart: Cart)
+    fun addItem(user: UserDto, itemName: String) =
+        addItem(user.email, itemName)
 }
