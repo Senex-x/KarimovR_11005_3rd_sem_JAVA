@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>Catalog</title>
     <link rel="stylesheet" href="../resources/css/style.css">
-
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/catalog.js" type="text/javascript"></script>
 </head>
 <body>
-
 <#include "top.ftl">
 
-<button id="button-add-to-cart">Add item to cart</button>
+<!-- Debug-only div block -->
+<div>
+    <button id="button-add-to-cart">Add item to cart</button>
+    <button onclick="window.location.href='cart'">Go to cart</button>
+</div>
 
 <div class="wrapper">
     <div class="container">
@@ -25,7 +27,7 @@
         </div>
 
         <div class="item">
-            <img src="../resources/images/${cossacksvodka.imageName}" class="item">
+            <img src="../resources/images/item/${cossacksvodka.imageName}" class="item">
             <div>${cossacksvodka.name}</div>
             <button class="button-add-to-cart">➕</button>
             <img src="" height="200">

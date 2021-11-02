@@ -45,7 +45,6 @@ body {
 .width-item{
     width: 50px;
 }
-
 #top_img {
     display: flex;
     flex-direction: row;
@@ -54,7 +53,6 @@ body {
     /*left: 200px;*/
     /*right: 200px;*/
 }
-
 .sign-in {
     background: url(../images/design/upper_nav_left.png) 50% 50% no-repeat;
     background-size: contain;
@@ -90,6 +88,13 @@ body {
     width: 150px;
 }
 .catalog-button {
+    color: #ffbb2f;
+    background: url(../images/design/sidebar_menu_bg.png) 50% 50% no-repeat;
+    background-size: contain;
+    height: 20px;
+    width: 99px;
+}
+.button-option {
     color: #ffbb2f;
     background: url(../images/design/sidebar_menu_bg.png) 50% 50% no-repeat;
     background-size: contain;

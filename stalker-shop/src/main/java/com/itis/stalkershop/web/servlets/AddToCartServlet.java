@@ -2,7 +2,6 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.ItemDto;
 import com.itis.stalkershop.services.interfaces.ItemService;
-import com.itis.stalkershop.services.interfaces.SignInService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -35,10 +34,10 @@ public class AddToCartServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
+        // Handle null values
         String itemName = request.getParameter("itemName");
-
         ItemDto itemDto = itemService.get(itemName);
-
+        request.getSession().setAttribute("item", itemDto);
         // Save cart somewhere
     }
 }

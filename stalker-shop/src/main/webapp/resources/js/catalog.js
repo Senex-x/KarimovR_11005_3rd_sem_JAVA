@@ -1,15 +1,17 @@
 const itemName = "Cossacks vodka"
 
-function addToCart(itemName) {
-    //let itemName = "Cossacks vodka"
-    console.log("Button click")
-    console.log(typeof itemName)
-    console.log("itemName=" + itemName.valueOf())
+$(document).ready(function () {
+    $("#button-add-to-cart")
+        .click(function () {
+            addToCart("Cossacks vodka")
+        })
+})
 
+function addToCart(itemName) {
     $.ajax({
         url: '/add-to-cart',
         type: 'POST',
-        data: "itemName=".concat(itemName.valueOf()),
+        data: "itemName=" + itemName,
         headers: {
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         },
@@ -21,10 +23,3 @@ function addToCart(itemName) {
         }
     });
 }
-
-$(document).ready(function () {
-    $("#button-add-to-cart")
-        .click(function () {
-            addToCart("Cossacks vodka")
-        })
-})
