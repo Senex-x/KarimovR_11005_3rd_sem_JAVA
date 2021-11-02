@@ -10,7 +10,7 @@ import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
 import com.itis.stalkershop.services.implementations.*
 import com.itis.stalkershop.services.interfaces.*
-import com.itis.stalkershop.utils.getSimpleNameOf
+import com.itis.stalkershop.utils.getNameOfImplementedInterface
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
@@ -65,7 +65,8 @@ class CustomContextListener : ServletContextListener {
             dataSource
         )
         val cartService: CartService = CartServiceMain(
-            cartRepository
+            cartRepository,
+            itemsRepository
         )
 
         val attributes = listOf(
@@ -81,7 +82,7 @@ class CustomContextListener : ServletContextListener {
         val context = servletContextEvent.servletContext
         for (attribute in attributes) {
             context.setAttribute(
-                getSimpleNameOf(attribute),
+                attribute.getNameOfImplementedInterface(),
                 attribute
             )
         }
