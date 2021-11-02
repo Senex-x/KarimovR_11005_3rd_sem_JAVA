@@ -6,7 +6,6 @@ import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
-import lombok.extern.java.Log;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

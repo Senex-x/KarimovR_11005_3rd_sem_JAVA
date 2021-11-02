@@ -33,7 +33,7 @@ public class CartServiceMain implements CartService {
             @NotNull String userEmail
     ) {
 
-        Cart cart = cartRepository.get(userEmail);
+        Cart cart = cartRepository.get(userEmail); // Unchecked nullable
         Gson gson = new Gson();
 
         List<String> items = gson.fromJson(
@@ -59,18 +59,42 @@ public class CartServiceMain implements CartService {
             @NotNull String userEmail,
             @NotNull String itemName
     ) {
+        Gson gson = new Gson();
         Cart cart = cartRepository.get(userEmail);
-        //cart.getItemNamesJson()
+
+        if (cart != null) { // Update
+            List<String> items = gson.fromJson(
+                    cart.getItemNamesJson(),
+                    new TypeToken<List<String>>() {
+                    }.getType()
+            );
+            items.add(itemName);
+            String itemsString = gson.toJson(items);
+            cartRepository.update(new Cart(
+                    userEmail,
+                    itemsString
+            ));
+        } else { // Add new
+            cartRepository.add(new Cart(
+                    userEmail,
+                    gson.toJson(List.of(itemName))
+            ));
+        }
     }
 
     @Nullable
     @Override
-    public CartDto get(@NotNull UserDto user) {
+    public CartDto get(
+            @NotNull UserDto user
+    ) {
         return CartService.super.get(user);
     }
 
     @Override
-    public void addItem(@NotNull UserDto user, @NotNull String itemName) {
+    public void addItem(
+            @NotNull UserDto user,
+            @NotNull String itemName
+    ) {
         CartService.super.addItem(user, itemName);
     }
 }

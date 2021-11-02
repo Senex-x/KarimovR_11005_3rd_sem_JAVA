@@ -38,10 +38,8 @@ public class CartServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        ItemDto item = (ItemDto) request.getSession().getAttribute("item");
-        LogKt.log(this, item.toString());
 
-        CartDto cartDto = cartService.get(
+        CartDto cartDto = cartService.get( // Unchecked nullable
                 ((UserDto) request
                         .getSession()
                         .getAttribute("user")
@@ -50,7 +48,7 @@ public class CartServlet extends HttpServlet {
 
         LogKt.log(this, cartDto.toString());
 
-        request.setAttribute("items", List.of(item, item, item, item));
+        request.setAttribute("items", cartDto.getItemList());
         request.getRequestDispatcher("/cart.ftl").forward(request, response);
     }
 }

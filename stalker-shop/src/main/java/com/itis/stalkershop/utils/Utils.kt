@@ -1,6 +1,8 @@
 package com.itis.stalkershop.utils
 
+import com.itis.stalkershop.models.UserDto
 import javax.servlet.ServletContext
+import javax.servlet.http.HttpServletRequest
 
 // For use from Kotlin
 @JvmName("getAttributeKt")
@@ -27,7 +29,8 @@ fun Any.name(): String =
 inline fun <reified T> name(): String =
     getClass<T>().simpleName
 
-
+fun <T> HttpServletRequest.getTypedAttribute(name: String): T? =
+    session.getAttribute(name) as? T
 
 
 
