@@ -1,6 +1,6 @@
 package com.itis.stalkershop.models
 
-class ItemDto(
+data class ItemDto(
     val name: String,
     val cost: Int,
     val description: String,

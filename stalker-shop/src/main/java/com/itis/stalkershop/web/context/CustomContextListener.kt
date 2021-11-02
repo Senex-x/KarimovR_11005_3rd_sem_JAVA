@@ -1,8 +1,10 @@
 package com.itis.stalkershop.web.context
 
+import com.itis.stalkershop.repositories.implementations.CartRepositoryMain
 import com.itis.stalkershop.repositories.implementations.FilesRepositoryMain
 import com.itis.stalkershop.repositories.implementations.ItemsRepositoryMain
 import com.itis.stalkershop.repositories.implementations.UsersRepositoryMain
+import com.itis.stalkershop.repositories.interfaces.CartRepository
 import com.itis.stalkershop.repositories.interfaces.FilesRepository
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
@@ -59,31 +61,28 @@ class CustomContextListener : ServletContextListener {
         val itemService: ItemService = ItemServiceMain(
             itemsRepository
         )
+        val cartRepository: CartRepository = CartRepositoryMain(
+            dataSource
+        )
+        val cartService: CartService = CartServiceMain(
+            cartRepository
+        )
 
-        servletContextEvent.servletContext.apply {
-            setAttribute(
-                getSimpleNameOf<FilesRepository>(),
-                filesRepository
-            )
-            setAttribute(
-                getSimpleNameOf<ImageService>(),
-                imageService
-            )
-            setAttribute(
-                getSimpleNameOf<SignInService>(),
-                signInService
-            )
-            setAttribute(
-                getSimpleNameOf<SignUpService>(),
-                signUpService
-            )
-            setAttribute(
-                getSimpleNameOf<UsersRepository>(),
-                usersRepository
-            )
-            setAttribute(
-                getSimpleNameOf<ItemService>(),
-                itemService
+        val attributes = listOf(
+            filesRepository,
+            imageService,
+            signInService,
+            signUpService,
+            usersRepository,
+            itemService,
+            cartService
+        )
+
+        val context = servletContextEvent.servletContext
+        for (attribute in attributes) {
+            context.setAttribute(
+                getSimpleNameOf(attribute),
+                attribute
             )
         }
     }

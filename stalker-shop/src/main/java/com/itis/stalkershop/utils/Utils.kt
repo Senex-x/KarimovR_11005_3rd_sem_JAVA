@@ -10,6 +10,9 @@ fun <T> getAttribute(type: Class<T>, context: ServletContext) =
 inline fun <reified T> ServletContext.getAttribute() =
     getAttribute(getSimpleNameOf<T>()) as T
 
+fun getSimpleNameOf(item: Any) =
+    item::class.java.simpleName
+
 inline fun <reified T> getSimpleNameOf() =
     T::class.java.simpleName
 
