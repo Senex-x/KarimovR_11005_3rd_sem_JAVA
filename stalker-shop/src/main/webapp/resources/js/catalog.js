@@ -2,10 +2,12 @@ const itemName = "Cossacks vodka"
 
 // TODO: Call click method with
 //  corresponding itemName argument for each button
+// If work, delete this TODO
 $(document).ready(function () {
     $("#button-add-to-cart")
-        .click(function () {
-            addToCart("Cossacks vodka")
+        .click(function (event) {
+            const itemName = event.target.id
+            addToCart(itemName)
         })
 })
 
