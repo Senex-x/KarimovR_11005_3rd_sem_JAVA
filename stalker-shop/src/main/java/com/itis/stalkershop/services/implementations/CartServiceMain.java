@@ -1,7 +1,5 @@
 package com.itis.stalkershop.services.implementations;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.itis.stalkershop.models.Cart;
 import com.itis.stalkershop.models.CartDto;
 import com.itis.stalkershop.models.ItemDto;
@@ -11,7 +9,11 @@ import com.itis.stalkershop.services.interfaces.CartService;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static com.itis.stalkershop.utils.UtilsKt.jsonToList;
+import static com.itis.stalkershop.utils.UtilsKt.toJson;
 
 public class CartServiceMain implements CartService {
     private final CartRepository cartRepository;
@@ -25,63 +27,70 @@ public class CartServiceMain implements CartService {
         this.itemsRepository = itemsRepository;
     }
 
-    // TODO: Refactor
+    @NotNull
     @Override
     public CartDto get(
             @NotNull String userEmail
     ) {
-        Cart cart = cartRepository.get(userEmail); // Unchecked nullable
+        Cart cart = cartRepository.get(userEmail);
 
-        if(cart == null) { // cart not exists
-            return null;
+        // If specified user's cart doesn't exist, create it
+        if (cart == null) {
+            Cart newCart = new Cart(
+                    userEmail,
+                    toJson(Collections.emptyList())
+            );
+
+            cartRepository.add(newCart);
+            cart = newCart;
         }
 
-        Gson gson = new Gson();
+        // Retrieve item names from cart
+        List<String> cartItemNames = jsonToList(cart.getItemNamesJson());
 
-        List<String> items = gson.fromJson(
-                cart.getItemNamesJson(),
-                new TypeToken<List<String>>() {
-                }.getType()
+        // Get items associated with provided names from the database
+        List<ItemDto> cartItems = new ArrayList<>();
+        cartItemNames.forEach(itemName ->
+                cartItems.add(
+                        itemsRepository
+                                .findByPrimaryKey(itemName)
+                                .get()
+                                .toItemDto()
+                )
         );
 
-        List<ItemDto> itemDtos = new ArrayList<>();
-
-        items.forEach(itemName -> itemDtos.add(
-                itemsRepository.findByPrimaryKey(itemName).get().toItemDto()
-        ));
-
         return new CartDto(
-                cart.getUserEmail(),
-                itemDtos
+                userEmail,
+                cartItems
         );
     }
 
     @Override
     public void addItem(
             @NotNull String userEmail,
-            @NotNull String itemName
+            @NotNull String newItemName
     ) {
-        Gson gson = new Gson();
         Cart cart = cartRepository.get(userEmail);
 
-        if (cart != null) { // Update
-            List<String> items = gson.fromJson(
-                    cart.getItemNamesJson(),
-                    new TypeToken<List<String>>() {
-                    }.getType()
-            );
-            items.add(itemName);
-            String itemsString = gson.toJson(items);
-            cartRepository.update(new Cart(
-                    userEmail,
-                    itemsString
-            ));
-        } else { // Add new
+        // If specified user's cart doesn't exist,
+        // create it with new item
+        if (cart == null) {
             cartRepository.add(new Cart(
                     userEmail,
-                    gson.toJson(List.of(itemName))
+                    toJson(List.of(newItemName))
             ));
+            return;
         }
+
+        // Update content of received cart
+        List<String> cartItemNames = jsonToList(cart.getItemNamesJson());
+        cartItemNames.add(newItemName);
+
+        // Send updated cart back
+        cartRepository.update(new Cart(
+                userEmail,
+                toJson(cartItemNames)
+        ));
     }
 
     @Override

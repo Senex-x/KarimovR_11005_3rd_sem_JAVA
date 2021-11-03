@@ -1,5 +1,7 @@
 package com.itis.stalkershop.utils
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.itis.stalkershop.models.UserDto
 import javax.servlet.ServletContext
 import javax.servlet.http.HttpServletRequest
@@ -34,6 +36,28 @@ fun <T> HttpServletRequest.getSessionAttribute(name: String): T? =
 
 fun HttpServletRequest.getSessionUser(): UserDto =
     session.getAttribute(getClass<UserDto>().simpleName) as UserDto
+
+private val gson = Gson()
+
+typealias JsonString = String
+
+@JvmName("jsonToList")
+fun <T> JsonString.toListOf(): List<T> =
+    gson.fromJson(
+        this,
+        object : TypeToken<List<T>>() {}.type
+    )
+
+fun <T> List<T>.toJson(): String =
+    gson.toJson(this)
+
+
+
+
+
+
+
+
 
 
 
