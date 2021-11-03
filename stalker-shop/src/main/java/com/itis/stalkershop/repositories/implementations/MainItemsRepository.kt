@@ -34,6 +34,19 @@ class ItemsRepositoryMain(
 ) : ItemsRepository {
     private val jdbcTemplate = JdbcTemplate(dataSource)
 
+    override fun save(item: Item): Item {
+        jdbcTemplate.update { connection ->
+            connection.prepareStatement(SQL_INSERT).apply {
+                setString(1, item.name)
+                setInt(2, item.cost)
+                setString(3, item.description)
+                setString(4, item.imageName)
+            }
+        }
+
+        return item
+    }
+
     override fun findByPrimaryKey(
         primaryKey: String
     ) = try {
@@ -53,10 +66,6 @@ class ItemsRepositoryMain(
             SQL_SELECT_ALL,
             rowMapper
         )
-
-    override fun save(item: Item): Item {
-        TODO("Not yet implemented")
-    }
 
     override fun update(primaryKey: String, item: Item) {
         TODO("Not yet implemented")

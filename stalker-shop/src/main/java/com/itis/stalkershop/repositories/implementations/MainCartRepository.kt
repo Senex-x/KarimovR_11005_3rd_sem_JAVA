@@ -48,13 +48,6 @@ class CartRepositoryMain(dataSource: DataSource) : CartRepository {
             null
         }
 
-    override fun delete(primaryKey: String) {
-        jdbcTemplate.update(
-            SQL_DELETE,
-            primaryKey
-        )
-    }
-
     override fun update(item: Cart) {
         jdbcTemplate.update {
             it.prepareStatement(SQL_UPDATE).apply {
@@ -62,6 +55,13 @@ class CartRepositoryMain(dataSource: DataSource) : CartRepository {
                 setString(2, item.userEmail)
             }
         }
+    }
+
+    override fun delete(primaryKey: String) {
+        jdbcTemplate.update(
+            SQL_DELETE,
+            primaryKey
+        )
     }
 
     override fun getAll(): List<Cart> {

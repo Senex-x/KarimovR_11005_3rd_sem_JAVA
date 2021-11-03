@@ -19,6 +19,11 @@ public class MainItemService implements ItemService {
         this.itemsRepository = itemsRepository;
     }
 
+    @Override
+    public void add(@NotNull ItemDto newItem) {
+        itemsRepository.save(newItem.toItem());
+    }
+
     @NotNull
     @Override
     public ItemDto get(
