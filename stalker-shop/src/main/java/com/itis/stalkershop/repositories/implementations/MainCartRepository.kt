@@ -18,10 +18,10 @@ private const val SQL_UPDATE =
     "update carts set item_names_list_json = ? where user_email = ?"
 
 private val cartRowMapper =
-    RowMapper { row: ResultSet, _ ->
+    RowMapper { resultSet: ResultSet, _ ->
         Cart(
-            row.getString("user_email"),
-            row.getString("item_names_list_json"),
+            resultSet.getString("user_email"),
+            resultSet.getString("item_names_list_json"),
         )
     }
 

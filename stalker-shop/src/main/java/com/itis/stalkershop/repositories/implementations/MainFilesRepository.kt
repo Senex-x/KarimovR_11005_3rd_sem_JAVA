@@ -20,8 +20,8 @@ private const val SQL_SELECT_BY_ID =
     "select * from files where id = ?"
 
 private val imageRowMapper =
-    RowMapper { row: ResultSet, _ ->
-        row.run {
+    RowMapper { resultSet: ResultSet, _ ->
+        resultSet.run {
             Image(
                 getLong("id"),
                 getString("storage_name"),

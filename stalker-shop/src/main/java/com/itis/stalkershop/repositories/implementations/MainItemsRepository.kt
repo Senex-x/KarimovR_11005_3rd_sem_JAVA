@@ -9,17 +9,6 @@ import java.sql.ResultSet
 import java.util.*
 import javax.sql.DataSource
 
-private val rowMapper = RowMapper { row: ResultSet, _ ->
-    row.run {
-        Item(
-            getString("name"),
-            getInt("cost"),
-            getString("description"),
-            getString("image_name")
-        )
-    }
-}
-
 private const val SQL_INSERT =
     "insert into items(name, cost, description, image_name) values (?, ?, ?, ?)"
 private const val SQL_UPDATE =
@@ -28,6 +17,17 @@ private const val SQL_SELECT_BY_EMAIL =
     "select * from items where name = ?"
 private const val SQL_SELECT_ALL =
     "select * from items"
+
+private val itemRowMapper = RowMapper { resultSet: ResultSet, _ ->
+    resultSet.run {
+        Item(
+            getString("name"),
+            getInt("cost"),
+            getString("description"),
+            getString("image_name")
+        )
+    }
+}
 
 class ItemsRepositoryMain(
     dataSource: DataSource
@@ -53,7 +53,7 @@ class ItemsRepositoryMain(
         Optional.ofNullable(
             jdbcTemplate.queryForObject(
                 SQL_SELECT_BY_EMAIL,
-                rowMapper,
+                itemRowMapper,
                 primaryKey
             )
         )
@@ -64,7 +64,7 @@ class ItemsRepositoryMain(
     override fun findAll(): List<Item> =
         jdbcTemplate.query(
             SQL_SELECT_ALL,
-            rowMapper
+            itemRowMapper
         )
 
     override fun update(primaryKey: String, item: Item) {
