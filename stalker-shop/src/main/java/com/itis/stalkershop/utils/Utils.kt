@@ -1,19 +1,39 @@
 package com.itis.stalkershop.utils
 
+import com.itis.stalkershop.models.UserDto
 import javax.servlet.ServletContext
+import javax.servlet.http.HttpServletRequest
+
+// For use from Kotlin
+@JvmName("getAttributeKt")
+inline fun <reified T> ServletContext.getAttribute() =
+    getAttribute(simpleName<T>()) as T
 
 // For use from Java
 fun <T> getAttribute(type: Class<T>, context: ServletContext) =
     context.getAttribute(type.simpleName) as T
 
-// For use from Kotlin
-inline fun <reified T> ServletContext.getAttribute() =
-    getAttribute(getSimpleNameOf<T>()) as T
+fun Any.getClass() =
+    this::class.java
 
-inline fun <reified T> getSimpleNameOf() =
-    T::class.java.simpleName
+@JvmName("getClassKt")
+inline fun <reified T> getClass() =
+    T::class.java
 
+fun Any.getNameOfImplementedInterface() =
+    getClass().interfaces[0].simpleName
 
+fun Any.simpleName(): String =
+    getClass().simpleName
+
+inline fun <reified T> simpleName(): String =
+    getClass<T>().simpleName
+
+fun <T> HttpServletRequest.getSessionAttribute(name: String): T? =
+    session.getAttribute(name) as? T
+
+fun HttpServletRequest.getSessionUser(): UserDto =
+    session.getAttribute(getClass<UserDto>().simpleName) as UserDto
 
 
 

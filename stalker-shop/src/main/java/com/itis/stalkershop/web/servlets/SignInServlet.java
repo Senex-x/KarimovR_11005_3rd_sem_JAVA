@@ -1,9 +1,11 @@
 package com.itis.stalkershop.web.servlets;
 
+import com.google.gson.Gson;
 import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.utils.UtilsKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 
 import javax.servlet.ServletConfig;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
@@ -71,9 +74,13 @@ public class SignInServlet extends HttpServlet {
             LogKt.log(this, "Authentication failed");
             return;
         }
-
+        
         HttpSession session = request.getSession();
-        session.setAttribute("user", userDto);
+        session.setAttribute(
+                UtilsKt.simpleName(userDto),
+                userDto
+        );
+
         response.sendRedirect("/profile");
     }
 }

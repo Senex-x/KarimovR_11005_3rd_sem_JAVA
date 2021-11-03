@@ -2,6 +2,7 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.utils.UtilsKt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +19,8 @@ public class ProfileServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        UserDto userDto = (UserDto) request
-                .getSession()
-                .getAttribute("user");
+        UserDto userDto = UtilsKt.getSessionUser(request);
+
         LogKt.log(this, "Received user: " + userDto);
         request.setAttribute("user", userDto);
         request.getRequestDispatcher("/profile.ftl")

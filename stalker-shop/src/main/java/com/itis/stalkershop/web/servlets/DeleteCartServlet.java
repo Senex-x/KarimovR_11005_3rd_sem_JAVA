@@ -1,9 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.models.CartDto;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.CartService;
-import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,13 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
+import static com.itis.stalkershop.utils.UtilsKt.*;
 
-@WebServlet("/cart")
-public class CartServlet extends HttpServlet {
+@WebServlet("/delete-cart")
+public class DeleteCartServlet extends HttpServlet {
     private CartService cartService;
 
     @Override
@@ -34,21 +30,13 @@ public class CartServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(
+    protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
+        UserDto user = getSessionUser(request); // Unchecked nullable
 
-        CartDto cartDto = cartService.get(
-                getSessionUser(request)
-        );
-
-        if(cartDto == null) {
-            request.setAttribute("items", List.of());
-        } else {
-            request.setAttribute("items", cartDto.getItemList());
-        }
-
-        request.getRequestDispatcher("/cart.ftl").forward(request, response);
+        String userEmail = user.getEmail();
+        cartService.delete(userEmail);
     }
 }

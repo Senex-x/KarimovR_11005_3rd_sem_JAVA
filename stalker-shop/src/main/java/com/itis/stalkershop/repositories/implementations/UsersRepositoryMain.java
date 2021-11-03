@@ -1,6 +1,5 @@
 package com.itis.stalkershop.repositories.implementations;
 
-
 import com.itis.stalkershop.models.User;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.UsersRepository;
@@ -58,6 +57,7 @@ public class UsersRepositoryMain implements UsersRepository {
         }
     }
 
+    @NotNull
     @Override
     public Optional<User> findByPrimaryKey(String primaryKey) {
         try {

@@ -40,12 +40,27 @@ create table items
 alter table items
     owner to postgres;
 
+create table carts
+(
+    user_email           varchar(64)   not null
+        constraint cart_pk
+            primary key
+        constraint cart_users_email_fk
+            references users,
+    item_names_list_json varchar(2048) not null
+);
+
+alter table carts
+    owner to postgres;
+
 INSERT INTO public.files (id, storage_name, original_name, type, size)
 VALUES (4, '4cbfdfd0-1155-461d-9118-1c8ff9e8426b', 'CoOdzk9n24M.png', 'image/png', 1562351);
 
 INSERT INTO public.users (email, name, password_hash, avatar_id)
 VALUES ('vdm.snx@gmail.com', 'Senex', '5f4dcc3b5aa765d61d8327deb882cf99', 4);
 
-INSERT INTO public.items (name, cost, description, image_name) VALUES ('Cossacks vodka', 100, 'Distilled by the GSC company, the Cossacks-brand vodka is a clear distilled liquor composed of water and ethyl alcohol. Vodka is made from a fermented substance of either grain, rye, wheat, potatoes, or sugar beet molasses. Vodka’s alcoholic concentration usually ranges between 35 to 70 per cent by volume.
+INSERT INTO public.items (name, cost, description, image_name)
+VALUES ('Cossacks vodka', 100, 'Distilled by the GSC company, the Cossacks-brand vodka is a clear distilled liquor composed of water and ethyl alcohol. Vodka is made from a fermented substance of either grain, rye, wheat, potatoes, or sugar beet molasses. Vodka’s alcoholic concentration usually ranges between 35 to 70 per cent by volume.
 
-It is an extremely popular drink in the Zone, arguably even more than energy drinks, as it removes radiation and "smooths the rough edges" of a stalker''s life.', 'cossacks_vodka.png');
+It is an extremely popular drink in the Zone, arguably even more than energy drinks, as it removes radiation and "smooths the rough edges" of a stalker''s life.',
+        'cossacks_vodka.png');

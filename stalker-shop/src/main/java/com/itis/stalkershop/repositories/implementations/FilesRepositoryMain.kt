@@ -19,7 +19,7 @@ private const val SQL_UPDATE =
 private const val SQL_SELECT_BY_ID =
     "select * from files where id = ?"
 
-private val fileRowMapper =
+private val imageRowMapper =
     RowMapper { row: ResultSet, _ ->
         row.run {
             Image(
@@ -70,13 +70,13 @@ class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     }
 
 
-    override fun findByPrimaryKey(id: Long): Optional<Image> {
+    override fun findByPrimaryKey(primaryKey: Long): Optional<Image> {
         return try {
             Optional.ofNullable(
                 jdbcTemplate.queryForObject(
                     SQL_SELECT_BY_ID,
-                    fileRowMapper,
-                    id
+                    imageRowMapper,
+                    primaryKey
                 )
             )
         } catch (e: EmptyResultDataAccessException) {
