@@ -10,6 +10,7 @@
 <#include "top.ftl">
 
 <div class="wrapper">
+
     <form method="post" id="forms">
         <label id="form">Username
             <input name="name" type="text">

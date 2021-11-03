@@ -21,7 +21,7 @@
         <div class="item">
             <!--            <img src="../resources/images/content_title1_frame.png">-->
             <img src="../resources/images/items/seva.png" class="item">
-            <button class="button-add-to-cart">➕</button>
+            <button class="button-add-to-cart" id="seva">➕</button>
             <img src="../resources/images/items/seva-info.jpg" height="200">
             <div class="width-item"></div>
         </div>
@@ -29,7 +29,7 @@
         <div class="item">
             <img src="../resources/images/item/${cossacksvodka.imageName}" class="item">
             <div>${cossacksvodka.name}</div>
-            <button class="button-add-to-cart">➕</button>
+            <button class="button-add-to-cart" id ="Cossacks vodka">➕</button>
             <img src="" height="200">
             <div class="width-item"></div>
         </div>
