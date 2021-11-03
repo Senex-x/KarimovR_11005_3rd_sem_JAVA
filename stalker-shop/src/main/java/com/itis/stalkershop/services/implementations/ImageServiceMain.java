@@ -17,15 +17,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class ImageServiceMain implements ImageService {
-    private static final String PATH_DEFAULT =
-            "D:\\Projects\\Java\\KarimovR_11005_3rd_sem_JAVA\\stalker-shop\\data\\images\\";
-
+    private final String IMAGE_STORAGE_PATH;
     private final FilesRepository filesRepository;
 
     public ImageServiceMain(
+            String imageStoragePath,
             FilesRepository filesRepository
     ) {
         this.filesRepository = filesRepository;
+        IMAGE_STORAGE_PATH = imageStoragePath;
     }
 
     @NotNull
@@ -47,7 +47,7 @@ public class ImageServiceMain implements ImageService {
         try {
             Files.copy(
                     inputStream,
-                    Paths.get(PATH_DEFAULT +
+                    Paths.get(IMAGE_STORAGE_PATH +
                             fileInfo.getStorageName() + "." +
                             fileInfo.getType().split("/")[1]
                     )
@@ -71,7 +71,7 @@ public class ImageServiceMain implements ImageService {
                 () -> new NotFoundException("File not found")
         );
 
-        File file = new File(PATH_DEFAULT +
+        File file = new File(IMAGE_STORAGE_PATH +
                 fileInfo.getStorageName() + "." +
                 fileInfo.getType().split("/")[1]
         );

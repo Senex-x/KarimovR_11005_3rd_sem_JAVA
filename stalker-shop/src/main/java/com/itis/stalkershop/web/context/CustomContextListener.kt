@@ -10,33 +10,47 @@ import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
 import com.itis.stalkershop.services.implementations.*
 import com.itis.stalkershop.services.interfaces.*
+import com.itis.stalkershop.utils.getTyped
 import com.itis.stalkershop.utils.getNameOfImplementedInterface
+import com.itis.stalkershop.utils.loadPropertiesFrom
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
 import javax.servlet.annotation.WebListener
 
-private const val DB_USERNAME = "postgres"
-private const val DB_PASSWORD = "postgres"
-private const val DB_URL = "jdbc:postgresql://localhost:5432/postgres"
-private const val DB_DRIVER = "org.postgresql.Driver"
+private const val PROPERTIES_FILE_NAME = "application.properties"
 
 @WebListener
 class CustomContextListener : ServletContextListener {
     override fun contextInitialized(
         servletContextEvent: ServletContextEvent
     ) {
+        val dbUsername: String
+        val dbPassword: String
+        val dbUrl: String
+        val dbDriver: String
+        val imageStoragePath: String
+
+        loadPropertiesFrom(PROPERTIES_FILE_NAME).apply {
+            dbUsername = getTyped("spring.datasource.username")
+            dbPassword = getTyped("spring.datasource.password")
+            dbUrl = getTyped("spring.datasource.url")
+            dbDriver = getTyped("spring.datasource.driver-class-name")
+            imageStoragePath = getTyped("storage.images")
+        }
+
         val dataSource = DriverManagerDataSource().apply {
-            setDriverClassName(DB_DRIVER)
-            username = DB_USERNAME
-            password = DB_PASSWORD
-            url = DB_URL
+            setDriverClassName(dbDriver)
+            username = dbUsername
+            password = dbPassword
+            url = dbUrl
         }
 
         val filesRepository: FilesRepository = FilesRepositoryMain(
             dataSource
         )
         val imageService: ImageService = ImageServiceMain(
+            imageStoragePath,
             filesRepository
         )
         val usersRepository: UsersRepository = UsersRepositoryMain(
@@ -88,5 +102,8 @@ class CustomContextListener : ServletContextListener {
         }
     }
 
-    override fun contextDestroyed(servletContextEvent: ServletContextEvent) {}
+    override fun contextDestroyed(
+        servletContextEvent: ServletContextEvent
+    ) {
+    }
 }
