@@ -10,11 +10,11 @@ import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 import org.jetbrains.annotations.NotNull;
 
-public class SignInServiceMain implements SignInService {
+public class MainSignInService implements SignInService {
     private final UsersRepository usersRepository;
     private final PasswordService passwordServiceMain;
 
-    public SignInServiceMain(
+    public MainSignInService(
             UsersRepository usersRepository,
             PasswordService passwordServiceMain
     ) {

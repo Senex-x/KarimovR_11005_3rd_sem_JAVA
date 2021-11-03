@@ -3,7 +3,7 @@ package com.itis.stalkershop.web.context
 import com.itis.stalkershop.repositories.implementations.CartRepositoryMain
 import com.itis.stalkershop.repositories.implementations.FilesRepositoryMain
 import com.itis.stalkershop.repositories.implementations.ItemsRepositoryMain
-import com.itis.stalkershop.repositories.implementations.UsersRepositoryMain
+import com.itis.stalkershop.repositories.implementations.MainUsersRepository
 import com.itis.stalkershop.repositories.interfaces.CartRepository
 import com.itis.stalkershop.repositories.interfaces.FilesRepository
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository
@@ -49,36 +49,41 @@ class CustomContextListener : ServletContextListener {
         val filesRepository: FilesRepository = FilesRepositoryMain(
             dataSource
         )
-        val imageService: ImageService = ImageServiceMain(
-            imageStoragePath,
-            filesRepository
-        )
-        val usersRepository: UsersRepository = UsersRepositoryMain(
-            dataSource
-        )
+        val imageService: ImageService =
+            MainImageService(
+                imageStoragePath,
+                filesRepository
+            )
+        val usersRepository: UsersRepository =
+            MainUsersRepository(
+                dataSource
+            )
         val passwordService: PasswordService = PasswordServiceMain()
-        val signInService: SignInService = SignInServiceMain(
-            usersRepository,
-            passwordService
-        )
-        val validationService: ValidationService = ValidationServiceMain(
-            usersRepository
-        )
-        val signUpService: SignUpService = SignUpServiceMain(
-            usersRepository,
-            passwordService,
-            validationService
-        )
+        val signInService: SignInService =
+            MainSignInService(
+                usersRepository,
+                passwordService
+            )
+        val validationService: ValidationService =
+            MainValidationService(
+                usersRepository
+            )
+        val signUpService: SignUpService =
+            MainSignUpService(
+                usersRepository,
+                passwordService,
+                validationService
+            )
         val itemsRepository: ItemsRepository = ItemsRepositoryMain(
             dataSource
         )
-        val itemService: ItemService = ItemServiceMain(
+        val itemService: ItemService = MainItemService(
             itemsRepository
         )
         val cartRepository: CartRepository = CartRepositoryMain(
             dataSource
         )
-        val cartService: CartService = CartServiceMain(
+        val cartService: CartService = MainCartService(
             cartRepository,
             itemsRepository
         )

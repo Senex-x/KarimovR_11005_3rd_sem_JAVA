@@ -16,11 +16,11 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ImageServiceMain implements ImageService {
+public class MainImageService implements ImageService {
     private final String IMAGE_STORAGE_PATH;
     private final FilesRepository filesRepository;
 
-    public ImageServiceMain(
+    public MainImageService(
             String imageStoragePath,
             FilesRepository filesRepository
     ) {

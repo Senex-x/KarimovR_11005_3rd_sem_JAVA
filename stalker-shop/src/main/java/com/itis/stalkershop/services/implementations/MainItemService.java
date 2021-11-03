@@ -10,10 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Optional;
 
-public class ItemServiceMain implements ItemService {
+public class MainItemService implements ItemService {
     private final ItemsRepository itemsRepository;
 
-    public ItemServiceMain(
+    public MainItemService(
             ItemsRepository itemsRepository
     ) {
         this.itemsRepository = itemsRepository;

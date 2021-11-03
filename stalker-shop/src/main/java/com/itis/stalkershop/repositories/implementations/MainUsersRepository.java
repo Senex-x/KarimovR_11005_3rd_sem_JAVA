@@ -16,7 +16,7 @@ import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
 
-public class UsersRepositoryMain implements UsersRepository {
+public class MainUsersRepository implements UsersRepository {
     private static final String SQL_INSERT =
             "insert into users(email, name, password_hash, avatar_id) values (?, ?, ?, ?)";
     private static final String SQL_UPDATE =
@@ -36,7 +36,7 @@ public class UsersRepositoryMain implements UsersRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UsersRepositoryMain(
+    public MainUsersRepository(
             DataSource dataSource
     ) {
         jdbcTemplate = new JdbcTemplate(dataSource);

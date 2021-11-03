@@ -15,11 +15,11 @@ import java.util.List;
 import static com.itis.stalkershop.utils.UtilsKt.jsonToList;
 import static com.itis.stalkershop.utils.UtilsKt.toJson;
 
-public class CartServiceMain implements CartService {
+public class MainCartService implements CartService {
     private final CartRepository cartRepository;
     private final ItemsRepository itemsRepository;
 
-    public CartServiceMain(
+    public MainCartService(
             CartRepository cartRepository,
             ItemsRepository itemsRepository
     ) {
