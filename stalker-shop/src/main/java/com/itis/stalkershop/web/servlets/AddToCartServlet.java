@@ -1,10 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.itis.stalkershop.models.ItemDto;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.CartService;
-import com.itis.stalkershop.services.interfaces.ItemService;
-import com.itis.stalkershop.utils.UtilsKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,12 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.getTypedAttribute;
+import static com.itis.stalkershop.utils.UtilsKt.*;
 
 @WebServlet("/add-to-cart")
 public class AddToCartServlet extends HttpServlet {
-    private ItemService itemService;
     private CartService cartService;
 
     @Override
@@ -28,10 +23,6 @@ public class AddToCartServlet extends HttpServlet {
     ) throws ServletException {
         super.init(config);
 
-        itemService = getAttribute(
-                ItemService.class,
-                config.getServletContext()
-        );
         cartService = getAttribute(
                 CartService.class,
                 config.getServletContext()
@@ -43,7 +34,8 @@ public class AddToCartServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        UserDto user = getTypedAttribute(request, "user"); // Unchecked nullable
+        UserDto user = getSessionUser(request);
+
         String userEmail = user.getEmail();
         String itemName = request.getParameter("itemName");
 

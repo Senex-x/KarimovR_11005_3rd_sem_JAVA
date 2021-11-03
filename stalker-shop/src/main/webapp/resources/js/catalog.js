@@ -18,7 +18,7 @@ function addToCart(itemName) {
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         },
         success: function () {
-            alert("Item '" + itemName + "' added to cart successfully")
+            console.log("Item '" + itemName + "' added to cart successfully")
         },
         error: function () {
             alert("Something went wrong. Please try again")

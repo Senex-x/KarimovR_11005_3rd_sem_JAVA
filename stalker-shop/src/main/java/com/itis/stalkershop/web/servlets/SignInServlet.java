@@ -5,6 +5,7 @@ import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.utils.UtilsKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 
 import javax.servlet.ServletConfig;
@@ -40,12 +41,6 @@ public class SignInServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-
-        LogKt.log(
-                this,
-                new Gson().toJson(List.of("asfasf", "yfhkasf"))
-        );
-
         request.getRequestDispatcher("sign_in.ftl")
                 .forward(request, response);
     }
@@ -79,9 +74,13 @@ public class SignInServlet extends HttpServlet {
             LogKt.log(this, "Authentication failed");
             return;
         }
-
+        
         HttpSession session = request.getSession();
-        session.setAttribute("user", userDto);
+        session.setAttribute(
+                UtilsKt.simpleName(userDto),
+                userDto
+        );
+
         response.sendRedirect("/profile");
     }
 }

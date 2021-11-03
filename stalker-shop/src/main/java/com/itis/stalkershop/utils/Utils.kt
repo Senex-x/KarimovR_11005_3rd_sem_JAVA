@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest
 // For use from Kotlin
 @JvmName("getAttributeKt")
 inline fun <reified T> ServletContext.getAttribute() =
-    getAttribute(name<T>()) as T
+    getAttribute(simpleName<T>()) as T
 
 // For use from Java
 fun <T> getAttribute(type: Class<T>, context: ServletContext) =
@@ -23,14 +23,17 @@ inline fun <reified T> getClass() =
 fun Any.getNameOfImplementedInterface() =
     getClass().interfaces[0].simpleName
 
-fun Any.name(): String =
+fun Any.simpleName(): String =
     getClass().simpleName
 
-inline fun <reified T> name(): String =
+inline fun <reified T> simpleName(): String =
     getClass<T>().simpleName
 
-fun <T> HttpServletRequest.getTypedAttribute(name: String): T? =
+fun <T> HttpServletRequest.getSessionAttribute(name: String): T? =
     session.getAttribute(name) as? T
+
+fun HttpServletRequest.getSessionUser(): UserDto =
+    session.getAttribute(getClass<UserDto>().simpleName) as UserDto
 
 
 

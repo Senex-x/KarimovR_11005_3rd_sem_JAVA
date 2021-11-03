@@ -1,5 +1,6 @@
 package com.itis.stalkershop.web.servlets;
 
+import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,9 @@ public class SignOutServlet extends HttpServlet {
             HttpServletResponse response
     ) throws IOException {
         LogKt.log(this, "Signing out");
-        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute(
+                UserDto.class.getSimpleName()
+        );
         response.sendRedirect("/sign-in");
     }
 }

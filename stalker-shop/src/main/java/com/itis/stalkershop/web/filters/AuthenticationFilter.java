@@ -1,5 +1,7 @@
 package com.itis.stalkershop.web.filters;
 
+import com.itis.stalkershop.models.UserDto;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +46,7 @@ public class AuthenticationFilter implements Filter {
         // если сессия есть
         if (sessionExists) {
             // проверим, есть ли атрибует user?
-            isAuthenticated = session.getAttribute("user") != null;
+            isAuthenticated = session.getAttribute(UserDto.class.getSimpleName()) != null;
         }
 
         // TODO: Inspect conditions

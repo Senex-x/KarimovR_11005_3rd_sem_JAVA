@@ -43,7 +43,5 @@ public class SignUpServiceMain implements SignUpService {
         );
 
         usersRepository.save(newUser);
-
-        //TODO: save a new user in repository
     }
 }

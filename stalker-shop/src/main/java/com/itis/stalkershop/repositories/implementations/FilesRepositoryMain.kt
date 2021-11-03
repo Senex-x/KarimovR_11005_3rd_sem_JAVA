@@ -70,13 +70,13 @@ class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     }
 
 
-    override fun findByPrimaryKey(id: Long): Optional<Image> {
+    override fun findByPrimaryKey(primaryKey: Long): Optional<Image> {
         return try {
             Optional.ofNullable(
                 jdbcTemplate.queryForObject(
                     SQL_SELECT_BY_ID,
                     imageRowMapper,
-                    id
+                    primaryKey
                 )
             )
         } catch (e: EmptyResultDataAccessException) {

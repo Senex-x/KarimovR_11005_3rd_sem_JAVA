@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
+import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
 
 @WebServlet("/upload-image")
 @MultipartConfig
@@ -64,7 +65,7 @@ public class UploadImageServlet extends HttpServlet {
         LogKt.log(this, "Uploaded file: " + newFile);
 
         LogKt.log(this, "Trying get user from session");
-        UserDto user = (UserDto) request.getSession().getAttribute("user");
+        UserDto user = getSessionUser(request);
         LogKt.log(this, "Got user from session: " + user);
 
 
