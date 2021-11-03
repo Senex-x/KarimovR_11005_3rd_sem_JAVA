@@ -1,6 +1,5 @@
 package com.itis.stalkershop.services.interfaces
 
-import com.itis.stalkershop.models.Cart
 import com.itis.stalkershop.models.CartDto
 import com.itis.stalkershop.models.UserDto
 
@@ -14,4 +13,9 @@ interface CartService {
 
     fun addItem(user: UserDto, itemName: String) =
         addItem(user.email, itemName)
+
+    fun delete(userEmail: String)
+
+    fun delete(user: UserDto) =
+        delete(user.email)
 }

@@ -99,7 +99,7 @@ body {
     background: url(../images/design/sidebar_menu_bg.png) 50% 50% no-repeat;
     background-size: contain;
     height: 20px;
-    width: 99px;
+    width: fit-content;
 }
 /*#top1 {*/
 /*    !*display: inline-block;*!*/
