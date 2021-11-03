@@ -5,11 +5,7 @@ import com.itis.stalkershop.repositories.interfaces.CartRepository
 import org.springframework.dao.DataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
-import org.springframework.jdbc.support.GeneratedKeyHolder
-import java.sql.Connection
 import java.sql.ResultSet
-import java.sql.Types
-import java.util.*
 import javax.sql.DataSource
 
 private const val SQL_INSERT =

@@ -1,6 +1,5 @@
 package com.itis.stalkershop.web.servlets;
 
-import com.google.gson.Gson;
 import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 

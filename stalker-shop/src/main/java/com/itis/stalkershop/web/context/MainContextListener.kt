@@ -10,8 +10,8 @@ import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
 import com.itis.stalkershop.services.implementations.*
 import com.itis.stalkershop.services.interfaces.*
-import com.itis.stalkershop.utils.getTyped
 import com.itis.stalkershop.utils.getNameOfImplementedInterface
+import com.itis.stalkershop.utils.getTyped
 import com.itis.stalkershop.utils.loadPropertiesFrom
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 import javax.servlet.ServletContextEvent

@@ -2,9 +2,6 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.services.interfaces.ImageService;
-
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 
 import javax.servlet.ServletConfig;
@@ -14,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/files/*")
 public class ImagesServlet extends HttpServlet {
