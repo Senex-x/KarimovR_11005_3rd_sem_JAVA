@@ -31,7 +31,7 @@ private val itemRowMapper = RowMapper { resultSet: ResultSet, _ ->
     }
 }
 
-class ItemsRepositoryMain(
+class MainItemsRepository(
     dataSource: DataSource
 ) : ItemsRepository {
     private val jdbcTemplate = JdbcTemplate(dataSource)

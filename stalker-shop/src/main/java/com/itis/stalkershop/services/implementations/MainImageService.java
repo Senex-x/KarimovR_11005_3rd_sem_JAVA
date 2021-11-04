@@ -2,7 +2,7 @@ package com.itis.stalkershop.services.implementations;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.models.ImageDto;
-import com.itis.stalkershop.repositories.interfaces.FilesRepository;
+import com.itis.stalkershop.repositories.interfaces.ImageRepository;
 import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 import org.jetbrains.annotations.NotNull;
@@ -18,13 +18,13 @@ import java.util.UUID;
 
 public class MainImageService implements ImageService {
     private final String IMAGE_STORAGE_PATH;
-    private final FilesRepository filesRepository;
+    private final ImageRepository imageRepository;
 
     public MainImageService(
             String imageStoragePath,
-            FilesRepository filesRepository
+            ImageRepository imageRepository
     ) {
-        this.filesRepository = filesRepository;
+        this.imageRepository = imageRepository;
         IMAGE_STORAGE_PATH = imageStoragePath;
     }
 
@@ -52,7 +52,7 @@ public class MainImageService implements ImageService {
                             fileInfo.getType().split("/")[1]
                     )
             );
-            f = filesRepository.save(fileInfo);
+            f = imageRepository.save(fileInfo);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
@@ -66,7 +66,7 @@ public class MainImageService implements ImageService {
             long fileId,
             @NotNull OutputStream outputStream
     ) {
-        Optional<Image> optionalFileInfo = filesRepository.findByPrimaryKey(fileId);
+        Optional<Image> optionalFileInfo = imageRepository.findByPrimaryKey(fileId);
         Image fileInfo = optionalFileInfo.orElseThrow(
                 () -> new NotFoundException("File not found")
         );
@@ -87,7 +87,7 @@ public class MainImageService implements ImageService {
     @NotNull
     @Override
     public Image getFileInfo(long fileId) {
-        return filesRepository.findByPrimaryKey(fileId).orElseThrow(
+        return imageRepository.findByPrimaryKey(fileId).orElseThrow(
                 () -> new NotFoundException("File not found")
         );
     }

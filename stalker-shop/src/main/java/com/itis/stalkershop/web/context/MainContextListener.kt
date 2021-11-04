@@ -1,11 +1,11 @@
 package com.itis.stalkershop.web.context
 
-import com.itis.stalkershop.repositories.implementations.CartRepositoryMain
-import com.itis.stalkershop.repositories.implementations.FilesRepositoryMain
-import com.itis.stalkershop.repositories.implementations.ItemsRepositoryMain
+import com.itis.stalkershop.repositories.implementations.MainCartRepository
+import com.itis.stalkershop.repositories.implementations.MainImageRepository
+import com.itis.stalkershop.repositories.implementations.MainItemsRepository
 import com.itis.stalkershop.repositories.implementations.MainUsersRepository
 import com.itis.stalkershop.repositories.interfaces.CartRepository
-import com.itis.stalkershop.repositories.interfaces.FilesRepository
+import com.itis.stalkershop.repositories.interfaces.ImageRepository
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository
 import com.itis.stalkershop.repositories.interfaces.UsersRepository
 import com.itis.stalkershop.services.implementations.*
@@ -21,7 +21,7 @@ import javax.servlet.annotation.WebListener
 private const val PROPERTIES_FILE_NAME = "application.properties"
 
 @WebListener
-class CustomContextListener : ServletContextListener {
+class MainContextListener : ServletContextListener {
     override fun contextInitialized(
         servletContextEvent: ServletContextEvent
     ) {
@@ -36,7 +36,7 @@ class CustomContextListener : ServletContextListener {
             dbPassword = getTyped("spring.datasource.password")
             dbUrl = getTyped("spring.datasource.url")
             dbDriver = getTyped("spring.datasource.driver-class-name")
-            imageStoragePath = getTyped("storage.images")
+            imageStoragePath = getTyped("storage.path.images")
         }
 
         val dataSource = DriverManagerDataSource().apply {
@@ -46,19 +46,20 @@ class CustomContextListener : ServletContextListener {
             url = dbUrl
         }
 
-        val filesRepository: FilesRepository = FilesRepositoryMain(
+        val imageRepository: ImageRepository = MainImageRepository(
             dataSource
         )
         val imageService: ImageService =
             MainImageService(
                 imageStoragePath,
-                filesRepository
+                imageRepository
             )
         val usersRepository: UsersRepository =
             MainUsersRepository(
                 dataSource
             )
-        val passwordService: PasswordService = PasswordServiceMain()
+        val passwordService: PasswordService =
+            MainPasswordService()
         val signInService: SignInService =
             MainSignInService(
                 usersRepository,
@@ -74,22 +75,26 @@ class CustomContextListener : ServletContextListener {
                 passwordService,
                 validationService
             )
-        val itemsRepository: ItemsRepository = ItemsRepositoryMain(
-            dataSource
-        )
-        val itemService: ItemService = MainItemService(
-            itemsRepository
-        )
-        val cartRepository: CartRepository = CartRepositoryMain(
-            dataSource
-        )
-        val cartService: CartService = MainCartService(
-            cartRepository,
-            itemsRepository
-        )
+        val itemsRepository: ItemsRepository =
+            MainItemsRepository(
+                dataSource
+            )
+        val itemService: ItemService =
+            MainItemService(
+                itemsRepository
+            )
+        val cartRepository: CartRepository =
+            MainCartRepository(
+                dataSource
+            )
+        val cartService: CartService =
+            MainCartService(
+                cartRepository,
+                itemsRepository
+            )
 
         val attributes = listOf(
-            filesRepository,
+            imageRepository,
             imageService,
             signInService,
             signUpService,

@@ -25,7 +25,9 @@ private val cartRowMapper =
         )
     }
 
-class CartRepositoryMain(dataSource: DataSource) : CartRepository {
+// It was a mistake to store JSON lists in the database.
+// Now it is unnecessary difficult to modify them.
+class MainCartRepository(dataSource: DataSource) : CartRepository {
     private val jdbcTemplate: JdbcTemplate = JdbcTemplate(dataSource)
 
     override fun add(item: Cart) {
