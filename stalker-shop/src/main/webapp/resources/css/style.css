@@ -74,6 +74,10 @@ body {
     height: 99px;
     width: 99px;
 }
+.user-avatar {
+    height: 300px;
+    width: min-content;
+}
 #form {
     display: block;
 }
