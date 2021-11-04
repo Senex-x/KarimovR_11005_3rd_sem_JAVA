@@ -24,20 +24,13 @@ public class MainItemService implements ItemService {
         itemsRepository.save(newItem.toItem());
     }
 
-    @NotNull
     @Override
     public ItemDto get(
             @NotNull String name
     ) {
-        Optional<Item> itemOptional = itemsRepository.findByPrimaryKey(name);
-
-        if (itemOptional.isPresent()) {
-            return itemOptional.get().toItemDto();
-        }
-
-        throw new ItemNotFoundException(
-                "Item with name '" + name + "' not exists"
-        );
+        Optional<Item> itemOptional =
+                itemsRepository.findByPrimaryKey(name);
+        return itemOptional.map(Item::toItemDto).orElse(null);
     }
 
     @NotNull

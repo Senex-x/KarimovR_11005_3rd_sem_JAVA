@@ -12,11 +12,13 @@ import javax.sql.DataSource
 private const val SQL_INSERT =
     "insert into items(name, cost, description, image_name) values (?, ?, ?, ?)"
 private const val SQL_UPDATE =
-    "update items set name = ?, cost = ?, description = ?, image_name = ? where name = ?"
+    "update items set cost = ?, description = ?, image_name = ? where name = ?"
 private const val SQL_SELECT_BY_EMAIL =
     "select * from items where name = ?"
 private const val SQL_SELECT_ALL =
     "select * from items"
+private const val SQL_DELETE_ALL_CARTS =
+    "delete from carts" // Maybe replace this with "truncate carts"
 
 private val itemRowMapper = RowMapper { resultSet: ResultSet, _ ->
     resultSet.run {
@@ -68,7 +70,14 @@ class ItemsRepositoryMain(
         )
 
     override fun update(primaryKey: String, item: Item) {
-        TODO("Not yet implemented")
+        jdbcTemplate.update {
+            it.prepareStatement(SQL_UPDATE).apply {
+                setInt(1, item.cost)
+                setString(2, item.description)
+                setString(3, item.imageName)
+                setString(4, item.name)
+            }
+        }
     }
 
     override fun delete(primaryKey: String) {
