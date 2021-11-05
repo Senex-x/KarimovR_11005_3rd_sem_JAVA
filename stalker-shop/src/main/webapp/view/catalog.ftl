@@ -12,7 +12,7 @@
 
 <!-- Debug-only div block -->
 <div>
-    <button class="button-option" id="button-add-to-cart">Add item to cart</button>
+    <button class="button-option button-add-to-cart" id="Debug name">Add item to cart</button>
     <button class="button-option" onclick="window.location.href='cart'">Go to cart</button>
 </div>
 
