@@ -4,48 +4,7 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <link rel="stylesheet" href="../../resources/css/style_profile_test.css">
-    <style>
-        .wrapper {
-            margin: 20px 14%;
-            padding: 20px;
-        }
-
-        .user-section {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 40px;
-            background: #0e2436;
-        }
-
-        .user-section-info {
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .user-section-info > p {
-            margin: 0;
-        }
-
-        .user-section-name {
-            font-size: 28px;
-            padding-bottom: 20px;
-            color: white;
-        }
-
-        .user-section-email {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.71);
-        }
-
-        .user-section-avatar {
-            margin-right: 40px;
-            height: 300px;
-            width: 300px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 </head>
 <body>
 
@@ -57,8 +16,18 @@
             <img class="user-section-avatar" alt="Default image" src="/resources/images/profile/image_default.png"/>
         </#if>
         <div class="user-section-info">
-            <p class="user-section-name">${user.name}</p>
-            <p class="user-section-email">${user.email}</p>
+            <p class="user-section-info-name">${user.name}</p>
+            <p class="user-section-info-email">${user.email}</p>
+        </div>
+        <div class="user-section-actions">
+            <button class="user-section-actions-add-image" onclick="window.location.href='upload-image'">
+                Add image
+                <i class="material-icons-outlined">photo_camera</i>
+            </button>
+            <button class="user-section-actions-catalog" onclick="window.location.href='catalog'">
+                Catalogue
+                <i class="material-icons-outlined">subject</i>
+            </button>
         </div>
     </section>
 </div>
