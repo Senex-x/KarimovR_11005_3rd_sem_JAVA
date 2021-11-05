@@ -12,12 +12,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class SignUpServiceMain implements SignUpService {
+public class MainSignUpService implements SignUpService {
     private final UsersRepository usersRepository;
     private final PasswordService passwordService;
     private final ValidationService validationService;
 
-    public SignUpServiceMain(
+    public MainSignUpService(
             UsersRepository usersRepository,
             PasswordService passwordService,
             ValidationService validationService

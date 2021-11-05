@@ -10,29 +10,27 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Optional;
 
-public class ItemServiceMain implements ItemService {
+public class MainItemService implements ItemService {
     private final ItemsRepository itemsRepository;
 
-    public ItemServiceMain(
+    public MainItemService(
             ItemsRepository itemsRepository
     ) {
         this.itemsRepository = itemsRepository;
     }
 
-    @NotNull
+    @Override
+    public void add(@NotNull ItemDto newItem) {
+        itemsRepository.save(newItem.toItem());
+    }
+
     @Override
     public ItemDto get(
             @NotNull String name
     ) {
-        Optional<Item> itemOptional = itemsRepository.findByPrimaryKey(name);
-
-        if (itemOptional.isPresent()) {
-            return itemOptional.get().toItemDto();
-        }
-
-        throw new ItemNotFoundException(
-                "Item with name '" + name + "' not exists"
-        );
+        Optional<Item> itemOptional =
+                itemsRepository.findByPrimaryKey(name);
+        return itemOptional.map(Item::toItemDto).orElse(null);
     }
 
     @NotNull

@@ -2,7 +2,7 @@ package com.itis.stalkershop.repositories.implementations
 
 import com.itis.stalkershop.models.Image
 import com.itis.stalkershop.models.ImageDto
-import com.itis.stalkershop.repositories.interfaces.FilesRepository
+import com.itis.stalkershop.repositories.interfaces.ImageRepository
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
@@ -20,8 +20,8 @@ private const val SQL_SELECT_BY_ID =
     "select * from files where id = ?"
 
 private val imageRowMapper =
-    RowMapper { row: ResultSet, _ ->
-        row.run {
+    RowMapper { resultSet: ResultSet, _ ->
+        resultSet.run {
             Image(
                 getLong("id"),
                 getString("storage_name"),
@@ -32,7 +32,7 @@ private val imageRowMapper =
         }
     }
 
-class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
+class MainImageRepository(dataSource: DataSource) : ImageRepository {
     private val jdbcTemplate: JdbcTemplate = JdbcTemplate(dataSource)
 
     // TODO: handle save or update cases
@@ -68,7 +68,6 @@ class FilesRepositoryMain(dataSource: DataSource) : FilesRepository {
     override fun update(primaryKey: Long, item: ImageDto) {
         TODO("Not yet implemented")
     }
-
 
     override fun findByPrimaryKey(primaryKey: Long): Optional<Image> {
         return try {

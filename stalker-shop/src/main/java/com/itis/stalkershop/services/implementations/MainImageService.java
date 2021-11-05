@@ -2,7 +2,7 @@ package com.itis.stalkershop.services.implementations;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.models.ImageDto;
-import com.itis.stalkershop.repositories.interfaces.FilesRepository;
+import com.itis.stalkershop.repositories.interfaces.ImageRepository;
 import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 import org.jetbrains.annotations.NotNull;
@@ -16,16 +16,16 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ImageServiceMain implements ImageService {
-    private static final String PATH_DEFAULT =
-            "D:\\Projects\\Java\\KarimovR_11005_3rd_sem_JAVA\\stalker-shop\\data\\images\\";
+public class MainImageService implements ImageService {
+    private final String IMAGE_STORAGE_PATH;
+    private final ImageRepository imageRepository;
 
-    private final FilesRepository filesRepository;
-
-    public ImageServiceMain(
-            FilesRepository filesRepository
+    public MainImageService(
+            String imageStoragePath,
+            ImageRepository imageRepository
     ) {
-        this.filesRepository = filesRepository;
+        this.imageRepository = imageRepository;
+        IMAGE_STORAGE_PATH = imageStoragePath;
     }
 
     @NotNull
@@ -47,12 +47,12 @@ public class ImageServiceMain implements ImageService {
         try {
             Files.copy(
                     inputStream,
-                    Paths.get(PATH_DEFAULT +
+                    Paths.get(IMAGE_STORAGE_PATH +
                             fileInfo.getStorageName() + "." +
                             fileInfo.getType().split("/")[1]
                     )
             );
-            f = filesRepository.save(fileInfo);
+            f = imageRepository.save(fileInfo);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
@@ -66,12 +66,12 @@ public class ImageServiceMain implements ImageService {
             long fileId,
             @NotNull OutputStream outputStream
     ) {
-        Optional<Image> optionalFileInfo = filesRepository.findByPrimaryKey(fileId);
+        Optional<Image> optionalFileInfo = imageRepository.findByPrimaryKey(fileId);
         Image fileInfo = optionalFileInfo.orElseThrow(
                 () -> new NotFoundException("File not found")
         );
 
-        File file = new File(PATH_DEFAULT +
+        File file = new File(IMAGE_STORAGE_PATH +
                 fileInfo.getStorageName() + "." +
                 fileInfo.getType().split("/")[1]
         );
@@ -87,7 +87,7 @@ public class ImageServiceMain implements ImageService {
     @NotNull
     @Override
     public Image getFileInfo(long fileId) {
-        return filesRepository.findByPrimaryKey(fileId).orElseThrow(
+        return imageRepository.findByPrimaryKey(fileId).orElseThrow(
                 () -> new NotFoundException("File not found")
         );
     }

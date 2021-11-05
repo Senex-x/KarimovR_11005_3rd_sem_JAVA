@@ -16,7 +16,7 @@ import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
 
-public class UsersRepositoryMain implements UsersRepository {
+public class MainUsersRepository implements UsersRepository {
     private static final String SQL_INSERT =
             "insert into users(email, name, password_hash, avatar_id) values (?, ?, ?, ?)";
     private static final String SQL_UPDATE =
@@ -26,7 +26,7 @@ public class UsersRepositoryMain implements UsersRepository {
     private static final String SQL_SELECT_ALL =
             "select * from users";
 
-    private final RowMapper<User> rowMapper = (row, rowNumber) ->
+    private final RowMapper<User> userRowMapper = (row, rowNumber) ->
             new User(
                     row.getString("email"),
                     row.getString("name"),
@@ -36,7 +36,7 @@ public class UsersRepositoryMain implements UsersRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UsersRepositoryMain(
+    public MainUsersRepository(
             DataSource dataSource
     ) {
         jdbcTemplate = new JdbcTemplate(dataSource);
@@ -49,7 +49,7 @@ public class UsersRepositoryMain implements UsersRepository {
             return Optional.ofNullable(
                     jdbcTemplate.queryForObject(
                             SQL_SELECT_BY_EMAIL,
-                            rowMapper,
+                            userRowMapper,
                             email
                     ));
         } catch (EmptyResultDataAccessException e) {
@@ -64,7 +64,7 @@ public class UsersRepositoryMain implements UsersRepository {
             return Optional.ofNullable(
                     jdbcTemplate.queryForObject(
                             SQL_SELECT_BY_EMAIL,
-                            rowMapper,
+                            userRowMapper,
                             primaryKey
                     ));
         } catch (EmptyResultDataAccessException e) {
@@ -75,7 +75,7 @@ public class UsersRepositoryMain implements UsersRepository {
     @NotNull
     @Override
     public List<User> findAll() {
-        return jdbcTemplate.query(SQL_SELECT_ALL, rowMapper);
+        return jdbcTemplate.query(SQL_SELECT_ALL, userRowMapper);
     }
 
     // TODO: Handle save or update
@@ -131,8 +131,8 @@ public class UsersRepositoryMain implements UsersRepository {
         );
     }
 
-    // TODO: Implement
     @Override
     public void delete(String primaryKey) {
+        // TODO: Not yet implemented
     }
 }

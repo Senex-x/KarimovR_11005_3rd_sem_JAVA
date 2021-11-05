@@ -4,7 +4,7 @@ import com.itis.stalkershop.services.interfaces.PasswordService
 import java.math.BigInteger
 import java.security.MessageDigest
 
-class PasswordServiceMain : PasswordService {
+class MainPasswordService : PasswordService {
     override fun matches(
         password: String,
         passwordHash: String

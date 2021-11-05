@@ -5,11 +5,7 @@ import com.itis.stalkershop.repositories.interfaces.CartRepository
 import org.springframework.dao.DataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
-import org.springframework.jdbc.support.GeneratedKeyHolder
-import java.sql.Connection
 import java.sql.ResultSet
-import java.sql.Types
-import java.util.*
 import javax.sql.DataSource
 
 private const val SQL_INSERT =
@@ -22,14 +18,16 @@ private const val SQL_UPDATE =
     "update carts set item_names_list_json = ? where user_email = ?"
 
 private val cartRowMapper =
-    RowMapper { row: ResultSet, _ ->
+    RowMapper { resultSet: ResultSet, _ ->
         Cart(
-            row.getString("user_email"),
-            row.getString("item_names_list_json"),
+            resultSet.getString("user_email"),
+            resultSet.getString("item_names_list_json"),
         )
     }
 
-class CartRepositoryMain(dataSource: DataSource) : CartRepository {
+// It was a mistake to store JSON lists in the database.
+// Now it is unnecessary difficult to modify them.
+class MainCartRepository(dataSource: DataSource) : CartRepository {
     private val jdbcTemplate: JdbcTemplate = JdbcTemplate(dataSource)
 
     override fun add(item: Cart) {
@@ -52,13 +50,6 @@ class CartRepositoryMain(dataSource: DataSource) : CartRepository {
             null
         }
 
-    override fun delete(primaryKey: String) {
-        jdbcTemplate.update(
-            SQL_DELETE,
-            primaryKey
-        )
-    }
-
     override fun update(item: Cart) {
         jdbcTemplate.update {
             it.prepareStatement(SQL_UPDATE).apply {
@@ -66,6 +57,13 @@ class CartRepositoryMain(dataSource: DataSource) : CartRepository {
                 setString(2, item.userEmail)
             }
         }
+    }
+
+    override fun delete(primaryKey: String) {
+        jdbcTemplate.update(
+            SQL_DELETE,
+            primaryKey
+        )
     }
 
     override fun getAll(): List<Cart> {

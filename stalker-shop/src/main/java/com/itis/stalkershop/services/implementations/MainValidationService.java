@@ -8,10 +8,10 @@ import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 
 import java.util.Optional;
 
-public class ValidationServiceMain implements ValidationService {
+public class MainValidationService implements ValidationService {
     private final UsersRepository usersRepository;
 
-    public ValidationServiceMain(UsersRepository usersRepository) {
+    public MainValidationService(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 

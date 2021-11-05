@@ -1,7 +1,12 @@
 package com.itis.stalkershop.utils
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.itis.stalkershop.models.UserDto
+import java.io.IOException
+import java.util.*
 import javax.servlet.ServletContext
+import javax.servlet.ServletContextListener
 import javax.servlet.http.HttpServletRequest
 
 // For use from Kotlin
@@ -34,6 +39,37 @@ fun <T> HttpServletRequest.getSessionAttribute(name: String): T? =
 
 fun HttpServletRequest.getSessionUser(): UserDto =
     session.getAttribute(getClass<UserDto>().simpleName) as UserDto
+
+private val gson = Gson()
+
+typealias JsonString = String
+
+@JvmName("jsonToList")
+fun <T> JsonString.toListOf(): List<T> =
+    gson.fromJson(
+        this,
+        object : TypeToken<List<T>>() {}.type
+    )
+
+fun <T> List<T>.toJson(): String =
+    gson.toJson(this)
+
+fun ServletContextListener.loadPropertiesFrom(fileName: String) = try {
+    Properties().apply {
+        load(
+            this@loadPropertiesFrom.javaClass.classLoader
+                .getResourceAsStream(fileName)
+        )
+    }
+} catch (exception: IOException) {
+    throw RuntimeException("$fileName file is missing", exception)
+}
+
+fun <T> Properties.getTyped(propertyName: String) =
+    get(propertyName) as T
+
+
+
 
 
 
