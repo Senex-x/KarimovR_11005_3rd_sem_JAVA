@@ -1,0 +1,59 @@
+html {
+    margin: 0;
+    background: #0e2436;
+}
+
+body {
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 14%;
+}
+
+.item p {
+    color: white;
+}
+
+.item > p, button {
+    margin: 20px 0 0 0;
+}
+
+.item {
+    margin: 20px;
+    padding: 20px;
+    /*
+    * These three can be simplified
+    * and turned into 'flex: 1'
+    */
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 400px;
+    max-width: 600px;
+    outline: solid white 1px;
+}
+
+.item:hover {
+    outline: solid #cb6b33 4px;
+}
+
+.item-header {
+    display: flex;
+}
+
+.item-header > div {
+    margin: 0 20px 0 0;
+}
+
+.item-image {
+    width: 120px;
+    height: 120px;
+    background: #cb6b33;
+}
+
+.item-name {
+    font-weight: bold;
+}
