@@ -3,6 +3,7 @@ html {
     background: #0e2436;
 }
 
+
 body {
     margin: 0;
 }
@@ -14,6 +15,7 @@ body {
 }
 
 .item p {
+    font-family: sans-serif;
     color: white;
 }
 

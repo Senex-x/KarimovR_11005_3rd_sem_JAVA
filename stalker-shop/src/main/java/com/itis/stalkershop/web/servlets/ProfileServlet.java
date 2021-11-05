@@ -23,7 +23,7 @@ public class ProfileServlet extends HttpServlet {
 
         LogKt.log(this, "Received user: " + userDto);
         request.setAttribute("user", userDto);
-        request.getRequestDispatcher("/profile.ftl")
+        request.getRequestDispatcher("/test/profile-test.ftl")
                 .forward(request, response);
     }
 }

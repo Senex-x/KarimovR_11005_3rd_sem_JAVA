@@ -74,9 +74,11 @@ body {
     height: 99px;
     width: 99px;
 }
-.user-avatar {
+.user-section-avatar {
     height: 300px;
-    width: min-content;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 #form {
     display: block;
