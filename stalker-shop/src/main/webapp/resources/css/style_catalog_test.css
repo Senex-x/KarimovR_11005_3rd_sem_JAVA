@@ -3,7 +3,6 @@ html {
     background: #0e2436;
 }
 
-
 body {
     margin: 0;
 }
@@ -14,48 +13,26 @@ body {
     margin: 20px 14%;
 }
 
-.item p {
-    font-family: sans-serif;
-    color: white;
-}
-
-.item > p, button {
-    margin: 20px 0 0 0;
-}
-
-.item {
-    margin: 20px;
-    padding: 20px;
-    /*
-    * These three can be simplified
-    * and turned into 'flex: 1'
-    */
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-    min-width: 400px;
-    max-width: 600px;
-    outline: solid white 1px;
-}
-
 .item:hover {
     outline: solid #cb6b33 4px;
 }
 
-.item-header {
-    display: flex;
-}
-
-.item-header > div {
+.item-header > * {
     margin: 0 20px 0 0;
 }
 
 .item-image {
+    object-fit: contain;
     width: 120px;
     height: 120px;
-    background: #cb6b33;
+    /*background: #cb6b33;*/
 }
 
 .item-name {
     font-weight: bold;
+}
+
+.material-icons-outlined {
+    position: relative;
+    top: 6px;
 }

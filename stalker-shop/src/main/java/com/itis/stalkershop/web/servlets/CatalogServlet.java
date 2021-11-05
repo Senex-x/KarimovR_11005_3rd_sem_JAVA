@@ -47,8 +47,9 @@ public class CatalogServlet extends HttpServlet {
             );
         }
 
+        request.setAttribute("items", items);
         request.setCharacterEncoding("UTF-8");
-        request.getRequestDispatcher("/catalog.ftl")
+        request.getRequestDispatcher("/test/catalog-test-2.ftl")
                 .forward(request, response);
     }
 }
