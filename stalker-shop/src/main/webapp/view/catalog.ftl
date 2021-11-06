@@ -15,7 +15,7 @@
         <img class="header-icon" src="/resources/images/design/logo_stalker.png" alt="Site logo"/>
         <p class="header-name">Stalker shop</p>
         <button class="header-button-cart" onclick="window.location.href='cart'">
-            Go to cart
+            Cart
             <i class="material-icons-outlined">shopping_cart</i>
         </button>
         <button class="header-button-profile" onclick="window.location.href='profile'">

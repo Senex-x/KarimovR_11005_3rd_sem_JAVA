@@ -5,6 +5,7 @@
 .wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .item {
@@ -21,12 +22,12 @@
     max-width: 600px;
     margin: 20px;
     padding: 20px;
-    outline: solid white 1px;
+    outline:  4px solid var(--color-background-dark);
     background: var(--color-background);
 }
 
 .item:hover {
-    outline: solid var(--color-accent) 4px;
+    outline: 4px solid var(--color-accent);
 }
 
 .item > * {
