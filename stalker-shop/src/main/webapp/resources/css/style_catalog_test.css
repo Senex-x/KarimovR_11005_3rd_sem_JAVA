@@ -1,0 +1,101 @@
+html {
+    margin: 100px 0 0 0;
+    background: #071218 url(../images/design/bg.png) top left repeat;
+}
+
+
+body {
+    margin: 0;
+    padding-top: 200px;
+    padding-bottom: 50px;
+    font-family: Tahoma, Arial, sans-serif;
+    background: url(../images/design/bg_top.jpg) center 0 no-repeat;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 14%;
+}
+
+.item:hover {
+    outline: solid #dc9d31 4px;
+    /*outline: solid #cb6b33 4px;*/
+}
+
+.item-header > * {
+    margin: 0 20px 0 0;
+}
+
+.item-image {
+    object-fit: contain;
+    width: 120px;
+    height: 120px;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.material-icons-outlined {
+    position: relative;
+    top: 6px;
+}
+
+.item-button-add {
+    vertical-align: center;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #dc9d31;
+    /*border-color: #cb6b33;*/
+    color: white;
+    background-color: #0e2436;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.item-button-add:hover, .item-button:hover {
+    background-color: #a4781b;
+    /*background-color: #a84e00;*/
+}
+
+.item-button-add {
+    margin: 20px 0 0 0;
+    flex-grow: 0;
+    align-self: end;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    /*
+    * These three can be simplified
+    * and turned into 'flex: 1'
+    */
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background: #0e2436;
+    min-width: 400px;
+    max-width: 600px;
+    outline: solid white 1px;
+}
+
+.item-header {
+    flex-grow: 0;
+    display: flex;
+}
+
+.item p {
+    font-family: sans-serif;
+    color: white;
+}
+
+.item-description {
+    margin: 20px 0 0 0;
+    flex-grow: 1;
+}

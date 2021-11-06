@@ -14,7 +14,7 @@
 <button class="button-option" id="button-delete-cart">Очистить корзину</button>
 <div id="cart-list">
     <#list items as item>
-        <div>
+        <div style="font-size: 20px; margin-top: 10px">
             <!-- TODO: Do item handling here -->
             //
             ${item.name}

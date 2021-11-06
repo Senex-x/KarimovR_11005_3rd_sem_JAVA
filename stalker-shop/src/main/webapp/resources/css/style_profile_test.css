@@ -1,0 +1,88 @@
+html {
+    margin: 0;
+    background: #071218 url(../images/design/bg.png) top left repeat;
+}
+
+body {
+    margin: 0;
+    padding-top: 200px;
+    padding-bottom: 50px;
+    font-family: Tahoma, Arial, sans-serif;
+    background: url(../images/design/bg_top.jpg) center 0 no-repeat;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+.wrapper {
+    margin: 20px 14%;
+}
+
+.user-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    background: #0e2436;
+}
+
+.user-section-info {
+    flex-grow: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-section-info > p {
+    margin-top: 0;
+    margin-right: 40px;
+    margin-left: 0;
+}
+
+.user-section-info-name {
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: white;
+}
+
+.user-section-info-email {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.71);
+}
+
+.user-section-actions {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-section-actions > button {
+    vertical-align: center;
+    cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #dc9d31;
+    color: white;
+    background-color: #0e2436;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.user-section-actions > button:hover {
+    background-color: #a4781b;
+}
+
+.user-section-avatar {
+    flex-grow: 0;
+    margin: 0 40px 0 0;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-section-actions > button > .material-icons-outlined {
+    position: relative;
+    top: 6px;
+}

@@ -43,12 +43,7 @@ public class CartServlet extends HttpServlet {
                 getSessionUser(request)
         );
 
-        if(cartDto == null) {
-            request.setAttribute("items", List.of());
-        } else {
-            request.setAttribute("items", cartDto.getItemList());
-        }
-
+        request.setAttribute("items", cartDto.getItemList());
         request.getRequestDispatcher("/cart.ftl").forward(request, response);
     }
 }
