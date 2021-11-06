@@ -22,8 +22,12 @@ p {
 .user-section {
     display: flex;
     flex-wrap: wrap;
-    padding: 40px;
     background: #0e2436;
+    padding: 20px;
+}
+
+.user-section > * {
+    margin: 20px;
 }
 
 .user-section-info {
@@ -73,9 +77,14 @@ p {
     background-color: #a4781b;
 }
 
+.user-section-actions > button:active {
+    background-color: #e8a626;
+    /*background-color: #a84e00;*/
+}
+
 .user-section-avatar {
     flex-grow: 0;
-    margin: 0 40px 0 0;
+
     height: 300px;
     width: 300px;
     object-fit: cover;

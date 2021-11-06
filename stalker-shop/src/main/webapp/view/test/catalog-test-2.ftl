@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Catalog</title>
     <link rel="stylesheet" href="../../resources/css/style_catalog_test.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/catalog-test.js" type="text/javascript"></script>
@@ -48,11 +49,11 @@
 <body>
 <header>
     <div class="header-wrapper">
-        <button class="item-button header-button-cart" onclick="window.location.href='cart'">
+        <button class="header-button-cart" onclick="window.location.href='cart'">
             Go to cart
             <i class="material-icons-outlined">shopping_cart</i>
         </button>
-        <button class="item-button header-button-cart" onclick="window.location.href='profile'">
+        <button class="header-button-cart" onclick="window.location.href='profile'">
             Profile
             <i class="material-icons-outlined">account_circle</i>
         </button>

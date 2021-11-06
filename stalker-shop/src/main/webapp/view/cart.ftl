@@ -16,7 +16,6 @@
     <#list items as item>
         <div style="font-size: 20px; margin-top: 10px">
             <!-- TODO: Do item handling here -->
-            //
             ${item.name}
         </div>
     </#list>
