@@ -1,0 +1,64 @@
+.header-button-cart, .header-button-profile{
+    margin-left: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    /*
+    * These three can be simplified
+    * and turned into 'flex: 1'
+    */
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 400px;
+    max-width: 600px;
+    margin: 20px;
+    padding: 20px;
+    outline: solid white 1px;
+    background: var(--color-background);
+}
+
+.item:hover {
+    outline: solid var(--color-accent) 4px;
+}
+
+.item > * {
+    margin: 20px;
+}
+
+.item-header {
+    flex-grow: 0;
+    display: flex;
+}
+
+.item-header-image {
+    object-fit: contain;
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+}
+
+.item-header-info > * {
+    margin-top: 10px;
+}
+
+.item-header-info-name {
+    font-weight: bold;
+    font-size: var(--size-font-bigger);
+}
+
+.item-description {
+    flex-grow: 1;
+}
+
+.item-button-add {
+    flex-grow: 0;
+    align-self: end;
+}

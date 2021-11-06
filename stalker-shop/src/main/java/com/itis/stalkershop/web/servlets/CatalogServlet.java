@@ -39,7 +39,7 @@ public class CatalogServlet extends HttpServlet {
         List<ItemDto> items = itemService.getAll();
         request.setAttribute("items", items);
         request.setCharacterEncoding("UTF-8");
-        request.getRequestDispatcher("/test/catalog-test-2.ftl")
+        request.getRequestDispatcher("/catalog.ftl")
                 .forward(request, response);
     }
 }
