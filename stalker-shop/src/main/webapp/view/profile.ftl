@@ -3,22 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/base.css">
+    <link rel="stylesheet" href="../resources/css/profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 </head>
 <body>
-
-<#include "top.ftl">
-
-<div class="wrapper">
-    <div class="container">
-        <button class="add-photo-button" onclick="window.location.href='upload-image'">Добавить фото</button>
-        <button class="catalog-button" onclick="window.location.href='catalog'">Каталог</button>
-        <#if user.avatarId != 0>
-            <img class="user-avatar" alt="User image" src="/files/${user.avatarId}"/>
-        <#else>
-            <img class="user-avatar" alt="Default image" src="/resources/images/profile/image_default.png"/>
-        </#if>
+<header>
+    <div class="header-wrapper">
+        <img class="header-icon" src="/resources/images/design/logo_stalker.png" alt="Site logo"/>
+        <p class="header-name">Stalker shop</p>
     </div>
+</header>
+<div class="wrapper">
+    <section class="user-section">
+        <#if user.avatarId != 0>
+            <img class="user-section-avatar" src="/files/${user.avatarId}" alt="User image" onclick="window.location.href='upload-image'"/>
+        <#else>
+            <img class="user-section-avatar" src="/resources/images/profile/image_default.png" alt="Default image" onclick="window.location.href='upload-image'"/>
+        </#if>
+        <div class="user-section-info">
+            <p class="user-section-info-name">${user.name}</p>
+            <p class="user-section-info-email">${user.email}</p>
+        </div>
+        <div class="user-section-actions">
+            <button class="user-section-actions-add-image" onclick="window.location.href='upload-image'">
+                Add image
+                <i class="material-icons-outlined">photo_camera</i>
+            </button>
+            <button class="item-button header-button-cart" onclick="window.location.href='cart'">
+                Go to cart
+                <i class="material-icons-outlined">shopping_cart</i>
+            </button>
+            <button class="user-section-actions-catalog" onclick="window.location.href='catalog'">
+                Catalogue
+                <i class="material-icons-outlined">subject</i>
+            </button>
+        </div>
+    </section>
 </div>
 </body>
 </html>

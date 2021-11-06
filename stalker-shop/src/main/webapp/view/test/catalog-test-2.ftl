@@ -8,43 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/catalog-test.js" type="text/javascript"></script>
-    <style>
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: end;
-            width: 100%;
-            height: 100px;
-            z-index: 10;
-            position: fixed;
-            margin-top: 0;
-            padding-top: 0;
-            top: 0;
-            background-color: #08151e;
-        }
-
-        .header-button-cart {
-            cursor: pointer;
-            border-width: 2px;
-            border-style: solid;
-            border-color: #dc9d31;
-            /*border-color: #cb6b33;*/
-            color: white;
-            background-color: #0e2436;
-            font-size: 20px;
-            padding: 10px;
-        }
-
-        .header-wrapper {
-            display: flex;
-            justify-content: end;
-            margin: 20px 15% 20px 15%;
-        }
-
-        .header-wrapper > * {
-            margin-left: 20px;
-        }
-    </style>
 </head>
 <body>
 <header>

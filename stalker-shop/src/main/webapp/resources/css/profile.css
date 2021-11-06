@@ -1,24 +1,3 @@
-html {
-    margin: 0;
-    background: #071218 url(../images/design/bg.png) top left repeat;
-}
-
-body {
-    margin: 0;
-    padding-top: 200px;
-    padding-bottom: 50px;
-    font-family: Tahoma, Arial, sans-serif;
-    background: url(../images/design/bg_top.jpg) center 0 no-repeat;
-}
-
-p {
-    font-family: sans-serif;
-}
-
-.wrapper {
-    margin: 20px 14%;
-}
-
 .user-section {
     display: flex;
     flex-wrap: wrap;
@@ -61,34 +40,20 @@ p {
 }
 
 .user-section-actions > button {
-    vertical-align: center;
-    cursor: pointer;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #dc9d31;
-    color: white;
-    background-color: #0e2436;
-    font-size: 20px;
-    padding: 10px;
     margin-bottom: 20px;
-}
-
-.user-section-actions > button:hover {
-    background-color: #a4781b;
-}
-
-.user-section-actions > button:active {
-    background-color: #e8a626;
-    /*background-color: #a84e00;*/
 }
 
 .user-section-avatar {
     flex-grow: 0;
-
     height: 300px;
     width: 300px;
     object-fit: cover;
     border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.user-section-avatar:hover {
+    border: 3px solid var(--color-accent);
 }
 
 .user-section-actions > button > .material-icons-outlined {

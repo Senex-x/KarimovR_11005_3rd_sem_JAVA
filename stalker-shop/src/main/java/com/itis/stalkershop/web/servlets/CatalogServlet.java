@@ -17,7 +17,7 @@ import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 
 @WebServlet("/catalog")
 public class CatalogServlet extends HttpServlet {
-    private List<ItemDto> items;
+    private ItemService itemService;
 
     @Override
     public void init(
@@ -25,12 +25,10 @@ public class CatalogServlet extends HttpServlet {
     ) throws ServletException {
         super.init(config);
 
-        ItemService itemService = getAttribute(
+        itemService = getAttribute(
                 ItemService.class,
                 config.getServletContext()
         );
-
-        items = itemService.getAll();
     }
 
     @Override
@@ -38,15 +36,7 @@ public class CatalogServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        for (ItemDto item : items) {
-            request.setAttribute(
-                    item.getName()
-                            .toLowerCase(Locale.ROOT)
-                            .replaceAll("[-' ]", ""),
-                    item
-            );
-        }
-
+        List<ItemDto> items = itemService.getAll();
         request.setAttribute("items", items);
         request.setCharacterEncoding("UTF-8");
         request.getRequestDispatcher("/test/catalog-test-2.ftl")
