@@ -10,27 +10,53 @@
     <style>
         header {
             display: flex;
-            flex-direction: row-reverse;
-            align-items: end;
+            align-items: center;
+            justify-content: end;
             width: 100%;
             height: 100px;
             z-index: 10;
             position: fixed;
+            margin-top: 0;
+            padding-top: 0;
             top: 0;
             background-color: #08151e;
         }
 
         .header-button-cart {
-            margin: 20px 15%  20px 0;
+            cursor: pointer;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #dc9d31;
+            /*border-color: #cb6b33;*/
+            color: white;
+            background-color: #0e2436;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: end;
+            margin: 20px 15% 20px 15%;
+        }
+
+        .header-wrapper > * {
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
 <header>
- <button class="item-button header-button-cart" onclick="window.location.href='cart'">
-     Go to cart
-     <i class="material-icons-outlined">shopping_cart</i>
- </button>
+    <div class="header-wrapper">
+        <button class="item-button header-button-cart" onclick="window.location.href='cart'">
+            Go to cart
+            <i class="material-icons-outlined">shopping_cart</i>
+        </button>
+        <button class="item-button header-button-cart" onclick="window.location.href='profile'">
+            Profile
+            <i class="material-icons-outlined">account_circle</i>
+        </button>
+    </div>
 </header>
 <section class="wrapper">
     <#list items as item>

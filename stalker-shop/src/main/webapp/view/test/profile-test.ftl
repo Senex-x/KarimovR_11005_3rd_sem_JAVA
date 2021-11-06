@@ -28,6 +28,10 @@
                 Catalogue
                 <i class="material-icons-outlined">subject</i>
             </button>
+            <button class="item-button header-button-cart" onclick="window.location.href='cart'">
+                Go to cart
+                <i class="material-icons-outlined">shopping_cart</i>
+            </button>
         </div>
     </section>
 </div>

@@ -42,7 +42,7 @@ body {
     top: 6px;
 }
 
-.item-button-add, .item-button {
+.item-button-add {
     vertical-align: center;
     cursor: pointer;
     border-width: 2px;
