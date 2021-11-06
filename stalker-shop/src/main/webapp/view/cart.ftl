@@ -8,11 +8,15 @@
     <script src="/resources/js/cart.js" type="text/javascript"></script>
 </head>
 <body>
+
+<#include "top.ftl">
+
 <button class="button-option" id="button-delete-cart">Очистить корзину</button>
 <div id="cart-list">
     <#list items as item>
         <div>
             <!-- TODO: Do item handling here -->
+            //
             ${item.name}
         </div>
     </#list>

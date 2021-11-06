@@ -16,6 +16,7 @@ body {
     font-family: Tahoma, Arial, sans-serif;
     font-size: 12px;
     background: url(../images/design/bg_top.jpg) center 0% no-repeat;
+    cursor: url("../images/design/arrow.cur"), default;
 }
 .wrapper {
     width: 80%;
@@ -41,6 +42,7 @@ body {
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 .width-item{
     width: 50px;
@@ -59,6 +61,7 @@ body {
     height: 99px;
     width: 372px;
     /*onclick="window.location.href='sign-in'"*/
+    cursor: url("../images/design/arrowWait.ani"), auto;
 
 }
 .sign-up {
@@ -67,12 +70,14 @@ body {
     height: 99px;
     width: 372px;
     /*onclick="window.location.href='sign-up'"*/
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 .shopping-cart {
     background: url(../images/design/content_title1_frame.png) 50% 50% no-repeat;
     background-size: contain;
     height: 99px;
     width: 99px;
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 .user-avatar {
     height: 300px;
@@ -90,6 +95,7 @@ body {
     background-size: contain;
     height: 20px;
     width: 150px;
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 .catalog-button {
     color: #ffbb2f;
@@ -97,6 +103,7 @@ body {
     background-size: contain;
     height: 20px;
     width: 99px;
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 .button-option {
     color: #ffbb2f;
@@ -104,6 +111,7 @@ body {
     background-size: contain;
     height: 20px;
     width: fit-content;
+    cursor: url("../images/design/arrowWait.ani"), auto;
 }
 /*#top1 {*/
 /*    !*display: inline-block;*!*/

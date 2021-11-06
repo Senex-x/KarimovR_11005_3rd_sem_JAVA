@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
-
 <div id="top_img">
 
     <button class="sign-in" onclick="window.location.href='sign-in'">Войти</button>
@@ -14,6 +13,7 @@
     <button class="shopping-cart" onclick="window.location.href='cart'">Корзина</button>
 
 </div>
+<!--<#include "top.ftl">-->
 
 <div class="wrapper">
 
@@ -21,6 +21,16 @@
 
     </div>
 
+
+    <button class="button-option" id="button-delete-cart">Очистить корзину</button>
+    <div id="cart-list">
+        <#list items as item>
+        <div>
+            <!-- TODO: Do item handling here -->
+            ${item.name}
+        </div>
+    </#list>
+</div>
 
 </div>
 </body>
