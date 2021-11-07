@@ -73,7 +73,7 @@ header {
     top: 4px;
 }
 
-p, button {
+p, button, input[type=submit] {
     color: white;
 }
 
@@ -83,7 +83,7 @@ p {
     margin-bottom: 0;
 }
 
-button {
+button, input[type=submit] {
     cursor: pointer;
     border-width: 2px;
     border-style: solid;
@@ -93,12 +93,16 @@ button {
     padding: 10px;
 }
 
-button:hover {
+button:hover, input[type=submit]:hover {
     background-color: var(--color-accent-dark) !important;
 }
 
-button:active {
+button:active, input[type=submit]:active {
     background-color: var(--color-accent-light) !important;
+}
+
+.text-header {
+    font-size: var(--size-font-header);
 }
 
 .text-bigger {

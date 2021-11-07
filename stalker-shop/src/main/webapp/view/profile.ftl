@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 </head>
 <body>
-<header>
-    <div class="header-wrapper">
-        <img class="header-icon" src="/resources/images/design/logo_stalker.png" alt="Site logo"/>
-        <p class="header-name">Stalker shop</p>
-    </div>
-</header>
+<#include "header_base.ftl">
 <div class="wrapper">
     <section class="user-section">
         <#if user.avatarId != 0>
