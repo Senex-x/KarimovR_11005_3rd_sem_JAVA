@@ -7,23 +7,10 @@
     <link rel="stylesheet" href="/resources/css/base.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/resources/js/catalog-test.js" type="text/javascript"></script>
+    <script src="/resources/js/catalog.js" type="text/javascript"></script>
 </head>
 <body>
-<header>
-    <div class="header-wrapper">
-        <img class="header-icon" src="/resources/images/design/logo_stalker.png" alt="Site logo"/>
-        <p class="header-name">Stalker shop</p>
-        <button class="header-button-cart" onclick="window.location.href='cart'">
-            Cart
-            <i class="material-icons-outlined">shopping_cart</i>
-        </button>
-        <button class="header-button-profile" onclick="window.location.href='profile'">
-            Profile
-            <i class="material-icons-outlined">account_circle</i>
-        </button>
-    </div>
-</header>
+<#include "header.ftl">
 <section class="wrapper">
     <#list items as item>
         <div class="item">
@@ -36,7 +23,7 @@
             </div>
             <p class="item-description">${item.description}</p>
             <button class="item-button-add" id="${item.name}">
-                Add to cart
+                Add
                 <i class="material-icons-outlined">add_shopping_cart</i>
             </button>
         </div>
