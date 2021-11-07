@@ -9,6 +9,8 @@
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <script src="/resources/js/cart.js" type="text/javascript"></script>
+    <script src="/resources/js/button_scroll_up.js" type="text/javascript"></script>
+
 </head>
 <body>
 <#include "header.ftl">
