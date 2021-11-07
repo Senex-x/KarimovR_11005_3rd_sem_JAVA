@@ -1,11 +1,9 @@
-const itemName = "Cossacks vodka"
-
 $(document).ready(function () {
-    $(".button-add-to-cart")
-        .click(function (event) {
-            const itemName = event.target.id
-            addToCart(itemName)
-        })
+    $(".item-button-add").click(function (event) {
+        const itemName = event.currentTarget.id
+        console.log("Click button with id  '" + itemName + "'")
+        addToCart(itemName)
+    })
 })
 
 function addToCart(itemName) {
