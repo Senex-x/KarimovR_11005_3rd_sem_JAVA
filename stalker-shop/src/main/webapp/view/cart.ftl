@@ -10,17 +10,9 @@
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <script src="/resources/js/cart.js" type="text/javascript"></script>
     <script src="/resources/js/button_scroll_up.js" type="text/javascript"></script>
-
 </head>
 <body>
 <#include "header.ftl">
-
-<!--
-<button class="button-option" id="button-delete-cart">Очистить
-    <i class="material-icons-outlined">remove_shopping_cart</i>
-</button>
--->
-
 <div class="wrapper">
     <div class="container">
         <div class="container-options">

@@ -38,6 +38,10 @@
                 Catalog
                 <i class="material-icons-outlined">subject</i>
             </button>
+            <button class="actions-sign-out" onclick="window.location.href='sign-out'">
+                Sign out
+                <i class="material-icons-outlined">logout</i>
+            </button>
         </div>
     </section>
 </div>
