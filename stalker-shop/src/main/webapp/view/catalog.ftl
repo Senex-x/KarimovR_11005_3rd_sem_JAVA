@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/catalog.js" type="text/javascript"></script>
+    <script src="/resources/js/button_scroll_up.js" type="text/javascript"></script>
 </head>
 <body>
 <#include "header.ftl">
@@ -29,5 +30,6 @@
         </div>
     </#list>
 </section>
+<#include  "button_scroll_up.ftl">
 </body>
 </html>

@@ -31,11 +31,11 @@
                 <i class="material-icons-outlined">photo_camera</i>
             </button>
             <button class="actions-cart" onclick="window.location.href='cart'">
-                Go to cart
+                Cart
                 <i class="material-icons-outlined">shopping_cart</i>
             </button>
             <button class="actions-catalog" onclick="window.location.href='catalog'">
-                Catalogue
+                Catalog
                 <i class="material-icons-outlined">subject</i>
             </button>
         </div>

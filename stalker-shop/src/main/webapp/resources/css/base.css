@@ -105,3 +105,11 @@ button:active {
     font-weight: bold;
     font-size: var(--size-font-bigger);
 }
+
+#button-scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+}

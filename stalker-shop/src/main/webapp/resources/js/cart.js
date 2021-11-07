@@ -1,10 +1,12 @@
 $(document).ready(function () {
     $(".actions-clear").click(function () {
         deleteCart()
+        clearInfo()
     })
 
     $(".actions-buy").click(function () {
         deleteCart()
+        clearInfo()
     })
 
     $(".item-button-remove").click(function (event) {
@@ -21,6 +23,8 @@ $(document).ready(function () {
     };
 })
 
+// Holy fuck, what did i just done...
+// It would be 100 times easier if i used separate tags for the actual value and the text
 function deleteItemFromCart(itemIndex) {
     // Update database
     const itemNameHtml = document
@@ -112,6 +116,15 @@ function deleteCart() {
             alert("Something went wrong. Please try again")
         }
     });
+}
+
+function clearInfo() {
+    document
+        .getElementsByClassName("info-total")
+        .item(0).innerHTML = "Total: 0 &#8381"
+    document
+        .getElementsByClassName("info-count")
+        .item(0).innerHTML = "0 items"
 }
 
 function onScrollButtonClick() {
