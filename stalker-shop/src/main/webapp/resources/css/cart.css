@@ -19,49 +19,61 @@
     margin: 20px;
 }
 
-.item-header-image {
+.item-image {
     object-fit: contain;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin-right: 20px;
 }
 
-.item-header-info {
+.item-info {
     flex-grow: 1;
 }
 
-.item-header-info > * {
+.item-info > * {
     margin-bottom: 10px;
 }
 
-.container-actions {
+.container-options {
     display: flex;
     margin: 20px;
-    outline: 4px solid var(--color-background-dark);
+    outline: 4px solid var(--color-accent);
     background: var(--color-background);
 }
 
-.container-actions > * {
+.container-options > * {
     margin: 20px;
 }
 
-.actions-info {
+.options-info {
     flex-grow: 1;
 }
 
-.actions-info > p {
+.options-info > p {
     margin-bottom: 10px;
 }
 
-.actions-buttons {
+.options-actions {
     display: flex;
     flex-direction: column;
 }
 
-.actions-buttons > button {
+.options-actions > button {
     margin-bottom: 20px;
 }
 
-.actions-buttons > button:last-child {
+.options-actions > button:last-child {
     margin-bottom: 0;
+}
+
+#button-scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+#button-scroll-to-top:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
 }

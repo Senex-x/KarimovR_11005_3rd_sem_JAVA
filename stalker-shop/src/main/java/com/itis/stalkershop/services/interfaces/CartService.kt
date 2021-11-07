@@ -18,4 +18,9 @@ interface CartService {
 
     fun delete(user: UserDto) =
         delete(user.email)
+
+    fun deleteItem(userEmail: String, itemName: String)
+
+    fun deleteItem(user: UserDto, itemName: String) =
+        deleteItem(user.email, itemName)
 }

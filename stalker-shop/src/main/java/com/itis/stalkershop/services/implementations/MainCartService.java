@@ -8,6 +8,7 @@ import com.itis.stalkershop.repositories.interfaces.CartRepository;
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository;
 import com.itis.stalkershop.services.interfaces.CartService;
 import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.utils.UtilsKt;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -109,5 +110,21 @@ public class MainCartService implements CartService {
             @NotNull String userEmail
     ) {
         cartRepository.delete(userEmail);
+    }
+
+    @Override
+    public void deleteItem(
+            @NotNull String userEmail,
+            @NotNull String itemName
+    ) {
+        Cart cart = cartRepository.get(userEmail);
+
+        List<String> itemNames = jsonToList(cart.getItemNamesJson());
+        itemNames.remove(itemName);
+
+        cartRepository.update(cart.copy(
+                userEmail,
+                UtilsKt.toJson(itemNames)
+        ));
     }
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../resources/css/cart.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <script src="/resources/js/cart.js" type="text/javascript"></script>
 </head>
 <body>
@@ -20,28 +21,28 @@
 
 <div class="wrapper">
     <div class="container">
-        <div class="container-actions">
-            <div class="actions-info">
-                <p class="actions-total text-bigger">Total: 2150 ₽</p>
-                <p class="actions-count">20 items</p>
+        <div class="container-options">
+            <div class="options-info">
+                <p class="info-total text-bigger">Total: 2150 ₽</p>
+                <p class="info-count">20 items</p>
             </div>
-            <div class="actions-buttons">
-                <button>
+            <div class="options-actions">
+                <button class="actions-buy">
                     Buy
                     <i class="material-icons-outlined">attach_money</i></button>
-                <button>
+                <button class="actions-clear">
                     Clear
                     <i class="material-icons-outlined">remove_shopping_cart</i></button>
             </div>
         </div>
         <#list items as item>
             <div class="item">
-                <img class="item-header-image" src="../resources/images/items/${item.imageName}" alt="Item image">
-                <div class="item-header-info">
-                    <p class="item-header-info-name text-bigger">${item.name}</p>
-                    <p class="item-header-info-price">${item.cost} ₽</p>
+                <img class="item-image" src="../resources/images/items/${item.imageName}" alt="Item image">
+                <div class="item-info">
+                    <p class="info-name text-bigger">${item.name}</p>
+                    <p class="info-price">${item.cost} ₽</p>
                 </div>
-                <button class="item-button-remove" id="${item.name}">
+                <button class="item-button-remove" id="${item?index}" >
                     Remove
                     <i class="material-icons-outlined">clear</i>
                 </button>
@@ -49,5 +50,9 @@
         </#list>
     </div>
 </div>
+<button id="button-scroll-to-top" onclick="onScrollButtonClick()">
+    Scroll to top
+    <i class="material-icons-outlined">keyboard_arrow_up</i>
+</button>
 </body>
 </html>
