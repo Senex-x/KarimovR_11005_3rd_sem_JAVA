@@ -22,10 +22,61 @@ $(document).ready(function () {
 })
 
 function deleteItemFromCart(itemIndex) {
-    const itemNameHtml = document.getElementsByClassName("info-name").item(itemIndex)
+    // Update database
+    const itemNameHtml = document
+        .getElementsByClassName("info-name")
+        .item(itemIndex)
     const itemName = itemNameHtml.textContent
     $(itemNameHtml.parentElement.parentElement).slideUp()
+    removeCartItem(itemName)
 
+    // Update total cost of the cart
+    const totalCostHtml = document
+        .getElementsByClassName("info-total")
+        .item(0)
+    const totalCost = getCostFromInfo(totalCostHtml.textContent)
+    const itemCost = getCostFromItem(itemNameHtml.nextElementSibling.textContent)
+    totalCostHtml.innerHTML = "Total: " + (totalCost - itemCost) + " &#8381"
+
+    // Update item count of the cart
+    const itemCounterHtml = document
+        .getElementsByClassName("info-count")
+        .item(0)
+    const itemCount = getCountFromInfo(itemCounterHtml.textContent)
+    console.log(itemCount)
+    let pluralSuffix = ""
+    if (itemCount !== 2) pluralSuffix = "s"
+    itemCounterHtml.innerHTML = (itemCount - 1) + " item" + pluralSuffix
+}
+
+function getCostFromItem(costString) {
+    return parseInt(costString.substring(
+        0,
+        costString.length - 2
+    ), 10)
+}
+
+function getCostFromInfo(costString) {
+    let cost = costString.substring(
+        costString.indexOf(':') + 2,
+        costString.length - 2
+    )
+    return parseInt(
+        cost.replaceAll("\u00a0", ''), // nbsp character
+        10
+    )
+}
+
+function getCountFromInfo(countString) {
+    return parseInt(countString
+        .replaceAll(' ', '')
+        .substring(
+            0,
+            countString.indexOf('i')
+        ))
+}
+
+function removeCartItem(itemName) {
     $.ajax({
         url: "/remove-cart-item",
         type: "POST",

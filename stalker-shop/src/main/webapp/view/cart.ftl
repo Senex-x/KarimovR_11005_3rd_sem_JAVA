@@ -23,8 +23,10 @@
     <div class="container">
         <div class="container-options">
             <div class="options-info">
-                <p class="info-total text-bigger">Total: 2150 ₽</p>
-                <p class="info-count">20 items</p>
+                <p class="info-total text-bigger">Total: ${totalCost} ₽</p>
+                <p class="info-count">
+                    ${items?size} <#if items?size == 1>item<#else>items</#if>
+                </p>
             </div>
             <div class="options-actions">
                 <button class="actions-buy">

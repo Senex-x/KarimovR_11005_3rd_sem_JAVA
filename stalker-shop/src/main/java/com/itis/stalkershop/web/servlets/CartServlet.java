@@ -1,9 +1,7 @@
 package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.CartDto;
-import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.CartService;
-import com.itis.stalkershop.utils.LogKt;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
 import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
@@ -44,6 +41,7 @@ public class CartServlet extends HttpServlet {
         );
 
         request.setAttribute("items", cartDto.getItemList());
+        request.setAttribute("totalCost", cartDto.getTotalCost());
         request.getRequestDispatcher("/cart.ftl").forward(request, response);
     }
 }

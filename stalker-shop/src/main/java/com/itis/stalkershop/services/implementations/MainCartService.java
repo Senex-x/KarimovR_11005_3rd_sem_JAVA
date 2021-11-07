@@ -72,7 +72,8 @@ public class MainCartService implements CartService {
 
         return new CartDto(
                 userEmail,
-                cartItems
+                cartItems,
+                calculateTotalCost(cartItems)
         );
     }
 
@@ -126,5 +127,13 @@ public class MainCartService implements CartService {
                 userEmail,
                 UtilsKt.toJson(itemNames)
         ));
+    }
+
+    private int calculateTotalCost(List<ItemDto> itemList) {
+        int totalCost = 0;
+        for (ItemDto item : itemList) {
+            totalCost += item.getCost();
+        }
+        return totalCost;
     }
 }
