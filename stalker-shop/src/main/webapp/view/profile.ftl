@@ -22,19 +22,19 @@
             <img class="user-section-avatar" src="/resources/images/profile/image_default.png" alt="Default image" onclick="window.location.href='upload-image'"/>
         </#if>
         <div class="user-section-info">
-            <p class="user-section-info-name">${user.name}</p>
-            <p class="user-section-info-email">${user.email}</p>
+            <p class="info-name">${user.name}</p>
+            <p class="info-email">${user.email}</p>
         </div>
         <div class="user-section-actions">
-            <button class="user-section-actions-add-image" onclick="window.location.href='upload-image'">
+            <button class="actions-add-image" onclick="window.location.href='upload-image'">
                 Add image
                 <i class="material-icons-outlined">photo_camera</i>
             </button>
-            <button class="item-button header-button-cart" onclick="window.location.href='cart'">
+            <button class="actions-cart" onclick="window.location.href='cart'">
                 Go to cart
                 <i class="material-icons-outlined">shopping_cart</i>
             </button>
-            <button class="user-section-actions-catalog" onclick="window.location.href='catalog'">
+            <button class="actions-catalog" onclick="window.location.href='catalog'">
                 Catalogue
                 <i class="material-icons-outlined">subject</i>
             </button>

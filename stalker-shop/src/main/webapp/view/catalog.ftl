@@ -15,10 +15,10 @@
     <#list items as item>
         <div class="item">
             <div class="item-header">
-                <img class="item-header-image" src="../resources/images/items/${item.imageName}" alt="Item image">
-                <div class="item-header-info">
-                    <p class="item-header-info-name">${item.name}</p>
-                    <p class="item-header-info-price">${item.cost} ₽</p>
+                <img class="item-image" src="../resources/images/items/${item.imageName}" alt="Item image">
+                <div class="item-info">
+                    <p class="info-name text-bigger">${item.name}</p>
+                    <p class="info-price">${item.cost} ₽</p>
                 </div>
             </div>
             <p class="item-description">${item.description}</p>

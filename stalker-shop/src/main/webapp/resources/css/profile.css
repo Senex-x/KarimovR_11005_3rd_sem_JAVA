@@ -23,12 +23,12 @@
     margin-left: 0;
 }
 
-.user-section-info-name {
+.info-name {
     font-weight: bold;
-    font-size: var(--size-font-heading);
+    font-size: var(--size-font-header);
 }
 
-.user-section-info-email {
+.info-email {
     font-size: var(--size-font-bigger);
     color: var(--color-gray)
 }
@@ -41,6 +41,10 @@
 
 .user-section-actions > button {
     margin-bottom: 20px;
+}
+
+.user-section-actions > button:last-child {
+    margin-bottom: 0;
 }
 
 .user-section-avatar {

@@ -4,7 +4,7 @@
         <p class="header-name">Stalker shop</p>
 
         <button class="user-section-actions-catalog" onclick="window.location.href='catalog'">
-            Catalogue
+            Catalog
             <i class="material-icons-outlined">subject</i>
         </button>
         <button class="header-button-cart" onclick="window.location.href='cart'">
