@@ -7,20 +7,20 @@
     --color-background: #0e2436;
     --color-background-dark: #08151e;
     --color-gray: #ffffffb5;
-    --size-font-heading: 1.8rem;
+    --size-font-header: 1.8rem;
     --size-font-bigger: 1.2rem;
     --size-header: 100px
 }
 
 html {
-    margin: var(--size-header) 0 0 0;
+    margin-top: 100px;
     background: #071218 url(../images/design/bg.png) top left repeat;
     font-family: Tahoma, Arial, sans-serif;
 }
 
 body {
     margin: 0;
-    padding: 200px 0 50px 0;
+    padding: 250px 0 200px 0;
     background: url(../images/design/bg_top.jpg) center 0 no-repeat;
 }
 
@@ -47,6 +47,10 @@ header {
     flex-grow: 0;
 }
 
+.header-wrapper > button {
+    margin-left: 20px;
+}
+
 .header-icon {
     margin-right: 20px;
     height: 60px;
@@ -55,7 +59,7 @@ header {
 
 .header-name {
     flex-grow: 1;
-    font-size: var(--size-font-heading);
+    font-size: var(--size-font-header);
 }
 
 .wrapper {
@@ -93,4 +97,9 @@ button:hover {
 
 button:active {
     background-color: var(--color-accent-light) !important;
+}
+
+.text-bigger {
+    font-weight: bold;
+    font-size: var(--size-font-bigger);
 }
