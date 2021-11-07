@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <title>Sign in</title>
     <link rel="stylesheet" href="../resources/css/base.css">
-    <link rel="stylesheet" href="../resources/css/sign_in.css">
+    <link rel="stylesheet" href="../resources/css/sign_form.css">
 </head>
 <body>
 <#include "header_base.ftl">
 <div class="wrapper">
-    <section class="section-register">
-        <div class="register-container">
-            <p class="register-header text-header">Sign in</p>
-            <form class="register-form" method="post">
+    <section class="section-form">
+        <div class="form-container">
+            <p class="form-header text-header">Sign in</p>
+            <form class="form-sign" method="post">
                 <label>
-                    <input class="form-email" placeholder="Email" name="email" type="email">
+                    <input class="form-sign-email" placeholder="Email" name="email" type="email">
                 </label>
                 <label>
-                    <input class="form-password" placeholder="Password" name="password" type="password">
+                    <input class="form-sign-password" placeholder="Password" name="password" type="password">
                 </label>
-                <input class="button-form-submit" type="submit">
+                <input class="form-sign-button-submit" value="Enter" type="submit">
             </form>
+            <button class="form-button-secondary" onclick="window.location.href='sign-up'">Register</button>
         </div>
     </section>
 </div>
