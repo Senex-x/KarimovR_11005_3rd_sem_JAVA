@@ -22,7 +22,7 @@
         </div>
         <div class="user-section-actions">
             <button class="actions-add-image" onclick="window.location.href='upload-image'">
-                Add image
+                Update image
                 <i class="material-icons-outlined">photo_camera</i>
             </button>
             <button class="actions-cart" onclick="window.location.href='cart'">

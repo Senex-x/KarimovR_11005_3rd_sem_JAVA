@@ -18,7 +18,7 @@
             <div class="item-header">
                 <img class="item-image" src="../resources/images/items/${item.imageName}" alt="Item image">
                 <div class="item-info">
-                    <p class="info-name text-bigger">${item.name}</p>
+                    <p class="info-name text-bigger-bold">${item.name}</p>
                     <p class="info-price">${item.cost} ₽</p>
                 </div>
             </div>

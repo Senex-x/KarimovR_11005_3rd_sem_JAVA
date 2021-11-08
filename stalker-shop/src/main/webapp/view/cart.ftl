@@ -17,7 +17,7 @@
     <div class="container">
         <div class="container-options">
             <div class="options-info">
-                <p class="info-total text-bigger">Total: ${totalCost} ₽</p>
+                <p class="info-total text-bigger-bold">Total: ${totalCost} ₽</p>
                 <p class="info-count">
                     ${items?size} <#if items?size == 1>item<#else>items</#if>
                 </p>
@@ -35,7 +35,7 @@
             <div class="item">
                 <img class="item-image" src="../resources/images/items/${item.imageName}" alt="Item image">
                 <div class="item-info">
-                    <p class="info-name text-bigger">${item.name}</p>
+                    <p class="info-name text-bigger-bold">${item.name}</p>
                     <p class="info-price">${item.cost} ₽</p>
                 </div>
                 <button class="item-button-remove" id="${item?index}" >
