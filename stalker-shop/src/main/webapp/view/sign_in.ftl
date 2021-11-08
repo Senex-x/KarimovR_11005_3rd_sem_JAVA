@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign in</title>
+    <link rel="icon" type="image/x-icon" href="/resources/images/design/icon_stalker.ico"/>
     <link rel="stylesheet" href="../resources/css/base.css">
     <link rel="stylesheet" href="../resources/css/sign_form.css">
 </head>

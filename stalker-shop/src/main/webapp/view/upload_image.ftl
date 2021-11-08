@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload image</title>
+    <link rel="icon" type="image/x-icon" href="/resources/images/design/icon_stalker.ico"/>
     <link rel="stylesheet" href="../resources/css/base.css">
     <link rel="stylesheet" href="../resources/css/sign_form.css">
     <link rel="stylesheet" href="../resources/css/upload_form.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/upload_image.js" type="text/javascript"></script>
-    <title>File upload</title>
 </head>
 <body>
 <#include "header.ftl">
