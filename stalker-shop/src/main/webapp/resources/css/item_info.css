@@ -1,0 +1,39 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    /*
+    * These three can be simplified
+    * and turned into 'flex: 1'
+    */
+    min-width: 300px;
+    margin: 20px;
+    padding: 20px;
+    outline:  4px solid var(--color-accent);
+    background: var(--color-background);
+}
+
+.item > * {
+    margin: 20px;
+}
+
+.item-header {
+    flex-grow: 0;
+    display: flex;
+}
+
+.item-image {
+    object-fit: contain;
+    width: 180px;
+    height: 180px;
+    margin-right: 40px;
+}
+
+.item-info > * {
+    margin-top: 10px;
+}
+
+.item-button-add {
+    align-self: center;
+    width: 100%;
+    max-width: 300px
+}
