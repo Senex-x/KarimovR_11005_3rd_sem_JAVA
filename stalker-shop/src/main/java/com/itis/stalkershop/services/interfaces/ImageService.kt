@@ -1,6 +1,7 @@
 package com.itis.stalkershop.services.interfaces
 
 import com.itis.stalkershop.models.Image
+import com.itis.stalkershop.models.UserDto
 import java.io.InputStream
 import java.io.OutputStream
 
@@ -20,4 +21,6 @@ interface ImageService {
     fun getFileInfo(
         fileId: Long
     ): Image
+
+    fun deleteUserImageFromStorage(user: UserDto)
 }

@@ -54,24 +54,29 @@ class MainContextListener : ServletContextListener {
                 imageStoragePath,
                 imageRepository
             )
-        val usersRepository: UsersRepository =
+        val userRepository: UsersRepository =
             MainUsersRepository(
                 dataSource
+            )
+        val userService: UserService =
+            MainUserService(
+                userRepository,
+                imageService
             )
         val passwordService: PasswordService =
             MainPasswordService()
         val signInService: SignInService =
             MainSignInService(
-                usersRepository,
+                userRepository,
                 passwordService
             )
         val validationService: ValidationService =
             MainValidationService(
-                usersRepository
+                userRepository
             )
         val signUpService: SignUpService =
             MainSignUpService(
-                usersRepository,
+                userRepository,
                 passwordService,
                 validationService
             )
@@ -94,11 +99,12 @@ class MainContextListener : ServletContextListener {
             )
 
         val attributes = listOf(
+            userService,
             imageRepository,
             imageService,
             signInService,
             signUpService,
-            usersRepository,
+            userRepository,
             itemService,
             cartService
         )
@@ -110,10 +116,5 @@ class MainContextListener : ServletContextListener {
                 attribute
             )
         }
-    }
-
-    override fun contextDestroyed(
-        servletContextEvent: ServletContextEvent
-    ) {
     }
 }

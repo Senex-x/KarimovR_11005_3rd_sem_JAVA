@@ -2,6 +2,7 @@ package com.itis.stalkershop.services.implementations;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.models.ImageDto;
+import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.repositories.interfaces.ImageRepository;
 import com.itis.stalkershop.services.interfaces.ImageService;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
@@ -92,5 +93,9 @@ public class MainImageService implements ImageService {
         );
     }
 
+    // TODO: Add actual deleting of image from file storage
+    @Override
+    public void deleteUserImageFromStorage(@NotNull UserDto user) {
 
+    }
 }

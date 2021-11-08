@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script src="/resources/js/jquery.min.js" type="text/javascript"></script>
     <script src="/resources/js/upload_image.js" type="text/javascript"></script>
-
     <title>File upload</title>
 </head>
 <body>
@@ -20,16 +19,13 @@
     <section class="section-form">
         <form class="form-upload-image" action="/upload-image" method="post" enctype="multipart/form-data">
             <p class="text-header">Pick image</p>
-            <label for="form-file-upload" class="form-button-file-upload">
-                Upload image
-            </label>
+            <label for="form-file-upload" class="form-button-file-upload">Upload image</label>
             <p id="form-status" class="text-bigger">Image not chosen</p>
             <input id="form-file-upload" type="file" name="file" accept=".jpg, .jpeg, .png">
             <input id="form-submit" type="submit" value="Update">
-            <button class="button-delete-profile-image">Delete profile image</button>
+            <button class="button-delete-profile-image" type="button">Delete profile image</button>
         </form>
     </section>
-
 </div>
 </body>
 </html>
