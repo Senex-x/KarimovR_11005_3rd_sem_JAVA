@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
+import static com.itis.stalkershop.utils.SessionUtilKt.getSessionUser;
 
 @WebServlet("/cart")
 public class CartServlet extends HttpServlet {

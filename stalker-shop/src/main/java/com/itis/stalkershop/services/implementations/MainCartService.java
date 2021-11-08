@@ -7,8 +7,8 @@ import com.itis.stalkershop.models.ItemDto;
 import com.itis.stalkershop.repositories.interfaces.CartRepository;
 import com.itis.stalkershop.repositories.interfaces.ItemsRepository;
 import com.itis.stalkershop.services.interfaces.CartService;
+import com.itis.stalkershop.utils.JsonUtilKt;
 import com.itis.stalkershop.utils.LogKt;
-import com.itis.stalkershop.utils.UtilsKt;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static com.itis.stalkershop.utils.UtilsKt.jsonToList;
-import static com.itis.stalkershop.utils.UtilsKt.toJson;
+import static com.itis.stalkershop.utils.JsonUtilKt.jsonToList;
+import static com.itis.stalkershop.utils.JsonUtilKt.toJson;
 
 public class MainCartService implements CartService {
     private final CartRepository cartRepository;
@@ -125,7 +125,7 @@ public class MainCartService implements CartService {
 
         cartRepository.update(cart.copy(
                 userEmail,
-                UtilsKt.toJson(itemNames)
+                JsonUtilKt.toJson(itemNames)
         ));
     }
 

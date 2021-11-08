@@ -4,7 +4,6 @@ import com.itis.stalkershop.models.UserAuth;
 import com.itis.stalkershop.models.UserDto;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.LogKt;
-import com.itis.stalkershop.utils.UtilsKt;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
 
 import javax.servlet.ServletConfig;
@@ -13,11 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.setSessionUser;
+import static com.itis.stalkershop.utils.SessionUtilKt.setSessionUser;
 
 @WebServlet("/sign-in")
 public class SignInServlet extends HttpServlet {

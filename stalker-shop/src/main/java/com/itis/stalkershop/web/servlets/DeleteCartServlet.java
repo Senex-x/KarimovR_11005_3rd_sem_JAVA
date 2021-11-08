@@ -34,7 +34,7 @@ public class DeleteCartServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        UserDto user = getSessionUser(request);
+        UserDto user = com.itis.stalkershop.utils.SessionUtilKt.getSessionUser(request);
 
         String userEmail = user.getEmail();
         cartService.delete(userEmail);

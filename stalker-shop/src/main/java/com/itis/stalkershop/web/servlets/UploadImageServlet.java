@@ -63,7 +63,7 @@ public class UploadImageServlet extends HttpServlet {
         );
         LogKt.log(this, "Uploaded file: " + newFile);
 
-        UserDto user = getSessionUser(request);
+        UserDto user = com.itis.stalkershop.utils.SessionUtilKt.getSessionUser(request);
 
         UserDto updatedUser = new UserDto(
                 user.getEmail(),
@@ -76,7 +76,7 @@ public class UploadImageServlet extends HttpServlet {
                 updatedUser.getEmail(),
                 updatedUser
         );
-        updateSessionUser(request, updatedUser);
+        com.itis.stalkershop.utils.SessionUtilKt.updateSessionUser(request, updatedUser);
 
 //  ????      filesService.saveFileToStorage(fileInfo);
         response.sendRedirect("/profile");

@@ -1,7 +1,6 @@
 package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.utils.LogKt;
-import com.itis.stalkershop.utils.UtilsKt;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.itis.stalkershop.utils.UtilsKt.removeSessionUser;
+import static com.itis.stalkershop.utils.SessionUtilKt.removeSessionUser;
 
 @WebServlet("/sign-out")
 public class SignOutServlet extends HttpServlet {

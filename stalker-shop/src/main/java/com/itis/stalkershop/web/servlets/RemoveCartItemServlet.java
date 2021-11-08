@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
+import static com.itis.stalkershop.utils.SessionUtilKt.getSessionUser;
 
 @WebServlet("/remove-cart-item")
 public class RemoveCartItemServlet extends HttpServlet {
