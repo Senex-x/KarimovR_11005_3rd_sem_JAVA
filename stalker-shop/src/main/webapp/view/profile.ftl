@@ -26,13 +26,13 @@
                 Update image
                 <i class="material-icons-outlined">photo_camera</i>
             </button>
-            <button class="actions-cart" onclick="window.location.href='cart'">
-                Cart
-                <i class="material-icons-outlined">shopping_cart</i>
-            </button>
             <button class="actions-catalog" onclick="window.location.href='catalog'">
                 Catalog
                 <i class="material-icons-outlined">subject</i>
+            </button>
+            <button class="actions-cart" onclick="window.location.href='cart'">
+                Cart
+                <i class="material-icons-outlined">shopping_cart</i>
             </button>
             <button class="actions-sign-out" onclick="window.location.href='sign-out'">
                 Sign out

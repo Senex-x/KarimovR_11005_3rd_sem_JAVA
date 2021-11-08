@@ -1,4 +1,23 @@
-function addItemToCart(itemName) {
+$(document).ready(function () {
+    $(".item").click(function () {
+        openItemInfo(
+            $(this).data("item-name")
+        )
+    })
+
+    $(".item-button-add").click(function (event) {
+        // To stop triggering parent's click listener
+        event.stopPropagation();
+    })
+})
+
+function openItemInfo(itemName) {
+        window.location = '/item-info?itemName=' + itemName;
+}
+
+function addItemToCart(itemIndex) {
+    const itemName = $(".info-name").eq(itemIndex).text()
+
     $.ajax({
         url: '/add-to-cart',
         type: 'POST',

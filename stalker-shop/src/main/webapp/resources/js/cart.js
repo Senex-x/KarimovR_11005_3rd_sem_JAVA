@@ -34,7 +34,6 @@ function removeCartItem(itemIndex) {
         .getElementsByClassName("info-count")
         .item(0)
     const itemCount = getCountFromInfo(itemCounterHtml.textContent)
-    console.log(itemCount)
     let pluralSuffix = ""
     if (itemCount !== 2) pluralSuffix = "s"
     itemCounterHtml.innerHTML = (itemCount - 1) + " item" + pluralSuffix
