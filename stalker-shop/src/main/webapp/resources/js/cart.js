@@ -8,22 +8,18 @@ $(document).ready(function () {
         deleteCart()
         clearInfo()
     })
-
-    $(".item-button-remove").click(function (event) {
-        deleteItemFromCart(event.currentTarget.id)
-    })
 })
 
 // Holy fuck, what did i just done...
 // It would be 100 times easier if i used separate tags for the actual value and the text
-function deleteItemFromCart(itemIndex) {
+function removeCartItem(itemIndex) {
     // Update database
     const itemNameHtml = document
         .getElementsByClassName("info-name")
         .item(itemIndex)
     const itemName = itemNameHtml.textContent
     $(itemNameHtml.parentElement.parentElement).slideUp()
-    removeCartItem(itemName)
+    removeCartItemFromDB(itemName)
 
     // Update total cost of the cart
     const totalCostHtml = document
@@ -71,7 +67,7 @@ function getCountFromInfo(countString) {
         ))
 }
 
-function removeCartItem(itemName) {
+function removeCartItemFromDB(itemName) {
     $.ajax({
         url: "/remove-cart-item",
         type: "POST",

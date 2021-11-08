@@ -1,11 +1,4 @@
-$(document).ready(function () {
-    $(".item-button-add").click(function (event) {
-        const itemName = event.currentTarget.id
-        addToCart(itemName)
-    })
-})
-
-function addToCart(itemName) {
+function addItemToCart(itemName) {
     $.ajax({
         url: '/add-to-cart',
         type: 'POST',

@@ -24,7 +24,7 @@
                 </div>
             </div>
             <p class="item-description">${item.description}</p>
-            <button class="item-button-add" id="${item.name}">
+            <button class="item-button-add" onclick="addItemToCart('${item.name}')">
                 Add
                 <i class="material-icons-outlined">add_shopping_cart</i>
             </button>

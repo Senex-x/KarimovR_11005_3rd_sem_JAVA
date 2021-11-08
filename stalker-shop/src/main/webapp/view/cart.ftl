@@ -39,7 +39,7 @@
                     <p class="info-name text-bigger-bold">${item.name}</p>
                     <p class="info-price">${item.cost} ₽</p>
                 </div>
-                <button class="item-button-remove" id="${item?index}" >
+                <button class="item-button-remove" onclick="removeCartItem('${item?index}')" >
                     Remove
                     <i class="material-icons-outlined">clear</i>
                 </button>
