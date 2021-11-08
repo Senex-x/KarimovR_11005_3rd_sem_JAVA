@@ -65,7 +65,10 @@ fun <T> JsonString.toListOf(): List<T> =
         object : TypeToken<List<T>>() {}.type
     )
 
-fun <T> List<T>.toJson(): String =
+fun <T> List<T>.toJson(): JsonString =
+    gson.toJson(this)
+
+fun Any.toJson(): JsonString =
     gson.toJson(this)
 
 fun ServletContextListener.loadPropertiesFrom(fileName: String) = try {
