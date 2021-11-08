@@ -14,6 +14,7 @@ function deleteProfileImage() {
         url: '/delete-image',
         type: 'POST',
         success: function () {
+            $("#form-status").text("Image deleted successfully")
             console.log("Profile image deleted successfully")
         },
         error: function () {

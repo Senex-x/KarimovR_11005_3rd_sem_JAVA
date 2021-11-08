@@ -11,7 +11,7 @@
 <#include "header_base.ftl">
 <div class="wrapper">
     <section class="user-section">
-        <#if user.avatarId != 0>
+        <#if user.avatarId?? && user.avatarId != 0>
             <img class="user-section-avatar" src="/files/${user.avatarId}" alt="User image" onclick="window.location.href='upload-image'"/>
         <#else>
             <img class="user-section-avatar" src="/resources/images/profile/image_default.png" alt="Default image" onclick="window.location.href='upload-image'"/>

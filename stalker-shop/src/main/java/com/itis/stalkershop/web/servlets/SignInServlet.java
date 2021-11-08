@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
+import static com.itis.stalkershop.utils.UtilsKt.setSessionUser;
 
 @WebServlet("/sign-in")
 public class SignInServlet extends HttpServlet {
@@ -72,12 +73,8 @@ public class SignInServlet extends HttpServlet {
             LogKt.log(this, "Authentication failed");
             return;
         }
-        
-        HttpSession session = request.getSession();
-        session.setAttribute(
-                UtilsKt.simpleName(userDto),
-                userDto
-        );
+
+        setSessionUser(request, userDto);
 
         response.sendRedirect("/profile");
     }

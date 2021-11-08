@@ -36,6 +36,6 @@ public class DeleteImageServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         LogKt.log(this, "Deleting image");
-        userService.deleteImage(getSessionUser(request));
+        userService.deleteImage(request, getSessionUser(request));
     }
 }

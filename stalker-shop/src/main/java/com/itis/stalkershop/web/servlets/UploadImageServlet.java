@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.UtilsKt.getSessionUser;
+import static com.itis.stalkershop.utils.UtilsKt.*;
 
 @WebServlet("/upload-image")
 @MultipartConfig
@@ -64,31 +63,22 @@ public class UploadImageServlet extends HttpServlet {
         );
         LogKt.log(this, "Uploaded file: " + newFile);
 
-        LogKt.log(this, "Trying get user from session");
         UserDto user = getSessionUser(request);
-        LogKt.log(this, "Got user from session: " + user);
 
-
-        //System.out.println("DEBUG2_1 " + usersRepository.findByEmail(user.getEmail()));
-
-        // Why the fuck do we use Optional then?
-        //User currentUser = usersRepository.findByEmail(user.getEmail()).get();
-
-        //System.out.println("DEBUG2 CURRENTUSER: " + currentUser);
-        //System.out.println("DEBUG3 FILEINFO: " + fileInfo.getId());
-        usersRepository.update(
+        UserDto updatedUser = new UserDto(
                 user.getEmail(),
-                new UserDto(
-                        user.getEmail(),
-                        user.getName(),
-                        user.getPasswordHash(),
-                        newFile.getId()
-                )
+                user.getName(),
+                user.getPasswordHash(),
+                newFile.getId()
         );
 
+        usersRepository.update(
+                updatedUser.getEmail(),
+                updatedUser
+        );
+        updateSessionUser(request, updatedUser);
 
-//  ??      filesService.saveFileToStorage(fileInfo);
-
-        response.sendRedirect("/files/" + newFile.getId());
+//  ????      filesService.saveFileToStorage(fileInfo);
+        response.sendRedirect("/profile");
     }
 }

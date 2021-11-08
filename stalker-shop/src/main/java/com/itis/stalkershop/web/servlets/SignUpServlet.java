@@ -24,6 +24,7 @@ public class SignUpServlet extends HttpServlet {
             ServletConfig config
     ) throws ServletException {
         super.init(config);
+
         signUpService = getAttribute(
                 SignUpService.class,
                 config.getServletContext()

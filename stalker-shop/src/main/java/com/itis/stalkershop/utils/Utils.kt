@@ -40,6 +40,20 @@ fun <T> HttpServletRequest.getSessionAttribute(name: String): T? =
 fun HttpServletRequest.getSessionUser(): UserDto =
     session.getAttribute(getClass<UserDto>().simpleName) as UserDto
 
+fun HttpServletRequest.setSessionUser(user: UserDto) =
+    session.setAttribute(getClass<UserDto>().simpleName, user)
+
+fun HttpServletRequest.removeSessionUser() =
+    session.removeAttribute(getClass<UserDto>().simpleName)
+
+fun HttpServletRequest.updateSessionUser(user: UserDto) {
+    log(getSessionUser().toString())
+    removeSessionUser()
+    setSessionUser(user)
+    log(getSessionUser().toString())
+
+}
+
 private val gson = Gson()
 
 typealias JsonString = String
