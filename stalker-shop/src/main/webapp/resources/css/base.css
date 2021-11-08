@@ -73,17 +73,15 @@ header {
     top: 4px;
 }
 
-p, button, input[type=submit] {
-    color: white;
-}
-
 p {
+    color: white;
     line-height: 1.5;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-button, input[type=submit] {
+button, input[type=submit], .form-button-file-upload {
+    color: white;
     cursor: pointer;
     border-width: 2px;
     border-style: solid;
@@ -93,11 +91,11 @@ button, input[type=submit] {
     padding: 10px;
 }
 
-button:hover, input[type=submit]:hover {
+button:hover, input[type=submit]:hover, .form-button-file-upload:hover {
     background-color: var(--color-accent-dark) !important;
 }
 
-button:active, input[type=submit]:active {
+button:active, input[type=submit]:active, .form-button-file-upload:active {
     background-color: var(--color-accent-light) !important;
 }
 
@@ -105,9 +103,12 @@ button:active, input[type=submit]:active {
     font-size: var(--size-font-header);
 }
 
-.text-bigger {
-    font-weight: bold;
+.text-bigger, .text-bigger-bold {
     font-size: var(--size-font-bigger);
+}
+
+.text-bigger-bold {
+    font-weight: bold;
 }
 
 #button-scroll-to-top {
