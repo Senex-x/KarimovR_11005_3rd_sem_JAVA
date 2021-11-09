@@ -5,7 +5,7 @@ enum class ErrorEntity(
     val message: String
 ) {
     INVALID_REQUEST(400, "Неверный запрос"),
-    INVALID_TOKEN(403, "Ошибка авторизации"),
+    INVALID_TOKEN(403, "Token invalid or not exists"),
     FORBIDDEN(403, "Доступ запрещен"),
     NOT_FOUND(404, "Не найдено"),
     INVALID_NAME(450, "Неверное имя"),

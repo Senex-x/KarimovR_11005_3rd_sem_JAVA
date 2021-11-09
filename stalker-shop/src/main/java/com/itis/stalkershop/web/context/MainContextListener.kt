@@ -1,13 +1,7 @@
 package com.itis.stalkershop.web.context
 
-import com.itis.stalkershop.repositories.implementations.MainCartRepository
-import com.itis.stalkershop.repositories.implementations.MainImageRepository
-import com.itis.stalkershop.repositories.implementations.MainItemsRepository
-import com.itis.stalkershop.repositories.implementations.MainUsersRepository
-import com.itis.stalkershop.repositories.interfaces.CartRepository
-import com.itis.stalkershop.repositories.interfaces.ImageRepository
-import com.itis.stalkershop.repositories.interfaces.ItemsRepository
-import com.itis.stalkershop.repositories.interfaces.UsersRepository
+import com.itis.stalkershop.repositories.implementations.*
+import com.itis.stalkershop.repositories.interfaces.*
 import com.itis.stalkershop.services.implementations.*
 import com.itis.stalkershop.services.interfaces.*
 import com.itis.stalkershop.utils.getNameOfImplementedInterface
@@ -65,9 +59,18 @@ class MainContextListener : ServletContextListener {
             )
         val passwordService: PasswordService =
             MainPasswordService()
-        val signInService: SignInService =
-            MainSignInService(
+        val tokenRepository: TokenRepository =
+            MainTokenRepository(
+                dataSource
+            )
+        val tokenService: TokenService =
+            MainTokenService(
+                tokenRepository
+            )
+        val authService: AuthService =
+            MainAuthService(
                 userRepository,
+                tokenService,
                 passwordService
             )
         val validationService: ValidationService =
@@ -78,7 +81,8 @@ class MainContextListener : ServletContextListener {
             MainSignUpService(
                 userRepository,
                 passwordService,
-                validationService
+                validationService,
+                tokenService
             )
         val itemsRepository: ItemsRepository =
             MainItemsRepository(
@@ -100,9 +104,10 @@ class MainContextListener : ServletContextListener {
 
         val attributes = listOf(
             userService,
+            tokenService,
             imageRepository,
             imageService,
-            signInService,
+            authService,
             signUpService,
             userRepository,
             itemService,

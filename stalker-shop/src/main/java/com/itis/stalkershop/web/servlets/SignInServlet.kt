@@ -1,79 +1,103 @@
-package com.itis.stalkershop.web.servlets;
+package com.itis.stalkershop.web.servlets
 
-import com.itis.stalkershop.models.UserAuth;
-import com.itis.stalkershop.models.UserDto;
-import com.itis.stalkershop.services.interfaces.SignInService;
-import com.itis.stalkershop.utils.LogKt;
-import com.itis.stalkershop.utils.exceptions.ValidationException;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-import static com.itis.stalkershop.utils.UtilsKt.getAttribute;
-import static com.itis.stalkershop.utils.SessionUtilKt.setSessionUser;
+import com.itis.stalkershop.models.UserAuth
+import com.itis.stalkershop.models.UserDto
+import com.itis.stalkershop.services.interfaces.AuthService
+import com.itis.stalkershop.services.interfaces.TokenService
+import com.itis.stalkershop.utils.*
+import com.itis.stalkershop.utils.exceptions.ValidationException
+import java.io.IOException
+import javax.servlet.ServletConfig
+import javax.servlet.ServletException
+import javax.servlet.annotation.WebServlet
+import javax.servlet.http.HttpServlet
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 
 @WebServlet("/sign-in")
-public class SignInServlet extends HttpServlet {
-    private SignInService signInService;
+class SignInServlet : HttpServlet() {
+    private lateinit var authService: AuthService
+    private lateinit var tokenService: TokenService
 
-    @Override
-    public void init(
-            ServletConfig config
-    ) throws ServletException {
-        super.init(config);
+    @Throws(ServletException::class)
+    override fun init(
+        config: ServletConfig
+    ) {
+        super.init(config)
 
-        signInService = getAttribute(
-                SignInService.class,
-                config.getServletContext()
-        );
+        authService = config.getAttribute()
+        tokenService = config.getAttribute()
     }
 
-    @Override
-    protected void doGet(
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws ServletException, IOException {
-        request.getRequestDispatcher("sign_in.ftl")
-                .forward(request, response);
+    @Throws(ServletException::class, IOException::class)
+    override fun doGet(
+        request: HttpServletRequest,
+        response: HttpServletResponse
+    ) {
+//        authService.auth(
+//            request,
+//            object : AuthService.AuthCallback {
+//                override fun onSuccess(userDto: UserDto) {
+//                    request
+//                        .setSessionUser(userDto)
+//                    request
+//                        .getRequestDispatcher("profile.ftl")
+//                        .forward(request, response)
+//                    logExt("Authentication succeed")
+//                }
+//
+//                override fun onFail(exception: ValidationException) {
+//                    request
+//                        .getRequestDispatcher("sign_in.ftl")
+//                        .forward(request, response)
+//                    logExt("Authentication failed with exception: $exception")
+//                }
+//            }
+//        )
+
+        request
+            .getRequestDispatcher("sign_in.ftl")
+            .forward(request, response)
     }
 
-    @Override
-    protected void doPost(
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws ServletException, IOException {
-        UserAuth userAuth = new UserAuth(
-                request.getParameter("email"),
-                request.getParameter("password")
-        );
+    @Throws(ServletException::class, IOException::class)
+    override fun doPost(
+        request: HttpServletRequest,
+        response: HttpServletResponse
+    ) {
+
+        var userAuth = UserAuth(
+            request.getParameter("email"),
+            request.getParameter("password")
+        )
 
         // Debug-only
-        userAuth = new UserAuth(
-                "vdm.snx@gmail.com",
-                "password"
-        );
+        userAuth = UserAuth(
+            "vdm.snx@gmail.com",
+            "password"
+        )
 
-        LogKt.log(this, "Trying to authenticate user: " + userAuth);
+        authService.auth(
+            request,
+            response,
+            userAuth,
+            getAuthResultHandler(request, response)
+        )
+    }
 
-        UserDto userDto;
+    private fun getAuthResultHandler(
+        request: HttpServletRequest,
+        response: HttpServletResponse
+    ) = object : AuthService.AuthCallback {
 
-        // TODO: refactor try/catch
-        try {
-            userDto = signInService.signIn(userAuth);
-            LogKt.log(this, "Authentication succeed");
-        } catch (ValidationException e) {
-            response.sendRedirect("/sign-in");
-            LogKt.log(this, "Authentication failed");
-            return;
+        override fun onSuccess(userDto: UserDto) {
+            response.sendRedirect("/profile")
+            logExt("Authentication succeed")
         }
 
-        setSessionUser(request, userDto);
-
-        response.sendRedirect("/profile");
+        override fun onFail(exception: ValidationException) {
+            response.sendRedirect("/sign-in")
+            logExt("Authentication failed with exception: $exception")
+        }
     }
 }
