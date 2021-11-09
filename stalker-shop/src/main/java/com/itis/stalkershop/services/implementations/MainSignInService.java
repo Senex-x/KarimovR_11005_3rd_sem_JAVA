@@ -8,14 +8,7 @@ import com.itis.stalkershop.services.interfaces.PasswordService;
 import com.itis.stalkershop.services.interfaces.SignInService;
 import com.itis.stalkershop.utils.exceptions.ErrorEntity;
 import com.itis.stalkershop.utils.exceptions.ValidationException;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.jetbrains.annotations.NotNull;
-
-import java.security.Key;
-import java.util.Map;
 
 public class MainSignInService implements SignInService {
     private final UsersRepository usersRepository;
@@ -48,22 +41,5 @@ public class MainSignInService implements SignInService {
             );
         }
         return user.toUserDto();
-    }
-
-    public UserDto signIn(String token) {
-        // We need a signing key, so we'll create one just for this example. Usually
-        // the key would be read from your application configuration instead.
-
-        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        String jws = Jwts.builder().setClaims(Map.of("user", "Joe")).signWith(key).compact();
-
-        try {
-            String userName = (String) Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jws).getBody().get("user");
-            //OK, we can trust this JWT
-        } catch (JwtException e) {
-            //don't trust the JWT!
-        }
-
-        throw new RuntimeException(); // Not yet implemented
     }
 }
