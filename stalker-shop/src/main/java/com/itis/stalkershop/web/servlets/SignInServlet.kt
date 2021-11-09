@@ -34,27 +34,6 @@ class SignInServlet : HttpServlet() {
         request: HttpServletRequest,
         response: HttpServletResponse
     ) {
-//        authService.auth(
-//            request,
-//            object : AuthService.AuthCallback {
-//                override fun onSuccess(userDto: UserDto) {
-//                    request
-//                        .setSessionUser(userDto)
-//                    request
-//                        .getRequestDispatcher("profile.ftl")
-//                        .forward(request, response)
-//                    logExt("Authentication succeed")
-//                }
-//
-//                override fun onFail(exception: ValidationException) {
-//                    request
-//                        .getRequestDispatcher("sign_in.ftl")
-//                        .forward(request, response)
-//                    logExt("Authentication failed with exception: $exception")
-//                }
-//            }
-//        )
-
         request
             .getRequestDispatcher("sign_in.ftl")
             .forward(request, response)
@@ -66,15 +45,9 @@ class SignInServlet : HttpServlet() {
         response: HttpServletResponse
     ) {
 
-        var userAuth = UserAuth(
+        val userAuth = UserAuth(
             request.getParameter("email"),
             request.getParameter("password")
-        )
-
-        // Debug-only
-        userAuth = UserAuth(
-            "vdm.snx@gmail.com",
-            "password"
         )
 
         authService.auth(
