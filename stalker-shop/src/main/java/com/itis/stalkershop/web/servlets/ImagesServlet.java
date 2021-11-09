@@ -27,7 +27,7 @@ public class ImagesServlet extends HttpServlet {
 
         imageService = getAttribute(
                 ImageService.class,
-                config.getServletContext()
+                config
         );
     }
 

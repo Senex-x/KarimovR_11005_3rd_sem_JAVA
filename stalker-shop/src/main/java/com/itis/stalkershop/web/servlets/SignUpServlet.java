@@ -27,7 +27,7 @@ public class SignUpServlet extends HttpServlet {
 
         signUpService = getAttribute(
                 SignUpService.class,
-                config.getServletContext()
+                config
         );
     }
 

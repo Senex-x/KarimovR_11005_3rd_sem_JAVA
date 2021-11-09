@@ -26,7 +26,7 @@ public class DeleteImageServlet extends HttpServlet {
 
         userService = getAttribute(
                 UserService.class,
-                config.getServletContext()
+                config
         );
     }
 

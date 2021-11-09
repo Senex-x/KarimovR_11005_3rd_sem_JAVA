@@ -22,10 +22,7 @@ class GetItemServlet : HttpServlet() {
     ) {
         super.init(config)
 
-        itemService = getAttribute(
-            ItemService::class.java,
-            config.servletContext
-        )
+        itemService = config.getAttribute()
     }
 
     @Throws(ServletException::class, IOException::class)

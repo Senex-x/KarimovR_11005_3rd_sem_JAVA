@@ -32,11 +32,11 @@ public class UploadImageServlet extends HttpServlet {
 
         imageService = getAttribute(
                 ImageService.class,
-                config.getServletContext()
+                config
         );
         usersRepository = getAttribute(
                 UsersRepository.class,
-                config.getServletContext()
+                config
         );
     }
 

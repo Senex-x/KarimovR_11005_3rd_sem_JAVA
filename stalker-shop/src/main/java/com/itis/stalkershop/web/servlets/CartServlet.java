@@ -29,7 +29,7 @@ public class CartServlet extends HttpServlet {
 
         cartService = getAttribute(
                 CartService.class,
-                config.getServletContext()
+                config
         );
     }
 

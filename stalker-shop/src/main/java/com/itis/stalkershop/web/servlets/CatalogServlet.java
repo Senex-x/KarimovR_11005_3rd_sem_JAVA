@@ -27,7 +27,7 @@ public class CatalogServlet extends HttpServlet {
 
         itemService = getAttribute(
                 ItemService.class,
-                config.getServletContext()
+                config
         );
     }
 

@@ -26,7 +26,7 @@ public class RemoveCartItemServlet extends HttpServlet {
 
         cartService = getAttribute(
                 CartService.class,
-                config.getServletContext()
+                config
         );
     }
 
