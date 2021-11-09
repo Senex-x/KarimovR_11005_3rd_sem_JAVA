@@ -20,8 +20,6 @@ fun HttpServletRequest.removeSessionUser() =
     session.removeAttribute(getClass<UserDto>().simpleName)
 
 fun HttpServletRequest.updateSessionUser(user: UserDto) {
-    log(getSessionUser().toString())
     removeSessionUser()
     setSessionUser(user)
-    log(getSessionUser().toString())
 }

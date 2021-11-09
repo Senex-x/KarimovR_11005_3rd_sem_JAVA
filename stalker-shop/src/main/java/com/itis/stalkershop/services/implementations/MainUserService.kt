@@ -21,7 +21,6 @@ class MainUserService(
 
     override fun deleteImage(request: HttpServletRequest, user: UserDto) {
         val updatedUser = user.copy(avatarId = null)
-        log(this, updatedUser.toString())
         usersRepository.update(
             updatedUser.email,
             updatedUser

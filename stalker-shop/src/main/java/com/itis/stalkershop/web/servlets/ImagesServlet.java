@@ -2,6 +2,7 @@ package com.itis.stalkershop.web.servlets;
 
 import com.itis.stalkershop.models.Image;
 import com.itis.stalkershop.services.interfaces.ImageService;
+import com.itis.stalkershop.utils.LogKt;
 import com.itis.stalkershop.utils.exceptions.NotFoundException;
 
 import javax.servlet.ServletConfig;
@@ -35,6 +36,7 @@ public class ImagesServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
+        LogKt.log(this, "?>?????????????????????");
         long fileId;
         try {
             String fileIdString = request.getRequestURI().substring(7);

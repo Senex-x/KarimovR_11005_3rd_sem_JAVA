@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     $(".button-delete-profile-image").click(function () {
         deleteProfileImage()
+
     })
 })
 
@@ -14,7 +15,7 @@ function deleteProfileImage() {
         url: '/delete-image',
         type: 'POST',
         success: function () {
-            $("#form-status").text("Image deleted successfully")
+            window.location.replace("profile")
             console.log("Profile image deleted successfully")
         },
         error: function () {

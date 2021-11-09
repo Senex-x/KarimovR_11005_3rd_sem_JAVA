@@ -24,7 +24,7 @@
             <p id="form-status" class="text-bigger">Image not chosen</p>
             <input id="form-file-upload" type="file" name="file" accept=".jpg, .jpeg, .png">
             <input id="form-submit" type="submit" value="Update">
-            <button class="button-delete-profile-image" type="button" onclick="window.location.href='profile'">Delete profile image</button>
+            <button class="button-delete-profile-image" type="button">Delete profile image</button>
         </form>
     </section>
 </div>
