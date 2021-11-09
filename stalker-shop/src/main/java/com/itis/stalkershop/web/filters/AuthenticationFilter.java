@@ -1,6 +1,11 @@
 package com.itis.stalkershop.web.filters;
 
 import com.itis.stalkershop.models.UserDto;
+import com.itis.stalkershop.services.interfaces.AuthService;
+import com.itis.stalkershop.services.interfaces.PasswordService;
+import com.itis.stalkershop.utils.LogKt;
+import com.itis.stalkershop.utils.exceptions.ValidationException;
+import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,9 +16,21 @@ import java.io.IOException;
 
 @WebFilter("/*")
 public class AuthenticationFilter implements Filter {
+    private PasswordService passwordEncoder;
+    private AuthService signInService;
+    // Global due to modification inside anonymous class
+    private boolean isAuthenticated;
+
 
     @Override
     public void init(FilterConfig filterConfig) {
+        ServletContext context = filterConfig.getServletContext();
+        this.signInService = (AuthService) context.getAttribute(
+                AuthService.class.getSimpleName()
+        );
+        this.passwordEncoder = (PasswordService) context.getAttribute(
+                PasswordService.class.getSimpleName()
+        );
     }
 
     @Override
@@ -35,7 +52,7 @@ public class AuthenticationFilter implements Filter {
         // берем только существующую, если сессии не было - то вернет null
         HttpSession session = request.getSession(false);
         // флаг, аутентифицирован ли пользователь
-        boolean isAuthenticated = false;
+        isAuthenticated = false;
         // существует ли сессия вообще?
         boolean sessionExists = session != null;
         // идет ли запрос на страницу входа или регистрации?
@@ -47,6 +64,21 @@ public class AuthenticationFilter implements Filter {
         if (sessionExists) {
             // проверим, есть ли атрибует user?
             isAuthenticated = session.getAttribute(UserDto.class.getSimpleName()) != null;
+        }
+
+        if (!isAuthenticated) {
+            signInService.auth(request, new AuthService.AuthCallback() {
+                @Override
+                public void onSuccess(@NotNull UserDto userDto) {
+                    isAuthenticated = true;
+                    LogKt.log(this, "Token authentication succeed");
+                }
+
+                @Override
+                public void onFail(@NotNull ValidationException exception) {
+                    LogKt.log(this, "Token authentication failed");
+                }
+            });
         }
 
         // TODO: Inspect conditions
