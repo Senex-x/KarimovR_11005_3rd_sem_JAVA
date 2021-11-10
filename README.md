@@ -31,7 +31,8 @@ So, let's try it. After clicking, we get to the photo upload page:
 ![alt_text](https://sun9-12.userapi.com/impg/_ZsL_T9hqK1kuffnW_t-70W1g4SHKg_YxDEj9g/p-JsvE8P1os.jpg?size=1895x961&quality=96&sign=265bb30e334ada5d7895b7213f18c402&type=album)
 
 Upload button appear only when file is chosen:
-![alt_text](https://user-images.githubusercontent.com/66133985/141189244-167a4ac4-a4f5-439b-ac40-93a8b2e912ae.png)
+
+![alt_text](https://user-images.githubusercontent.com/66133985/141190789-db87a0c5-2978-4ee8-955d-423546611e89.png)
 
 And then you are redirected bach to the profile page, with a fresh image displayed:
 
