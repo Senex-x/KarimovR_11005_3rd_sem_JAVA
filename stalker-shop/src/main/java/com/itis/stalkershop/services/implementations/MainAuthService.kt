@@ -66,7 +66,7 @@ class MainAuthService(
     override fun auth(request: HttpServletRequest, callback: AuthCallback) {
         log("Trying to authenticate user by token")
 
-        val cookie = request.cookies.find { item -> item.name == "token" }
+        val cookie = request.cookies?.find { item -> item.name == "token" }
 
         if (cookie != null) {
             val token = cookie.value

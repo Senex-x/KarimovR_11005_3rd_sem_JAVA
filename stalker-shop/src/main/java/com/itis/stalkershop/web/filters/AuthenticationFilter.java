@@ -59,6 +59,8 @@ public class AuthenticationFilter implements Filter {
         boolean isRequestOnAuthPage =
                 request.getRequestURI().equals("/sign-in") ||
                         request.getRequestURI().equals("/sign-up");
+        boolean isRequestEmpty =
+                request.getRequestURI().equals("/");
 
         // если сессия есть
         if (sessionExists) {
@@ -83,20 +85,26 @@ public class AuthenticationFilter implements Filter {
 
         // TODO: Inspect conditions
         // если авторизован и запрашивает не открытую страницу или если не авторизован и запрашивает открытую
-        if (isAuthenticated && !isRequestOnAuthPage || !isAuthenticated && isRequestOnAuthPage) {
+        if (isAuthenticated && !isRequestOnAuthPage && !isRequestEmpty ||
+                !isAuthenticated && isRequestOnAuthPage && !isRequestEmpty
+        ) {
             // отдаем ему то, что он хочет
+            LogKt.log(this, "отдаем ему то, что он хочет");
             filterChain.doFilter(request, response);
         } else if (isAuthenticated && isRequestOnAuthPage) {
             // пользователь аутенцифицирован и запрашивает страницу входа
             // - отдаем ему профиль
+            LogKt.log(this, "/profile");
             response.sendRedirect("/profile");
         } else {
             // если пользователь не аутенцицицирован и запрашивает другие страницы
             response.sendRedirect("/sign-in");
+            LogKt.log(this, "/sign-in");
         }
     }
 
     @Override
     public void destroy() {
+
     }
 }
