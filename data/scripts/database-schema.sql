@@ -53,6 +53,20 @@ create table if not exists carts
 alter table carts
     owner to postgres;
 
+create table if not exists user_tokens
+(
+    user_email varchar(64)  not null
+        constraint user_auth_tokens_users_email_fk
+            references users,
+    token      varchar(512) not null
+);
+
+alter table user_tokens
+    owner to postgres;
+
+create unique index user_auth_tokens_token_uindex
+    on user_tokens (token);
+
 INSERT INTO public.users (email, name, password_hash, avatar_id)
 VALUES ('vdm.snx@gmail.com', 'Senex', '5f4dcc3b5aa765d61d8327deb882cf99', null);
 
