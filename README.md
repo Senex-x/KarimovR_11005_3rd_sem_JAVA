@@ -136,6 +136,3 @@ As you can see, our project uses user-specific tokens stored among browser Cooki
 ![alt_text](https://sun9-79.userapi.com/impg/wkoALdKKabqBW3IpiFk7aVsglZ83yun1z6O0Zg/pkwZQ0HqLDw.jpg?size=661x134&quality=96&sign=641d429762a501add60a04eeddde935e&type=album)
 
 Also, the **application has animations** when removing items from the cart, or after image is selected.
-
-And the last, but not least. All pages are perfectly scalable and easy to browse through even with a mobile device.
-Here is some examples.
