@@ -11,6 +11,10 @@ go to the registration page. Also, **authentication cookie is created**, to avoi
 
 ![alt text](https://sun9-28.userapi.com/impg/CSm66jYp5ohtADBconhOYitUSoPCanpGXyXcFw/BwFpdJtSjMI.jpg?size=1899x968&quality=96&sign=f15db0e4e8522d17a6fc9e9f39949a55&type=album)
 
+Mobile-size variant, as **all the pages are perfectly scaled automatically** :
+
+![alt text](https://user-images.githubusercontent.com/66133985/141194412-930b6118-f51a-4015-a4b6-6fd1a603c2c1.png)
+
 ## Registration page
 Registration page required to create new accounts.
 If registration is successful, the newly added user is **saved in the database**.
@@ -21,6 +25,10 @@ If registration is successful, the newly added user is **saved in the database**
 After successful authentication, you are taken to the profile page:
 
 ![alt_text](https://sun9-83.userapi.com/impg/uinZd66RhkaTFXBFAPbJnQNjfnEd28jov02fOQ/YBFXMVKZMrs.jpg?size=1897x965&quality=96&sign=f4f71e8cb3b058006281e437914705b2&type=album)
+
+Mobile automatically scaled variant:
+
+![image](https://user-images.githubusercontent.com/66133985/141194075-f9a633e4-5a1e-4d64-807c-9a030e36a5a7.png)
 
 Here, by pressing according buttons, you can change avatar, go to the catalog and cart pages or log out of the account.
 Also, you can change avatar by pressing on your actual avatar image.
@@ -54,6 +62,11 @@ Let's move on to the catalog page:
 A bunch of items present here:
 
 ![alt_text](https://sun9-11.userapi.com/impg/VdrykRdTo7qal25sluXUwsgxCuz7TWNw1Vdc3w/6S2rnxOg-J0.jpg?size=1887x963&quality=96&sign=f1f7d36f784eab0dca82af2cf0add370&type=album)
+
+Mobile-scaled variant:
+
+![image](https://user-images.githubusercontent.com/66133985/141194177-4d489e75-d42b-42da-9826-50f19d8718ba.png)
+
 
 Here we can select items and add them to a cart.
 
@@ -92,6 +105,10 @@ After buy button press cart is emptied:
 
 ![alt text](https://sun9-80.userapi.com/impg/UQ_Ao_1UjVDzK6fPDxqr5yYOWjwx9uGOvntu6g/5czUqjLSmt8.jpg?size=1893x546&quality=96&sign=26c7ebdca0765b2b307d65a2372426d0&type=album)
 
+Also, here is a mobile-sized variant:
+
+![image](https://user-images.githubusercontent.com/66133985/141195467-35cbb4b8-10a2-4b74-a667-b7be8bd458d4.png)
+
 Finally, let's sign out of our profile:
 
 ![alt text](https://sun9-72.userapi.com/impg/aUcg97n4w4gbgcOKWGHRCfRJMDHgIf0I1edUiQ/RdFtM9GjDCQ.jpg?size=1350x322&quality=96&sign=aaa0f2290ed35dbcddab86305a9ecc35&type=album)
@@ -119,3 +136,6 @@ As you can see, our project uses user-specific tokens stored among browser Cooki
 ![alt_text](https://sun9-79.userapi.com/impg/wkoALdKKabqBW3IpiFk7aVsglZ83yun1z6O0Zg/pkwZQ0HqLDw.jpg?size=661x134&quality=96&sign=641d429762a501add60a04eeddde935e&type=album)
 
 Also, the **application has animations** when removing items from the cart, or after image is selected.
+
+And the last, but not least. All pages are perfectly scalable and easy to browse through even with a mobile device.
+Here is some examples.
